@@ -112,7 +112,6 @@ public class SalaryManager implements RoleOfManager {
         String idEmpAdd;
         System.out.print("==> Enter id of employee to add list salary: ");
         idEmpAdd = scanner.nextLine();
-        // System.out.println(checkIdEmployee(idEmpAdd));
         if (checkIdEmployee(idEmpAdd)) {
             for (Employee employee : listEmployees) {
                 if (employee == null)

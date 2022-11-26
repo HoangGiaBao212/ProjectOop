@@ -43,7 +43,6 @@ public class MenuContent {
         System.out.println("     -------------------------");
         System.out.println("     | 6. Exit               |");
         System.out.println("     -------------------------");
-
         do {
             System.out.print("==> Input option : ");
             option = Integer.parseInt(scanner.nextLine());
@@ -360,7 +359,7 @@ public class MenuContent {
     }
 
     public static void optionDepartment() {
-        listSalary.updateDataEmployee();
+        SalaryManager.updateDataEmployee();
         int option;
         System.out.println("\n     --------------------------------------------");
         System.out.println("     |              DEPARTMENT MANAGER          |");
