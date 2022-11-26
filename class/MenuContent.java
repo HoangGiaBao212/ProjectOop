@@ -20,7 +20,10 @@ public class MenuContent {
     public static void menu() {
         int option;
         clearScreen();
-        System.out.println("Hello, Welcome to Employee Manager");
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("|                  Hello, Welcome to Employee Manager              |");
+        System.out.println("--------------------------------------------------------------------");
+
         try {
             Thread.sleep(2000);
         } catch (Exception e) {
@@ -32,12 +35,15 @@ public class MenuContent {
         System.out.println("     -------------------------");
         System.out.println("     | 2. Contract Manager   |");
         System.out.println("     -------------------------");
-        System.out.println("     | 3. Salary Manager    |");
+        System.out.println("     | 3. Salary Manager     |");
         System.out.println("     -------------------------");
         System.out.println("     | 4. Project Manager    |");
         System.out.println("     -------------------------");
         System.out.println("     | 5. Department Manager |");
         System.out.println("     -------------------------");
+        System.out.println("     | 6. Exit               |");
+        System.out.println("     -------------------------");
+
         do {
             System.out.print("==> Input option : ");
             option = Integer.parseInt(scanner.nextLine());
@@ -63,12 +69,15 @@ public class MenuContent {
                     break;
                 }
                 case 6 -> {
+                    System.out.println("----------------------------------------------------------------");
+                    System.out.println("|                           Good Bye!                          |");
+                    System.out.println("----------------------------------------------------------------");
                     break;
                 }
                 default -> {
-                    System.out.println("      <Choice does not exist!>");
-                    System.out.println(
-                            "     -----------------------------------------------------------------------------------");
+                    System.out.println("--------------------------------------------------------------------");
+                    System.out.println("|                      <Choice does not exist!>                    |");
+                    System.out.println("--------------------------------------------------------------------");
                 }
             }
         } while (option < 1 || option > 6);
@@ -77,25 +86,34 @@ public class MenuContent {
 
     public static void showMenuEmployee() {
         System.out.println("Select employee type: ");
-        System.out.println("-----1.Chief Department");
-        System.out.println("-----2.Official Employee");
-        System.out.println("-----3.Intern Employee");
-        System.out.print("Enter choice: ");
+        System.out.println("----------------------------------------------");
+        System.out.println("|  1.Chief Department                        |");
+        System.out.println("|  2.Official Employee                       |");
+        System.out.println("|  3.Intern Employee                         |");
+        System.out.println("----------------------------------------------");
+        System.out.print("==> Enter choice: ");
     }
 
     public static void optionEmployee() {
         int option;
-        System.out.println("     -----------------------");
-        System.out.println("    |   Employee Manager   |");
-        System.out.println("     -----------------------");
-        System.out.println("     1. Input new list of employees");
-        System.out.println("     2. Output list of employees");
-        System.out.println("     3. Add new employee");
-        System.out.println("     4. Edit employee");
-        System.out.println("     5. Remove employee");
-        System.out.println("     6. Find employee");
-        System.out.println("     7. Back to menu");
-        System.out.println("     8. Exit");
+        System.out.println("\n     --------------------------------------------");
+        System.out.println("     |              EMPLOYEE MANAGER            |");
+        System.out.println("     --------------------------------------------");
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            System.out.println("Fail to sleep!");
+        }
+        System.out.println("     --------------------------------------------");
+        System.out.println("     |  1. Input List Of Employee               |");
+        System.out.println("     |  2. Output List Of Employee              |");
+        System.out.println("     |  3. Add                                  |");
+        System.out.println("     |  4. Edit                                 |");
+        System.out.println("     |  5. Delete                               |");
+        System.out.println("     |  6. Search                               |");
+        System.out.println("     |  7. Back to previous menu                |");
+        System.out.println("     |  8. Exit                                 |");
+        System.out.println("     --------------------------------------------");
         do {
             System.out.print("     ==> Input option: ");
             option = Integer.parseInt(scanner.nextLine());
@@ -128,12 +146,14 @@ public class MenuContent {
                     menu();
                     break;
                 case 8:
-                    System.out.println(
-                            "\n----------------------------------------------------------------------------------------------------------------------------------------------------------------");
-                    System.out.println("\nGood bye!");
+                    System.out.println("----------------------------------------------------------------");
+                    System.out.println("|                           Good Bye!                          |");
+                    System.out.println("----------------------------------------------------------------");
                     break;
                 default:
-                    System.out.println("\n---------------------\n     <Choice does not exist!>");
+                    System.out.println("--------------------------------------------------------------------");
+                    System.out.println("|                      <Choice does not exist!>                    |");
+                    System.out.println("--------------------------------------------------------------------");
             }
         } while (option < 1 || option > 8);
     }
@@ -143,24 +163,25 @@ public class MenuContent {
         // listSalary.readFile();
         // listSalary.writeFile();
         int option;
-        System.out.println(
-                "\n-----------------------------------------");
-        System.out.printf("|%-40s|", "              Salary Manager ");
-        System.out.println("\n-----------------------------------------");
+        System.out.println("--------------------------------------------------------------");
+        System.out.println("|                        SALARY MANAGER                      |");
+        System.out.println("--------------------------------------------------------------");
         try {
             Thread.sleep(1000);
 
         } catch (Exception e) {
             System.out.println("Fail to sleep!");
         }
-        System.out.printf("|%-40s|", " 1. Input list salary of employees ");
-        System.out.printf("\n|%-40s|", " 2. Output list salary of employees ");
-        System.out.printf("\n|%-40s|", " 3. Add salary of one employee ");
-        System.out.printf("\n|%-40s|", " 4. Remove salary of one employee ");
-        System.out.printf("\n|%-40s|", " 5. Find salary of one employee ");
-        System.out.printf("\n|%-40s|", " 6. Remove salary of one employee ");
-        System.out.printf("\n|%-40s|", " 7. Back to menu");
-        System.out.printf("\n|%-40s|", " 8. Exit");
+        System.out.println("--------------------------------------------------------");
+        System.out.println("|  1. Input list salary of employees                   |");
+        System.out.println("|  2. Output list salary of employees                  |");
+        System.out.println("|  3. Add salary of one employee                       |");
+        System.out.println("|  4. Remove salary of one employee                    |");
+        System.out.println("|  5. Find salary of one employee                      |");
+        System.out.println("|  6. Remove salary of one employee                    |");
+        System.out.println("|  7. Back to menu                                     |");
+        System.out.println("|  8. Exit                                             |");
+        System.out.println("--------------------------------------------------------");
         System.out.println(
                 "\n-----------------------------------------");
         do {
@@ -190,12 +211,15 @@ public class MenuContent {
                 case 7:
                     menu();
                 case 8:
-                    System.out.println(
-                            "\n---------------------------------------------------------------------------------------------");
-                    System.out.println("\n Say Goodbye!");
+                    System.out.println("----------------------------------------------------------------");
+                    System.out.println("|                           Good Bye!                          |");
+                    System.out.println("----------------------------------------------------------------");
                     break;
                 default:
-                    System.out.println("\n - - - - - - - - - - -\n Choice is not exist!");
+                    System.out.println("--------------------------------------------------------------------");
+                    System.out.println("|                      <Choice does not exist!>                    |");
+                    System.out.println("--------------------------------------------------------------------");
+                    break;
             }
         } while (option < 1 || option > 8);
     }
@@ -203,21 +227,27 @@ public class MenuContent {
     private static void optionContract() {
 
         int option;
-        System.out.println(
-                "\n--------------------------------------------------------------------------------------------");
-        System.out.println("\n     ───────────────────────");
-        System.out.println("     |   QUAN LY HOP DONG   |");
-        System.out.println("     -----------------------\n");
-        System.out.println("     1. Nhap hop dong");
-        System.out.println("     2. Xuat hop dong");
-        System.out.println("     3. Them");
-        System.out.println("     4. Sua");
-        System.out.println("     5. Xoa");
-        System.out.println("     6. Tim kiem");
-        System.out.println("     7. Quay lai menu chinh");
-        System.out.println("     8. Thoat");
+        System.out.println("\n     --------------------------------------------");
+        System.out.println("     |              CONTRACT MANAGER            |");
+        System.out.println("     --------------------------------------------");
+        try {
+            Thread.sleep(1000);
+
+        } catch (Exception e) {
+            System.out.println("Fail to sleep!");
+        }
+        System.out.println("     --------------------------------------------");
+        System.out.println("     |  1. Input List Of Contract               |");
+        System.out.println("     |  2. Output List Of Contract              |");
+        System.out.println("     |  3. Add                                  |");
+        System.out.println("     |  4. Edit                                 |");
+        System.out.println("     |  5. Delete                               |");
+        System.out.println("     |  6. Search                               |");
+        System.out.println("     |  7. Back to previous menu                |");
+        System.out.println("     |  8. Exit                                 |");
+        System.out.println("     --------------------------------------------");
         do {
-            System.out.println("==> Nhap lua chon: ");
+            System.out.print("==> Input Option: ");
             option = Integer.parseInt(scanner.nextLine());
             switch (option) {
                 case 1:
@@ -248,12 +278,15 @@ public class MenuContent {
                     menu();
                     break;
                 case 8:
-                    System.out.println(
-                            "\n----------------------------------------------------------------------------------------------------------------------------------------------------------------");
-                    System.out.println("\n      Good Bye!");
+                    System.out.println("----------------------------------------------------------------");
+                    System.out.println("|                           Good Bye!                          |");
+                    System.out.println("----------------------------------------------------------------");
                     break;
                 default:
-                    System.out.println("Lua chon khong phu hop!!!!!!");
+                    System.out.println("--------------------------------------------------------------------");
+                    System.out.println("|                      <Choice does not exist!>                    |");
+                    System.out.println("--------------------------------------------------------------------");
+                    break;
             }
 
         } while (option < 1 || option > 10);
@@ -261,23 +294,27 @@ public class MenuContent {
 
     public static void optionProject() {
         int option;
-        System.out.println(
-                "\n--------------------------------------------------------------------------------------------");
-        System.out.println("\n     ───────────────────────");
-        System.out.println("     |   MANAGE PROJECT      |");
-        System.out.println("     -----------------------\n");
-        System.out.println("     1. Add List of Project");
-        System.out.println("     2. Print List of Project");
-        System.out.println("     3. Add Project");
-        System.out.println("     4. Edit Project");
-        System.out.println("     5. Remove Project");
-        System.out.println("     6. Find Project By Id");
-        System.out.println("     7. Read file");
-        System.out.println("     8. Write file");
-        System.out.println("     9. Back to main menu");
-        System.out.println("     10. Exit");
+        System.out.println("\n     --------------------------------------------");
+        System.out.println("     |              PROJECT MANAGER             |");
+        System.out.println("     --------------------------------------------");
+        try {
+            Thread.sleep(1000);
+
+        } catch (Exception e) {
+            System.out.println("Fail to sleep!");
+        }
+        System.out.println("     --------------------------------------------");
+        System.out.println("     |  1. Input List Of Project                |");
+        System.out.println("     |  2. Output List Of Project               |");
+        System.out.println("     |  3. Add                                  |");
+        System.out.println("     |  4. Edit                                 |");
+        System.out.println("     |  5. Delete                               |");
+        System.out.println("     |  6. Search                               |");
+        System.out.println("     |  7. Back to previous menu                |");
+        System.out.println("     |  8. Exit                                 |");
+        System.out.println("     --------------------------------------------");
         do {
-            System.out.println("==> Nhap lua chon: ");
+            System.out.print("==> Input option: ");
             option = Integer.parseInt(scanner.nextLine());
             switch (option) {
                 case 1:
@@ -305,14 +342,18 @@ public class MenuContent {
                     optionProject();
                     break;
                 case 7:
+                    menu();
                     break;
                 case 8:
-                    System.out.println(
-                            "\n----------------------------------------------------------------------------------------------------------------------------------------------------------------");
-                    System.out.println("\n      Good Bye!");
+                    System.out.println("----------------------------------------------------------------");
+                    System.out.println("|                           Good Bye!                          |");
+                    System.out.println("----------------------------------------------------------------");
                     break;
                 default:
-                    System.out.println("Lua chon khong phu hop!!!!!!");
+                    System.out.println("--------------------------------------------------------------------");
+                    System.out.println("|                      <Choice does not exist!>                    |");
+                    System.out.println("--------------------------------------------------------------------");
+                    break;
             }
 
         } while (option < 1 || option > 10);
@@ -321,26 +362,25 @@ public class MenuContent {
     public static void optionDepartment() {
         listSalary.updateDataEmployee();
         int option;
-        System.out.println(
-                "\n-----------------------------------------");
-        System.out.printf("|%-40s|", "              Depart Manager ");
-        System.out.println("\n-----------------------------------------");
+        System.out.println("\n     --------------------------------------------");
+        System.out.println("     |              DEPARTMENT MANAGER          |");
+        System.out.println("     --------------------------------------------");
         try {
             Thread.sleep(1000);
 
         } catch (Exception e) {
             System.out.println("Fail to sleep!");
         }
-        System.out.printf("|%-40s|", " 1. Input list salary of employees ");
-        System.out.printf("\n|%-40s|", " 2. Output list salary of employees ");
-        System.out.printf("\n|%-40s|", " 3. Add salary of one employee ");
-        System.out.printf("\n|%-40s|", " 4. Remove salary of one employee ");
-        System.out.printf("\n|%-40s|", " 5. Find salary of one employee ");
-        System.out.printf("\n|%-40s|", " 6. Remove salary of one employee ");
-        System.out.printf("\n|%-40s|", " 7. Back to menu");
-        System.out.printf("\n|%-40s|", " 8. Exit");
-        System.out.println(
-                "\n-----------------------------------------");
+        System.out.println("     --------------------------------------------");
+        System.out.println("     |  1. Input List Of Project                |");
+        System.out.println("     |  2. Output List Of Project               |");
+        System.out.println("     |  3. Add                                  |");
+        System.out.println("     |  4. Edit                                 |");
+        System.out.println("     |  5. Delete                               |");
+        System.out.println("     |  6. Search                               |");
+        System.out.println("     |  7. Back to previous menu                |");
+        System.out.println("     |  8. Exit                                 |");
+        System.out.println("     --------------------------------------------");
         do {
             System.out.print(" ==> Input option: ");
             option = Integer.parseInt(scanner.nextLine());
@@ -366,12 +406,14 @@ public class MenuContent {
                 case 7:
                     menu();
                 case 8:
-                    System.out.println(
-                            "\n---------------------------------------------------------------------------------------------");
-                    System.out.println("\n Say Goodbye!");
+                    System.out.println("----------------------------------------------------------------");
+                    System.out.println("|                           Good Bye!                          |");
+                    System.out.println("----------------------------------------------------------------");
                     break;
                 default:
-                    System.out.println("\n - - - - - - - - - - -\n Choice is not exist!");
+                    System.out.println("--------------------------------------------------------------------");
+                    System.out.println("|                      <Choice does not exist!>                    |");
+                    System.out.println("--------------------------------------------------------------------");
             }
         } while (option < 1 || option > 5);
     }

@@ -2,7 +2,8 @@ public class Department implements InOut {
     private int idDep;
     private String nameDep;
 
-    public void Department() {
+    public Department() {
+
     }
 
     public Department(int idDep, String nameDep) {

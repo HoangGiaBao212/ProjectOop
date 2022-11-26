@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
+// import java.io.BufferedWriter;
 import java.io.FileReader;
-import java.io.FileWriter;
+// import java.io.FileWriter;
 import java.util.*;
 
 public class ContractManager implements RoleOfManager {
@@ -10,10 +10,10 @@ public class ContractManager implements RoleOfManager {
     public static int n = 0;
     public static Contract ContractManager[] = new Contract[0];
     public Employee listEmployees[] = new Employee[100];
-    protected String listEmployeeTxt = "C:/Users/ADMIN/Documents/DoAnOOP/OOP/OOP/Đồ án oop/File/employee.txt";
+
+    protected String listEmployeeTxt = "./Đồ án oop/File/employee.txt";
 
     public ContractManager() {
-
     }
 
     public ContractManager(int n, Contract[] ContractManager) {
@@ -47,56 +47,61 @@ public class ContractManager implements RoleOfManager {
                 }
             }
         } catch (Exception e) {
-            // TODO: handle exception
+            System.out.println("--------------------------------------------------");
+            System.out.println("|                   Hello World                  |");
+            System.out.println("--------------------------------------------------");
+
         }
     }
 
     @Override
     public void inputList() {
         updateDataEmployee();
-        System.out.println("NHAP HOP DONG");
-        System.out.println("Nhap so luong hop dong: ");
+        System.out.println("-------------------------------------------------");
+        System.out.println("|              ADD LIST OF CONTRACT             |");
+        System.out.println("-------------------------------------------------");
+        System.out.print("Enter an amount of contract to add: ");
         while (true) {
             try {
                 n = Integer.parseInt(sc.nextLine());
                 if (n > 0) {
                     break;
                 } else {
-                    System.out.println("So luong phai lon hon 0.Vui long nhap lai: ");
+                    System.out.println("The amount must great than 0.Please enter again: ");
                 }
             } catch (Exception e) {
-                System.out.println("Nhap sai.Nhap lai: ");
+                System.out.println("Wrong.Please enter again: ");
             }
         }
         ContractManager = new Contract[n];
         for (int i = 0; i < n; i++) {
-            System.out.println("So luong hop dong: " + n);
-            System.out.println("Nhap hop dong thu " + (i + 1 + ":"));
+            // System.out.println("So luong hop dong: " + n);
+            System.out.println("Enter the information of contract " + (i + 1 + ":"));
             ContractManager[i] = new Contract();
             ContractManager[i].input();
         }
-        System.out.println("\nNhap danh sach thanh cong!");
+        System.out.println("---------------------------------------");
+        System.out.println("|          Add list successful!       |");
+        System.out.println("---------------------------------------");
     }
 
     @Override
     public void outputList() {
-        System.out.println("XUAT HOP DONG");
+        System.out.println("Output the List of Contract");
         if (ContractManager.length == 0) {
-            System.out.println("Chua co du lieu");
+            System.out.println("No data in the list");
         } else {
             System.out.println(
-                    "     ----------------------------------------------------------------------------------------------------------------------------------");
+                    "     -------------------------------------------------------------------------------------------------------------------------------------");
             System.out.printf(
                     "    %-15s|   %-15s|   %-15s|   %-15s|   %-15s|    %-15s|   %-15s|    %-15s|",
-                    "Ma hop dong", "Ho ten", "Gioi tinh", "Ngay sinh", "So dien thoai", "Email", "Ngay bat dau",
+                    "Ma hop dong","Ho ten", "Gioi tinh", "Ngay sinh", "So dien thoai", "Email", "Ngay bat dau",
                     "Ngay ket thuc");
             System.out.println();
             System.out.println(
-                    "     ----------------------------------------------------------------------------------------------------------------------------------");
+                    "     -------------------------------------------------------------------------------------------------------------------------------------");
             for (Contract e : ContractManager) {
-
                 e.output();
-
                 System.out.println();
             }
         }
@@ -105,9 +110,10 @@ public class ContractManager implements RoleOfManager {
 
     @Override
     public void add() {
-        System.out.println("THEM DU LIEU");
+        System.out.println("---------------------------------------");
+        System.out.println("|             ADD CONTRACT            |");
+        System.out.println("---------------------------------------");
         int count = 0;
-
         Contract x = new Contract();
         x.setContractID(null);
         for (Contract e : ContractManager) {
@@ -116,7 +122,7 @@ public class ContractManager implements RoleOfManager {
             }
         }
         if (count != 0) {
-            System.out.println("Hop dong da ton tai");
+            System.out.println("Contract is already in the list");
         } else {
             System.out.println("So luong hop dong dang co: " + n);
             x.setTimeStart(null);
@@ -124,16 +130,21 @@ public class ContractManager implements RoleOfManager {
             ContractManager = Arrays.copyOf(ContractManager, n + 1);
             ContractManager[n] = x;
             n++;
-            System.out.println("Da them thanh cong!");
+            System.out.println("---------------------------------------------------------");
+            System.out.println("|               Add Contract Successful!                |");
+            System.out.println("---------------------------------------------------------");
+
         }
     }
 
     @Override
     public void edit() {
-        System.out.println("SUA THONG TIN");
+        System.out.println("----------------------------------------------------");
+        System.out.println("|           EDIT INFORMATION IN CONTRACT           |");
+        System.out.println("----------------------------------------------------");
         String idTemp;
         int key;
-        System.out.println("Nhap ma hop dong can sua");
+        System.out.print("Enter an contract ID to edit: ");
         idTemp = sc.nextLine();
         int count = 0;
         for (Contract e : ContractManager) {
@@ -142,13 +153,13 @@ public class ContractManager implements RoleOfManager {
             }
         }
         if (count == 0) {
-            System.out.println("Ma hop dong khong ton tai");
+            System.out.println("Contract don't exist!");
         } else {
             for (Contract e : ContractManager) {
                 if (e.getContractID().equalsIgnoreCase(idTemp)) {
                     System.out.println("\n---------------------------------------------");
-                    System.out.println("  |  1.Sua ngay bat dau                       |");
-                    System.out.println("  |  2.Sua ngay ket thuc                      |");
+                    System.out.println("  |  1.Change time start                      |");
+                    System.out.println("  |  2.Change time end                        |");
                     System.out.println("  ---------------------------------------------");
                     System.out.print("==> Nhap lua chon:");
                     key = Integer.parseInt(sc.nextLine());
@@ -161,20 +172,26 @@ public class ContractManager implements RoleOfManager {
                             e.setTimeEnd(null);
                             break;
                         default:
-                            System.out.println("\nLua chon khong ton tai!\n");
+                            System.out.println("--------------------------------------------");
+                            System.out.println("|           Choice don't exist             |");
+                            System.out.println("--------------------------------------------");
                             break;
                     }
                 }
             }
-            System.out.println("Sua thanh cong!!");
+            System.out.println("------------------------------------------------------");
+            System.out.println("|           Edit Information Successful!             |");
+            System.out.println("------------------------------------------------------");
         }
     }
 
     @Override
     public void remove() {
-        System.out.println("SUA THONG TIN");
+        System.out.println("-------------------------------------------------");
+        System.out.println("|              REMOVE CONTRACT                  |");
+        System.out.println("-------------------------------------------------");
         String idTemp;
-        System.out.print("Nhap ma hop dong can xoa: ");
+        System.out.print("Enter contract ID to remove: ");
         idTemp = sc.nextLine();
         int count = 0;
         for (Contract e : ContractManager) {
@@ -183,7 +200,7 @@ public class ContractManager implements RoleOfManager {
             }
         }
         if (count == 0) {
-            System.out.println("Ma hop dong khong ton tai");
+            System.out.println("The contract don't exist");
         } else {
             for (int i = 0; i < n; i++) {
                 if (ContractManager[i].getContractID().equalsIgnoreCase(idTemp)) {
@@ -193,14 +210,18 @@ public class ContractManager implements RoleOfManager {
                 n--;
             }
         }
-        System.out.println("Xoa thanh cong!!!");
+        System.out.println("-------------------------------------------------");
+        System.out.println("|               Remove successful!              |");
+        System.out.println("-------------------------------------------------");
     }
 
     @Override
     public void find() {
-        System.out.println("TIM KIEM DU LIEU");
+        System.out.println("-------------------------------------------------");
+        System.out.println("|                SEARCH CONTRACT                |");
+        System.out.println("-------------------------------------------------");
         String idFind;
-        System.out.println("Nhap ma hop dong can tim: ");
+        System.out.print("Enter contract ID to find: ");
         idFind = sc.nextLine();
         int count = 0;
         for (Contract e : ContractManager) {
@@ -209,76 +230,26 @@ public class ContractManager implements RoleOfManager {
             }
         }
         if (count == 0) {
-            System.out.println("Ma hop dong khong ton tai!");
+            System.out.println("The contract don't exist!");
         } else {
             for (Contract e : ContractManager) {
                 if (e.getContractID().equalsIgnoreCase(idFind)) {
+                    System.out.println("-------------------------------------------------");
+                    System.out.println("|                 Find Successful!              |");
+                    System.out.println("-------------------------------------------------");
                     e.output();
                 }
             }
         }
     }
 
-    // @Override
-    // public void readFile() {
-    // try {
-    // FileReader fr = new FileReader(
-    // "C:/Users/ADMIN/eclipse-workspace/ProjectOOP/src/projectOOP/text/contract.txt");
-    // BufferedReader br = new BufferedReader(fr);
-    // String line = "";
-    // while (true) {
-    // line = br.readLine();
-    // if (line == null) {
-    // break;
-    // }
-    // String s[] = line.split(", ");
-    // String contractid = s[0];
-    // String name = s[1];
-    // // int s2 = Integer.parseInt(s[2]);
-    // // int tuoi = s2;
-    // String gender = s[2];
-    // String dob = s[3];
-    // String phone = s[4];
-    // String email = s[5];
-    // String timestart = s[6];
-    // String timeend = s[7];
-    // ContractManager = Arrays.copyOf(ContractManager, n + 1);
-    // ContractManager[n] = new contract(contractid, name, gender, dob, phone,
-    // email, timestart, timeend);
-    // n++;
-    // }
-    // br.close();
-    // fr.close();
-    // } catch (Exception e) {
 
-    // }
-    // }
+    public static void thongKe() {
+    // ContractManager dshd = new ContractManager();
+    System.out.println("\n-----------------------------------------------");
+    System.out.println("  |             THONG KE KHACH HANG|            |");
+    System.out.println("-----------------------------------------------");
 
-    // @Override
-    // public void WriteFile() {
-    // try {
-    // FileWriter fw = new FileWriter("./text/contract.txt");
-    // BufferedWriter bw = new BufferedWriter(fw);
-    // for (contract e : ContractManager) {
-    // bw.write(e.toStringContract());
-    // // bw.write(e.toStringNguoi());
-    // bw.newLine();
-    // }
-    // bw.close();
-    // fw.close();
-    // } catch (Exception e) {
-
-    // }
-    // }
-
-    // public static void thongKe() {
-    // contractmanager dshd = new contractmanager();
-    // dshd.ReadFile();
-    // System.out.println("\n - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // -");
-    // System.out.println("\n THONG KE KHACH HANG");
-    // System.out.println(" - So luong khach hang: " +
-    // ContractManager.ContractManager.length);
-    // }
-
+    // System.out.println(" - So luong khach hang: " +ContractManager.ContractManager.length);
+    }
 }

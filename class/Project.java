@@ -63,10 +63,10 @@ class Project implements InOut {
         return participants;
     }
     public void setParticipants(int participants) {
-        System.out.println("Nhap so nguoi tham gia du an: ");
+        System.out.print("Enter the amount of participants: ");
         participants = sc.nextInt();
         while (participants <= 2) {
-            System.out.println("So nguoi tham gia du an phai lon hon hoac bang 2.Nhap lai: ");
+            System.out.println("The amount must greater or equal than 2.Please enter again: ");
             participants = sc.nextInt();
         }
         this.participants = participants;

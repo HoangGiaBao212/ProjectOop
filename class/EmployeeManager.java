@@ -16,7 +16,7 @@ public class EmployeeManager implements RoleOfManager {
         int option;
         System.out.println("\n     - - - - - - - - - - - - - - - - - - - - - - - - - - -");
         System.out.println("\n     Input List Employee");
-        System.out.println("     *Input amount of employee: ");
+        System.out.print("     *Input amount of employee: ");
         n = Integer.parseInt(scanner.nextLine());
         while (n <= 0) {
             System.out.println("Amount must be greater than 0");
@@ -49,6 +49,9 @@ public class EmployeeManager implements RoleOfManager {
                 }
             } while (option < 1 || option > 3);
         }
+        System.out.println("----------------------------------------");
+        System.out.println("|     Add Employee's List Successful   |");
+        System.out.println("----------------------------------------");
         try {
             FileWriter fw = new FileWriter(listEmployeeTxt);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -86,21 +89,25 @@ public class EmployeeManager implements RoleOfManager {
     public void add() {
         Employee addListEmployee[];
         int amount, option;
-        System.out.println("\n ---------------------------------------------------------");
-        System.out.println("\n Add new employee");
-        System.out.println(" *Input amount of employee to add: ");
+        System.out.println("---------------------------------------");
+        System.out.println("|           ADD NEW EMPLOYEE          |");
+        System.out.println("---------------------------------------");
+        System.out.print("\n *Input amount of employee to add: ");
         amount = Integer.parseInt(scanner.nextLine());
         while (amount <= 0) {
-            System.out.println("Amount must be greater than 0");
+            System.out.print("Amount must be greater than 0");
             amount = Integer.parseInt(scanner.nextLine());
         }
         addListEmployee = new Employee[amount];
         for (int i = 0; i < amount; i++) {
             do {
                 System.out.println("Select employee type: ");
-                System.out.println("-----1.Chief Department");
-                System.out.println("-----2.Official Employee");
-                System.out.println("-----3.Intern Employee");
+                System.out.println("-------------------------------");
+                System.out.println("| ->1.Chief Department        |");
+                System.out.println("| -->2.Official Employee      |");
+                System.out.println("| --->3.Intern Employee       |");
+                System.out.println("-------------------------------");
+
                 System.out.print("Enter choice: ");
                 option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
@@ -143,6 +150,9 @@ public class EmployeeManager implements RoleOfManager {
     @Override
     public void remove() {
         readFile();
+        System.out.println("-------------------------------------------------");
+        System.out.println("|              REMOVE EMPLOYEE                  |");
+        System.out.println("-------------------------------------------------");
         System.out.println("Enter id of employee to remove(Ex:E001): ");
         String idRemove = scanner.nextLine();
 
@@ -162,9 +172,9 @@ public class EmployeeManager implements RoleOfManager {
                 break;
             System.out.println(employee.toString());
         }
-
-        System.out.println("Remove success");
-
+        System.out.println("-------------------------------------------------");
+        System.out.println("|               Remove successful!              |");
+        System.out.println("-------------------------------------------------");
         try {
             FileWriter fw = new FileWriter(listEmployeeTxt);
             BufferedWriter bw = new BufferedWriter(fw);

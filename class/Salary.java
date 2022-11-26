@@ -28,7 +28,7 @@ public class Salary implements InOut {
     }
 
     public void setSomeHolidays(int someHolidays) {
-        System.out.print("Enter the some holidays: ");
+        System.out.print("Enter a numeber of day-off: ");
         someHolidays = scanner.nextInt();
         this.someHolidays = someHolidays;
     }

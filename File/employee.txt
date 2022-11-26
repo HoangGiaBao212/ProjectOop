@@ -1,7 +1,1 @@
-E001-Chief of department-Hoang Gia Bao-19-Male-hoanggiabao2122003@gmail.com-Bien Hoa-0595354785
-E002-Official Employee-Mai Chung Chinh-19-Male-maichungchinhdaubui@gmail.com-Quang Ngai-0587135942
-E003-Intern Employee-Nguyen Tien Phat-19-Male-phatderach@gmail.com-Quang Ngai-0251254697
-E004-Chief of department-Hoang Minh Duc-19-Male-hoangminhduc1610@gmail.com-Bien Hoa-0602082578
-E005-Chief of department-Hoang Hai-19-Male-hoangminhduc1610@gmail.com-Bien Hoa-0602082578
-E006-Chief of department-Nguyen Thi Thanh-19-Female-thanhthi1234@gmail.com-Can Tho-0602082578
-E007-Intern Employee-Nguyen Minh Tuan-19-Male-tuanminh123@gmail.com-Binh Phuoc-0523975236
+E008-Chief of department-Phat-18-Male-jack@gmail.com-Quang Ngai-0123456789
