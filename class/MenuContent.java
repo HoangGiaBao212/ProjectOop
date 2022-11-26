@@ -419,3 +419,5 @@ public class MenuContent {
     }
 
 }
+
+//Đăng nhập với tư cách nhân viên xem thông tin cá nhân,xem ds nhân viên,xem ds dự án,xem ds phòng ban

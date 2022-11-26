@@ -9,9 +9,9 @@ public class ContractManager implements RoleOfManager {
     Scanner sc = new Scanner(System.in);
     public static int n = 0;
     public static Contract ContractManager[] = new Contract[0];
-    public Employee listEmployees[] = new Employee[100];
+    public static Employee listEmployees[] = new Employee[100];
 
-    protected String listEmployeeTxt = "./Đồ án oop/File/employee.txt";
+    protected static String listEmployeeTxt = "./Đồ án oop/File/employee.txt";
 
     public ContractManager() {
     }
@@ -21,7 +21,7 @@ public class ContractManager implements RoleOfManager {
         this.ContractManager = ContractManager;
     }
 
-    public void updateDataEmployee() {
+    public static void updateDataEmployee() {
         n = -1;
         try {
             FileReader fr = new FileReader(listEmployeeTxt);

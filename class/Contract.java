@@ -16,8 +16,7 @@ public class Contract implements InOut {
         contractID = "";
     }
 
-    public Contract(String contractID, String name, String gender, String dob, String phone, String email,
-            String timeStart, String timeEnd) {
+    public Contract(String contractID,String timeStart, String timeEnd) {
         // super(name, gender, dob, phone, email);
         this.contractID = contractID;
         this.timeStart = timeStart;

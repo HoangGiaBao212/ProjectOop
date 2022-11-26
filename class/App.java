@@ -6,6 +6,8 @@ public class App {
     public static void init() {
         SalaryManager.updateDataEmployee();
         SalaryManager.readFile();
+        ContractManager.updateDataEmployee();
+        ContractManager.readFile();
     }
 
     public static void start() {
