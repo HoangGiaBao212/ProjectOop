@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
-// import java.io.BufferedWriter;
+import java.io.BufferedWriter;
 import java.io.FileReader;
-// import java.io.FileWriter;
+import java.io.FileWriter;
 import java.util.*;
 
 public class ContractManager implements RoleOfManager {
@@ -10,8 +10,8 @@ public class ContractManager implements RoleOfManager {
     public static int n = 0;
     public static Contract ContractManager[] = new Contract[0];
     public static Employee listEmployees[] = new Employee[100];
-
-    protected static String listEmployeeTxt = "./Đồ án oop/File/employee.txt";
+    protected static String listEmployeeTxt = "./File/employee.txt";
+    protected static String listContractTxt = "./File/contract.txt";
 
     public ContractManager() {
     }
@@ -95,8 +95,7 @@ public class ContractManager implements RoleOfManager {
                     "     -------------------------------------------------------------------------------------------------------------------------------------");
             System.out.printf(
                     "    %-15s|   %-15s|   %-15s|   %-15s|   %-15s|    %-15s|   %-15s|    %-15s|",
-                    "Ma hop dong","Ho ten", "Gioi tinh", "Ngay sinh", "So dien thoai", "Email", "Ngay bat dau",
-                    "Ngay ket thuc");
+                    "Contract ID","Name", "Gender", "Date of Birth", "Phone number", "Email", "Time start","Time end");
             System.out.println();
             System.out.println(
                     "     -------------------------------------------------------------------------------------------------------------------------------------");
@@ -242,7 +241,52 @@ public class ContractManager implements RoleOfManager {
             }
         }
     }
-
+    static void readFile() {
+        n = -1;
+        try {
+            FileReader fr = new FileReader(listContractTxt);
+            try (BufferedReader br = new BufferedReader(fr)) {
+                String line = "";
+                while (true) {
+                    line = br.readLine();
+                    if (line == null) {
+                        break;
+                    }
+                    n++;
+                    String[] txt = line.split("-");
+                    String idEmp = txt[0];
+                    String ContracID = txt[3];
+                    String timeStart = txt[4];
+                    String timeEnd = txt[5];
+                    Contract contract = new Contract(ContracID, timeStart, timeEnd);
+                    n++;
+                    }
+                    System.out.println(n);
+                }
+            }catch(Exception e){
+                System.out.println("Hello world");
+            }
+        }
+    public static void writeFile() {
+        try {
+            FileWriter fw = new FileWriter(listContractTxt);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (Contract e : ContractManager) {
+                if (e == null) {
+                    break;
+                }
+                // if (C.getSalary() != null) {
+                //     bw.write(employee.getIdEmp() + "-" + employee.getName() + "-" + employee.getPosition() + "-"
+                //             + employee.getSalary().toString());
+                //     bw.newLine();
+                // }
+            }
+            bw.close();
+            fw.close();
+        } catch (Exception e) {
+            System.out.println("Don't have data for salary! ");
+        }
+    }
 
     public static void thongKe() {
     // ContractManager dshd = new ContractManager();

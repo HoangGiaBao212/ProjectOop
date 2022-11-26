@@ -1,3 +1,5 @@
+
+//Thuộc tính: Mã phòng ban,tên phòng ban,tên trưởng phòng,số lượng nhân viên,
 public class Department implements InOut {
     private int idDep;
     private String nameDep;
