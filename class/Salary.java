@@ -20,8 +20,6 @@ public class Salary implements InOut {
     }
 
     public void setIndexSalary(int indexSalary) {
-        System.out.print("Enter the index of the salary: ");
-        indexSalary = scanner.nextInt();
         this.indexSalary = indexSalary;
     }
 

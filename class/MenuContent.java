@@ -62,13 +62,16 @@ public class MenuContent {
                     optionDepartment();
                     break;
                 }
+                case 6 -> {
+                    break;
+                }
                 default -> {
                     System.out.println("      <Choice does not exist!>");
                     System.out.println(
                             "     -----------------------------------------------------------------------------------");
                 }
             }
-        } while (option < 1 || option > 5);
+        } while (option < 1 || option > 6);
         MenuContent.clearScreen();
     }
 
@@ -136,7 +139,9 @@ public class MenuContent {
     }
 
     public static void optionSalary() {
-        listSalary.updateDataEmployee();
+        // listSalary.updateDataEmployee();
+        // listSalary.readFile();
+        // listSalary.writeFile();
         int option;
         System.out.println(
                 "\n-----------------------------------------");
@@ -171,7 +176,7 @@ public class MenuContent {
                     optionSalary();
                     break;
                 case 3:
-                    listContract.add();
+                    listSalary.add();
                     optionSalary();
                     break;
                 case 4:
@@ -179,6 +184,8 @@ public class MenuContent {
                     optionSalary();
                     break;
                 case 5:
+                    listSalary.find();
+                    optionSalary();
                 case 6:
                 case 7:
                     menu();
@@ -190,7 +197,7 @@ public class MenuContent {
                 default:
                     System.out.println("\n - - - - - - - - - - -\n Choice is not exist!");
             }
-        } while (option < 1 || option > 5);
+        } while (option < 1 || option > 8);
     }
 
     private static void optionContract() {

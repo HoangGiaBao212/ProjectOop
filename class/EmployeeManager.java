@@ -31,17 +31,17 @@ public class EmployeeManager implements RoleOfManager {
                     case 1:
                         listEmployees[i] = new Employee();
                         listEmployees[i].setPosition("Chief of department");
-                        ((ChiefDepartment) listEmployees[i]).input();
+                        listEmployees[i].input();
                         break;
                     case 2:
                         listEmployees[i] = new Employee();
                         listEmployees[i].setPosition("Official Employee");
-                        ((OfficialEmployee) listEmployees[i]).input();
+                        listEmployees[i].input();
                         break;
                     case 3:
                         listEmployees[i] = new Employee();
                         listEmployees[i].setPosition("Intern Employee");
-                        ((InternEmployee) listEmployees[i]).input();
+                        listEmployees[i].input();
                         break;
                     default:
                         System.out.println("choice does not exist!");

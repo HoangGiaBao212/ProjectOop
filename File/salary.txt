@@ -1,4 +1,7 @@
-E001-Bao-Chief of department-3-5-425
-E002-Phat-Official Employee-2-5-275
-E003-Mai Chung Chinh-Intern Employee-1-5-125
-E004-Nguyen Minh Tuan-Chief of department-3-5-425
+E001-Hoang Gia Bao-Chief of department-3-1-17800
+E002-Mai Chung Chinh-Official Employee-2-3-11400
+E003-Nguyen Tien Phat-Intern Employee-1-6-4800
+E004-Hoang Minh Duc-Chief of department-3-4-17200
+E005-Hoang Hai-Chief of department-3-5-55151
+E006-Nguyen Thi Thanh-Chief of department-3-5-42500
+E007-Nguyen Minh Tuan-Intern Employee-1-1-290
