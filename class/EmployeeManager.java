@@ -29,17 +29,17 @@ public class EmployeeManager implements RoleOfManager {
                 option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
                     case 1:
-                        listEmployees[i] = new ChiefDepartment();
+                        listEmployees[i] = new Employee();
                         listEmployees[i].setPosition("Chief of department");
                         ((ChiefDepartment) listEmployees[i]).input();
                         break;
                     case 2:
-                        listEmployees[i] = new OfficialEmployee();
+                        listEmployees[i] = new Employee();
                         listEmployees[i].setPosition("Official Employee");
                         ((OfficialEmployee) listEmployees[i]).input();
                         break;
                     case 3:
-                        listEmployees[i] = new InternEmployee();
+                        listEmployees[i] = new Employee();
                         listEmployees[i].setPosition("Intern Employee");
                         ((InternEmployee) listEmployees[i]).input();
                         break;
@@ -112,12 +112,12 @@ public class EmployeeManager implements RoleOfManager {
                     case 2:
                         addListEmployee[i] = new Employee();
                         addListEmployee[i].setPosition("Official Employee");
-                        ((OfficialEmployee) addListEmployee[i]).input();
+                        addListEmployee[i].input();
                         break;
                     case 3:
                         addListEmployee[i] = new Employee();
                         addListEmployee[i].setPosition("Intern Employee");
-                        ((InternEmployee) addListEmployee[i]).input();
+                        addListEmployee[i].input();
                         break;
                     default:
                         System.out.println("choice does not exist!");
