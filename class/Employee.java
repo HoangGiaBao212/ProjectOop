@@ -7,18 +7,10 @@ class Employee extends Person implements InOut {
     private Salary salary;
     private Project project;
     private Department department;
+    private Contract contract;
 
     public Employee() {
         super();
-    }
-
-    public Employee(String position, String name, int age, String gender, String email, String address, String phone,
-            Salary salary, Project project, Department department) {
-        super(name, age, gender, email, address, phone);
-        this.position = position;
-        this.salary = salary;
-        this.project = project;
-        this.department = department;
     }
 
     public Employee(String name, int age, String gender, String email, String address, String phone, String idEmp,
@@ -26,6 +18,17 @@ class Employee extends Person implements InOut {
         super(name, age, gender, email, address, phone);
         this.idEmp = idEmp;
         this.position = position;
+    }
+
+    public Employee(String name, int age, String gender, String email, String address, String phone, String idEmp,
+            String position, Salary salary, Project project, Department department, Contract contract) {
+        super(name, age, gender, email, address, phone);
+        this.idEmp = idEmp;
+        this.position = position;
+        this.salary = salary;
+        this.project = project;
+        this.department = department;
+        this.contract = contract;
     }
 
     public String getIdEmp() {
@@ -56,10 +59,6 @@ class Employee extends Person implements InOut {
         this.position = position;
     }
 
-    public int getCoefficientsSalary(int coefficientsSalary) {
-        return coefficientsSalary;
-    }
-
     public Salary getSalary() {
         return salary;
     }
@@ -85,6 +84,14 @@ class Employee extends Person implements InOut {
         this.department = department;
     }
 
+    public Contract getContract() {
+        return contract;
+    }
+
+    public void setContract(Contract contract) {
+        this.contract = contract;
+    }
+
     @Override
     public String toString() {
         return idEmp + "-" + position + "-" + super.toString();
@@ -94,10 +101,6 @@ class Employee extends Person implements InOut {
     public void input() {
         super.input();
         setIdEmp(idEmp);
-        // setPosition(position);
-        // setSalary(salary);
-        // setDepartment(department);
-        // setProject(project);
     }
 
     @Override
@@ -106,4 +109,5 @@ class Employee extends Person implements InOut {
         super.output();
         System.out.println();
     }
+
 }

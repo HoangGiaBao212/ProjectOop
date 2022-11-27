@@ -8,10 +8,9 @@ public class ChiefDepartment extends Employee {
     public ChiefDepartment() {
     }
 
-    public ChiefDepartment(String position, String name, int age, String gender, String email, String address,
-            String phone, Salary salary, Project project, Department department, int coefficientsSalary) {
-        super(position, name, age, gender, email, address, phone, salary, project, department);
-        ChiefDepartment.coefficientsSalary = coefficientsSalary;
+    public ChiefDepartment(String name, int age, String gender, String email, String address, String phone,
+            String idEmp, String position, Salary salary, Project project, Department department, Contract contract) {
+        super(name, age, gender, email, address, phone, idEmp, position, salary, project, department, contract);
     }
 
     public static int getCoefficientsSalary() {

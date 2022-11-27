@@ -8,10 +8,9 @@ public class OfficialEmployee extends Employee implements InOut {
     public OfficialEmployee() {
     }
 
-    public OfficialEmployee(String position, String name, int age, String gender, String email, String address,
-            String phone, Salary salary, Project project, Department department, int coefficientsSalary) {
-        super(position, name, age, gender, email, address, phone, salary, project, department);
-        OfficialEmployee.coefficientsSalary = coefficientsSalary;
+    public OfficialEmployee(String name, int age, String gender, String email, String address, String phone,
+            String idEmp, String position, Salary salary, Project project, Department department, Contract contract) {
+        super(name, age, gender, email, address, phone, idEmp, position, salary, project, department, contract);
     }
 
     public static int getCoefficientsSalary() {

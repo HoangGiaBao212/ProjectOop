@@ -19,7 +19,7 @@ public class MenuContent {
 
     public static void menu() {
         int option;
-        clearScreen();
+        // clearScreen();
         System.out.println("--------------------------------------------------------------------");
         System.out.println("|                  Hello, Welcome to Employee Manager              |");
         System.out.println("--------------------------------------------------------------------");
@@ -117,50 +117,61 @@ public class MenuContent {
             System.out.print("     ==> Input option: ");
             option = Integer.parseInt(scanner.nextLine());
             switch (option) {
-                case 1:
+                case 1 -> {
                     listEmployee.inputList();
                     optionEmployee();
                     break;
-                case 2:
+                }
+                case 2 -> {
                     listEmployee.outputList();
                     optionEmployee();
                     break;
-                case 3:
+                }
+                case 3 -> {
                     listEmployee.add();
                     optionEmployee();
                     break;
-                case 4:
+                }
+                case 4 -> {
                     listEmployee.edit();
                     optionEmployee();
                     break;
-                case 5:
+                }
+                case 5 -> {
                     listEmployee.remove();
                     optionEmployee();
                     break;
-                case 6:
+                }
+                case 6 -> {
                     listEmployee.find();
                     optionEmployee();
                     break;
-                case 7:
+                }
+                case 7 -> {
                     menu();
                     break;
-                case 8:
+                }
+                case 8 -> {
                     System.out.println("----------------------------------------------------------------");
-                    System.out.println("|                           Good Bye!                          |");
-                    System.out.println("----------------------------------------------------------------");
+                    System.out
+                            .println("|                           Good Bye!                          |");
+                    System.out
+                            .println("----------------------------------------------------------------");
                     break;
-                default:
-                    System.out.println("--------------------------------------------------------------------");
-                    System.out.println("|                      <Choice does not exist!>                    |");
-                    System.out.println("--------------------------------------------------------------------");
+                }
+                default -> {
+                    System.out.println(
+                            "--------------------------------------------------------------------");
+                    System.out.println(
+                            "|                      <Choice does not exist!>                    |");
+                    System.out.println(
+                            "--------------------------------------------------------------------");
+                }
             }
         } while (option < 1 || option > 8);
     }
 
     public static void optionSalary() {
-        // listSalary.updateDataEmployee();
-        // listSalary.readFile();
-        // listSalary.writeFile();
         int option;
         System.out.println("--------------------------------------------------------------");
         System.out.println("|                        SALARY MANAGER                      |");
@@ -187,38 +198,53 @@ public class MenuContent {
             System.out.print(" ==> Input option: ");
             option = Integer.parseInt(scanner.nextLine());
             switch (option) {
-                case 1:
+                case 1 -> {
                     listSalary.inputList();
                     optionSalary();
                     break;
-                case 2:
+
+                }
+                case 2 -> {
                     listSalary.outputList();
                     optionSalary();
                     break;
-                case 3:
+                }
+                case 3 -> {
+
                     listSalary.add();
                     optionSalary();
                     break;
-                case 4:
+                }
+                case 4 -> {
                     listSalary.remove();
                     optionSalary();
                     break;
-                case 5:
+                }
+                case 5 -> {
                     listSalary.find();
                     optionSalary();
-                case 6:
-                case 7:
+                }
+                case 6 -> {
+                    listSalary.remove();
+                    optionSalary();
+                    break;
+                }
+                case 7 -> {
+
                     menu();
-                case 8:
+                }
+                case 8 -> {
                     System.out.println("----------------------------------------------------------------");
                     System.out.println("|                           Good Bye!                          |");
                     System.out.println("----------------------------------------------------------------");
                     break;
-                default:
+                }
+                default -> {
                     System.out.println("--------------------------------------------------------------------");
                     System.out.println("|                      <Choice does not exist!>                    |");
                     System.out.println("--------------------------------------------------------------------");
                     break;
+                }
             }
         } while (option < 1 || option > 8);
     }
@@ -359,7 +385,7 @@ public class MenuContent {
     }
 
     public static void optionDepartment() {
-        SalaryManager.updateDataEmployee();
+        // SalaryManager.updateDataEmployee();
         int option;
         System.out.println("\n     --------------------------------------------");
         System.out.println("     |              DEPARTMENT MANAGER          |");
@@ -417,6 +443,9 @@ public class MenuContent {
         } while (option < 1 || option > 5);
     }
 
+    // Account
+
 }
 
-//Đăng nhập với tư cách nhân viên xem thông tin cá nhân,xem ds nhân viên,xem ds dự án,xem ds phòng ban
+// Đăng nhập với tư cách nhân viên xem thông tin cá nhân,xem ds nhân viên,xem ds
+// dự án,xem ds phòng ban

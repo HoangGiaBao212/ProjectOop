@@ -1,2 +1,5 @@
-E008-Chief of department-Phat-18-Male-jack@gmail.com-Quang Ngai-0123456789
-E001-Intern Employee-Bao LON-49-Male-baocc@gmail.com-CC-0123456789
+E001-Chief of department-Bao-19-male-bao123@gmail.com-bh-0972200871
+E002-Official Employee-Phat-19-Male-Phat@gmail.com-QN-0958715459
+E003-Intern Employee-Mai Chung Chinh-19-Male-chinhdaubui21@gmail.com-QN-0597526971
+E004-Chief of department-Nguyen Minh Tuan-19-Male-tuanminh123@gmail.com-Binh Phuoc-0592941284
+E005-Chief of department-Nguyen Thi Ly-19-Female-ly123@gmail.com-Binh Thuan-059295151

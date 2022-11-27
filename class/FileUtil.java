@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 public class FileUtil {
-    public static int n = -1;
+    public static int n=-1;
     public static Employee listEmployees[] = new Employee[100];
     public static String listEmployeeTxt = "./File/employee.txt";
     public static String listSalaryTxt = "./File/salary.txt";

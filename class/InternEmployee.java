@@ -7,10 +7,9 @@ public class InternEmployee extends Employee implements InOut {
     public InternEmployee() {
     }
 
-    public InternEmployee(String position, String name, int age, String gender, String email, String address,
-            String phone, Salary salary, Project project, Department department, int coefficientsSalary) {
-        super(position, name, age, gender, email, address, phone, salary, project, department);
-        InternEmployee.coefficientsSalary = coefficientsSalary;
+    public InternEmployee(String name, int age, String gender, String email, String address, String phone, String idEmp,
+            String position, Salary salary, Project project, Department department, Contract contract) {
+        super(name, age, gender, email, address, phone, idEmp, position, salary, project, department, contract);
     }
 
     public static int getCoefficientsSalary() {

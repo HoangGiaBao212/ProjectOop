@@ -33,7 +33,7 @@ class Person implements InOut {
         System.out.print("     - Enter Name: ");
         name = sc.nextLine();
         while (name.isEmpty()) {
-            System.out.print("\n     Name must not be left blank! Enter again: ");
+            System.err.print("\n     Name must not be left blank! Enter again: ");
             name = sc.nextLine();
         }
         this.name = name;

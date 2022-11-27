@@ -10,14 +10,12 @@ public class Contract implements InOut {
     private String timeEnd;
 
     public Contract() {
-        // super();
         timeStart = "";
         timeEnd = "";
         contractID = "";
     }
 
-    public Contract(String contractID,String timeStart, String timeEnd) {
-        // super(name, gender, dob, phone, email);
+    public Contract(String contractID, String timeStart, String timeEnd) {
         this.contractID = contractID;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
@@ -41,8 +39,6 @@ public class Contract implements InOut {
         this.contractID = contractID;
     }
 
-    // SimpleDateFormat formatter = new SimpleDateFormat("YYYY");
-    // Date date = new Date();
     public String getTimeStart() {
         return this.timeStart;
     }
@@ -54,11 +50,6 @@ public class Contract implements InOut {
             System.out.print("Don't leave it empty.Please enter: ");
             timeStart = sc.nextLine();
         }
-        // String temp[] = timeStart.split("/");
-        // System.out.println(Integer.parseInt(temp[0]));
-        // if(Integer.parseInt(formatter.format(date))){
-
-        // }
         this.timeStart = timeStart;
     }
 
@@ -68,7 +59,6 @@ public class Contract implements InOut {
 
     public void setTimeEnd(String timeEnd) {
         System.out.print("Enter time end follow the format(YYYY/MM/DD): ");
-
         timeEnd = sc.nextLine();
         while (timeEnd.isEmpty()) {
             System.out.print("Don't leave it empty.Please enter: ");
@@ -80,7 +70,6 @@ public class Contract implements InOut {
     @Override
     public void input() {
         setContractID(contractID);
-        // super.input();
         setTimeStart(timeStart);
         setTimeEnd(timeEnd);
     }
@@ -91,9 +80,10 @@ public class Contract implements InOut {
         // super.output();
         System.out.printf("    %-15s|   %-15s", timeStart, timeEnd);
     }
+
     @Override
     public String toString() {
-        return getContractID() + getTimeStart() + " " + getTimeEnd();
+        return getContractID() + "-" + getTimeStart() + "-" + getTimeEnd();
     }
 
 }
