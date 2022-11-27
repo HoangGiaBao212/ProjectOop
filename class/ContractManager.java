@@ -21,40 +21,6 @@ public class ContractManager implements RoleOfManager {
         return false;
     }
 
-    // public static void updateDataEmployee() {
-    // n = -1;
-    // try {
-    // FileReader fr = new FileReader(listEmployeeTxt);
-    // try (BufferedReader br = new BufferedReader(fr)) {
-    // String line = "";
-    // while (true) {
-    // n++;
-    // line = br.readLine();
-    // if (line == null) {
-    // break;
-    // }
-    // String[] txt = line.split("-");
-    // String idEmp = txt[0];
-    // String position = txt[1];
-    // String name = txt[2];
-    // int age = Integer.parseInt(txt[3]);
-    // String gender = txt[4];
-    // String email = txt[5];
-    // String address = txt[6];
-    // String phone = txt[7];
-    // Employee x = new Employee(name, age, gender, email, address, phone, idEmp,
-    // position);
-    // listEmployees[n] = x;
-    // }
-    // }
-    // } catch (Exception e) {
-    // System.out.println("--------------------------------------------------");
-    // System.out.println("| Hello World |");
-    // System.out.println("--------------------------------------------------");
-
-    // }
-    // }
-
     @Override
     public void inputList() {
         System.out.println("-------------------------------------------------");
@@ -241,34 +207,6 @@ public class ContractManager implements RoleOfManager {
         }
     }
 
-    // @Override
-    // public void find() {
-    // System.out.println("-------------------------------------------------");
-    // System.out.println("| SEARCH CONTRACT |");
-    // System.out.println("-------------------------------------------------");
-    // String idFind;
-    // System.out.print("Enter contract ID to find: ");
-    // idFind = sc.nextLine();
-    // int count = 0;
-    // for (Contract e : ContractManager) {
-    // if (e.getContractID().equalsIgnoreCase(idFind)) {
-    // count++;
-    // }
-    // }
-    // if (count == 0) {
-    // System.out.println("The contract don't exist!");
-    // } else {
-    // for (Contract e : ContractManager) {
-    // if (e.getContractID().equalsIgnoreCase(idFind)) {
-    // System.out.println("-------------------------------------------------");
-    // System.out.println("| Find Successful! |");
-    // System.out.println("-------------------------------------------------");
-    // e.output();
-    // }
-    // }
-    // }
-    // }
-
     @Override
     public void find() {
         String idFind;
@@ -305,18 +243,12 @@ public class ContractManager implements RoleOfManager {
     }
 
     public static void thongKe() {
-        // ContractManager dshd = new ContractManager();
         System.out.println("\n-----------------------------------------------");
         System.out.println("  |             THONG KE KHACH HANG|            |");
         System.out.println("-----------------------------------------------");
-
-        // System.out.println(" - So luong khach hang: "
-        // +ContractManager.ContractManager.length);
     }
 
     @Override
     public void edit() {
-        // TODO Auto-generated method stub
-
     }
 }
