@@ -1,14 +1,11 @@
+import java.io.File;
 import java.util.Scanner;
 
 public class App {
     static Scanner scanner = new Scanner(System.in);
 
     public static void init() {
-        SalaryManager.updateDataEmployee();
-        SalaryManager.readFile();
-
-        ContractManager.updateDataEmployee();
-        ContractManager.readFile();
+        FileUtil.readFile();
     }
 
     public static void start() {
@@ -16,12 +13,14 @@ public class App {
     }
 
     public static void end() {
-        SalaryManager.writeFile();
+        FileUtil.writeFile();
     }
 
     public static void main(String[] args) {
         init();
         start();
         end();
+        // Account account = new Account();
+        // account.input();
     }
 }
