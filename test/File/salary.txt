@@ -1,0 +1,5 @@
+E001-Bao-Chief of department-3-1-17800
+E002-Phat-Official Employee-2-2-11600
+E003-Mai Chung Chinh-Intern Employee-1-3-5400
+E004-Nguyen Minh Tuan-Chief of department-3-2-17600
+E005-Nguyen Thi Ly-Chief of department-3-3-17400
