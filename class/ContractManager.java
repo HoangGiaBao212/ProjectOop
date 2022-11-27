@@ -12,7 +12,7 @@ public class ContractManager implements RoleOfManager {
     }
 
     public boolean checkIdEmployee(String IdEmp) {
-        for (Employee employee : FileUtil.listEmployees) {
+        for (Employee employee : Handle.listEmployees) {
             if (employee == null)
                 break;
             if ((employee.getIdEmp().equals(IdEmp)) && employee.getSalary() == null)
@@ -27,13 +27,13 @@ public class ContractManager implements RoleOfManager {
         System.out.println("|              ADD LIST OF CONTRACT             |");
         System.out.println("-------------------------------------------------");
 
-        for (int i = 0; i < FileUtil.n; i++) {
-            System.out.println(FileUtil.n);
+        for (int i = 0; i < Handle.n; i++) {
+            System.out.println(Handle.n);
             System.out
-                    .println("Enter information contract of employee with id: " + FileUtil.listEmployees[i].getIdEmp());
+                    .println("Enter information contract of employee with id: " + Handle.listEmployees[i].getIdEmp());
             Contract contract = new Contract();
             contract.input();
-            FileUtil.listEmployees[i].setContract(contract);
+            Handle.listEmployees[i].setContract(contract);
         }
 
         System.out.println("---------------------------------------");
@@ -44,7 +44,7 @@ public class ContractManager implements RoleOfManager {
     @Override
     public void outputList() {
         System.out.println("Output the List of Contract");
-        if (FileUtil.n < 0) {
+        if (Handle.n < 0) {
             System.out.println("No data in the list");
         } else {
             System.out.println(
@@ -58,16 +58,16 @@ public class ContractManager implements RoleOfManager {
             System.out.println(
                     "     -------------------------------------------------------------------------------------------------------------------------------------");
         }
-        for (int i = 0; i < FileUtil.n; i++) {
+        for (int i = 0; i < Handle.n; i++) {
             System.out.printf("    %-15s|   %-15s|   %-15s|   %-15s|   %-15s|    %-15s|   %-15s|    %-15s|",
-                    FileUtil.listEmployees[i].getContract().getContractID(),
-                    FileUtil.listEmployees[i].getName(),
-                    FileUtil.listEmployees[i].getGender(),
-                    FileUtil.listEmployees[i].getAge(),
-                    FileUtil.listEmployees[i].getPhone(),
-                    FileUtil.listEmployees[i].getEmail(),
-                    FileUtil.listEmployees[i].getContract().getTimeStart(),
-                    FileUtil.listEmployees[i].getContract().getTimeEnd());
+                    Handle.listEmployees[i].getContract().getContractID(),
+                    Handle.listEmployees[i].getName(),
+                    Handle.listEmployees[i].getGender(),
+                    Handle.listEmployees[i].getAge(),
+                    Handle.listEmployees[i].getPhone(),
+                    Handle.listEmployees[i].getEmail(),
+                    Handle.listEmployees[i].getContract().getTimeStart(),
+                    Handle.listEmployees[i].getContract().getTimeEnd());
             System.out.println(
                     "---------------------------------------------------------------------------------------------------------------------------------");
         }
@@ -82,12 +82,12 @@ public class ContractManager implements RoleOfManager {
         String idEmpAdd;
         idEmpAdd = scanner.nextLine();
         if (checkIdEmployee(idEmpAdd)) {
-            for (int i = 0; i < FileUtil.n; i++) {
-                if (FileUtil.listEmployees[i].getIdEmp().equals(idEmpAdd)) {
-                    if (FileUtil.listEmployees[i].getContract() == null) {
+            for (int i = 0; i < Handle.n; i++) {
+                if (Handle.listEmployees[i].getIdEmp().equals(idEmpAdd)) {
+                    if (Handle.listEmployees[i].getContract() == null) {
                         Contract contract = new Contract();
                         contract.input();
-                        FileUtil.listEmployees[i].setContract(contract);
+                        Handle.listEmployees[i].setContract(contract);
                     }
                 }
             }
@@ -147,36 +147,6 @@ public class ContractManager implements RoleOfManager {
     // }
     // }
 
-    // @Override
-    // public void remove() {
-    // System.out.println("-------------------------------------------------");
-    // System.out.println("| REMOVE CONTRACT |");
-    // System.out.println("-------------------------------------------------");
-    // String idTemp;
-    // System.out.print("Enter contract ID to remove: ");
-    // idTemp = sc.nextLine();
-    // int count = 0;
-    // for (Contract e : ContractManager) {
-    // if (e.getContractID().equalsIgnoreCase(idTemp)) {
-    // count++;
-    // }
-    // }
-    // if (count == 0) {
-    // System.out.println("The contract don't exist");
-    // } else {
-    // for (int i = 0; i < n; i++) {
-    // if (ContractManager[i].getContractID().equalsIgnoreCase(idTemp)) {
-    // ContractManager[i] = ContractManager[i + 1];
-    // }
-    // ContractManager = Arrays.copyOf(ContractManager, n - 1);
-    // n--;
-    // }
-    // }
-    // System.out.println("-------------------------------------------------");
-    // System.out.println("| Remove successful! |");
-    // System.out.println("-------------------------------------------------");
-    // }
-
     @Override
     public void remove() {
         System.out.println("-------------------------------------------------");
@@ -185,14 +155,14 @@ public class ContractManager implements RoleOfManager {
         System.out.println("Enter id of employee to remove(Ex:E001): ");
         String idRemove = scanner.nextLine();
         boolean check = false;
-        System.out.println(FileUtil.n);
-        for (int i = 0; i < FileUtil.n; i++) {
-            if (FileUtil.listEmployees[i].getIdEmp().equalsIgnoreCase(idRemove)) {
-                for (int j = i; j < FileUtil.n - 1; j++) {
-                    FileUtil.listEmployees[j] = FileUtil.listEmployees[j + 1];
+        System.out.println(Handle.n);
+        for (int i = 0; i < Handle.n; i++) {
+            if (Handle.listEmployees[i].getIdEmp().equalsIgnoreCase(idRemove)) {
+                for (int j = i; j < Handle.n - 1; j++) {
+                    Handle.listEmployees[j] = Handle.listEmployees[j + 1];
                 }
-                FileUtil.listEmployees[FileUtil.n - 1] = null;
-                FileUtil.n--;
+                Handle.listEmployees[Handle.n - 1] = null;
+                Handle.n--;
                 System.out.println("-------------------------------------------------");
                 System.out.println("|               Remove successful!              |");
                 System.out.println("-------------------------------------------------");
@@ -213,8 +183,8 @@ public class ContractManager implements RoleOfManager {
         System.out.print("Enter id of employee to search(Ex:E001): ");
         idFind = scanner.nextLine();
 
-        for (int i = 0; i < FileUtil.n; i++) {
-            if (idFind.equals(FileUtil.listEmployees[i].getIdEmp())) {
+        for (int i = 0; i < Handle.n; i++) {
+            if (idFind.equals(Handle.listEmployees[i].getIdEmp())) {
                 System.out.println(
                         "     -------------------------------------------------------------------------------------------------------------------------------------");
                 System.out.printf(
@@ -226,14 +196,14 @@ public class ContractManager implements RoleOfManager {
                 System.out.println(
                         "     -------------------------------------------------------------------------------------------------------------------------------------");
                 System.out.printf("    %-15s|   %-15s|   %-15s|   %-15s|   %-15s|    %-15s|   %-15s|    %-15s|",
-                        FileUtil.listEmployees[i].getContract().getContractID(),
-                        FileUtil.listEmployees[i].getName(),
-                        FileUtil.listEmployees[i].getGender(),
-                        FileUtil.listEmployees[i].getAge(),
-                        FileUtil.listEmployees[i].getPhone(),
-                        FileUtil.listEmployees[i].getEmail(),
-                        FileUtil.listEmployees[i].getContract().getTimeStart(),
-                        FileUtil.listEmployees[i].getContract().getTimeEnd());
+                        Handle.listEmployees[i].getContract().getContractID(),
+                        Handle.listEmployees[i].getName(),
+                        Handle.listEmployees[i].getGender(),
+                        Handle.listEmployees[i].getAge(),
+                        Handle.listEmployees[i].getPhone(),
+                        Handle.listEmployees[i].getEmail(),
+                        Handle.listEmployees[i].getContract().getTimeStart(),
+                        Handle.listEmployees[i].getContract().getTimeEnd());
                 System.out.println(
                         "---------------------------------------------------------------------------------------------------------------------------------");
 

@@ -9,34 +9,34 @@ public class EmployeeManager implements RoleOfManager {
     @Override
     public void inputList() {
         int option;
-        System.out.println("\n     - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+        System.out.println("\n---------------------------------------------------------------");
         System.out.println("\n     Input List Employee");
         System.out.print("     *Input amount of employee: ");
-        FileUtil.n = Integer.parseInt(scanner.nextLine());
-        while (FileUtil.n <= 0) {
+        Handle.n = Integer.parseInt(scanner.nextLine());
+        while (Handle.n <= 0) {
             System.out.println("Amount must be greater than 0");
-            FileUtil.n = Integer.parseInt(scanner.nextLine());
+            Handle.n = Integer.parseInt(scanner.nextLine());
         }
-        FileUtil.listEmployees = new Employee[FileUtil.n];
-        for (int i = 0; i < FileUtil.n; i++) {
+        Handle.listEmployees = new Employee[Handle.n];
+        for (int i = 0; i < Handle.n; i++) {
             do {
-                MenuContent.showMenuEmployee();
+                Handle.showMenuEmployee();
                 option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
                     case 1:
-                        FileUtil.listEmployees[i] = new Employee();
-                        FileUtil.listEmployees[i].setPosition("Chief of department");
-                        FileUtil.listEmployees[i].input();
+                        Handle.listEmployees[i] = new Employee();
+                        Handle.listEmployees[i].setPosition("Chief Of Department");
+                        Handle.listEmployees[i].input();
                         break;
                     case 2:
-                        FileUtil.listEmployees[i] = new Employee();
-                        FileUtil.listEmployees[i].setPosition("Official Employee");
-                        FileUtil.listEmployees[i].input();
+                        Handle.listEmployees[i] = new Employee();
+                        Handle.listEmployees[i].setPosition("Official Employee");
+                        Handle.listEmployees[i].input();
                         break;
                     case 3:
-                        FileUtil.listEmployees[i] = new Employee();
-                        FileUtil.listEmployees[i].setPosition("Intern Employee");
-                        FileUtil.listEmployees[i].input();
+                        Handle.listEmployees[i] = new Employee();
+                        Handle.listEmployees[i].setPosition("Intern Employee");
+                        Handle.listEmployees[i].input();
                         break;
                     default:
                         System.out.println("choice does not exist!");
@@ -58,7 +58,7 @@ public class EmployeeManager implements RoleOfManager {
                 "Position", "Name", "Age", "Gender", "Email", "Address", "Phone");
         System.out.println(
                 "\n---------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        for (Employee employee : FileUtil.listEmployees) {
+        for (Employee employee : Handle.listEmployees) {
             if (employee == null) {
                 break;
             }
@@ -138,14 +138,14 @@ public class EmployeeManager implements RoleOfManager {
         System.out.println("Enter id of employee to remove(Ex:E001): ");
         String idRemove = scanner.nextLine();
         boolean check = false;
-        System.out.println(FileUtil.n);
-        for (int i = 0; i < FileUtil.n; i++) {
-            if (FileUtil.listEmployees[i].getIdEmp().equalsIgnoreCase(idRemove)) {
-                for (int j = i; j < FileUtil.n - 1; j++) {
-                    FileUtil.listEmployees[j] = FileUtil.listEmployees[j + 1];
+        System.out.println(Handle.n);
+        for (int i = 0; i < Handle.n; i++) {
+            if (Handle.listEmployees[i].getIdEmp().equalsIgnoreCase(idRemove)) {
+                for (int j = i; j < Handle.n - 1; j++) {
+                    Handle.listEmployees[j] = Handle.listEmployees[j + 1];
                 }
-                FileUtil.listEmployees[FileUtil.n - 1] = null;
-                FileUtil.n--;
+                Handle.listEmployees[Handle.n - 1] = null;
+                Handle.n--;
                 System.out.println("-------------------------------------------------");
                 System.out.println("|               Remove successful!              |");
                 System.out.println("-------------------------------------------------");
@@ -155,25 +155,22 @@ public class EmployeeManager implements RoleOfManager {
         }
         if (!check) {
             System.out.println("-------------------------------------------------");
-            System.out.println("|               Remove successful!              |");
+            System.out.println("|               Remove Fail!                    |");
             System.out.println("-------------------------------------------------");
         }
     }
 
     @Override
     public void edit() {
-        // TODO Auto-generated method stub
-
     }
 
     @Override
     public void find() {
-        // readFile();
         String idFind;
         System.out.print("Enter id of employee to search(Ex:E001): ");
         idFind = scanner.nextLine();
 
-        for (Employee employee : FileUtil.listEmployees) {
+        for (Employee employee : Handle.listEmployees) {
             if (idFind.equals(employee.getIdEmp())) {
                 System.out.println(
                         "--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -191,35 +188,4 @@ public class EmployeeManager implements RoleOfManager {
         }
 
     }
-
-    // private void readFile() {
-    // n = -1;
-    // try {
-    // FileReader fr = new FileReader(listEmployeeTxt);
-    // try (BufferedReader br = new BufferedReader(fr)) {
-    // String line = "";
-    // while (true) {
-    // n++;
-    // line = br.readLine();
-    // if (line == null) {
-    // break;
-    // }
-    // String[] txt = line.split("-");
-    // String idEmp = txt[0];
-    // String position = txt[1];
-    // String name = txt[2];
-    // int age = Integer.parseInt(txt[3]);
-    // String gender = txt[4];
-    // String email = txt[5];
-    // String address = txt[6];
-    // String phone = txt[7];
-    // Employee employee = new Employee(name, age, gender, email, address, phone,
-    // idEmp, position);
-    // FileUtil.listEmployees[n] = employee;
-    // }
-    // }
-    // } catch (Exception e) {
-    // // TODO: handle exception
-    // }
-    // }
 }

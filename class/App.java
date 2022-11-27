@@ -1,25 +1,26 @@
-import java.io.File;
 import java.util.Scanner;
 
 public class App {
     static Scanner scanner = new Scanner(System.in);
 
     public static void init() {
-        FileUtil.readFile();
+        FileUtil.getData();
     }
 
     public static void start() {
-        MenuContent.menu();
+        Handle.clearScreen();
+        // Handle.login();
+        Handle.menu();
     }
 
     public static void end() {
-        FileUtil.writeFile();
+        FileUtil.setData();
     }
 
     public static void main(String[] args) {
         init();
         start();
-        end();
+        // end();
         // Account account = new Account();
         // account.input();
     }

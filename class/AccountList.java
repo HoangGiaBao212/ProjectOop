@@ -44,6 +44,8 @@ public class AccountList implements RoleOfManager {
     @Override
     public void inputList() {
         // Input new list account
+        int amount;
+        System.out.println("Enter amount ");
 
     }
 

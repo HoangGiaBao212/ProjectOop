@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Account implements InOut {
+    private String idEmp;
     private String username;
     private String password;
 
@@ -11,9 +12,30 @@ public class Account implements InOut {
 
     }
 
-    public Account(String username, String password) {
+    public Account(String idEmp, String username, String password) {
+        this.idEmp = idEmp;
         this.username = username;
         this.password = password;
+    }
+
+    public String getIdEmp() {
+        return idEmp;
+    }
+
+    public void setIdEmp(String idEmp) {
+        System.out.print("     - Enter id of employee: ");
+        idEmp = scanner.nextLine();
+        while (idEmp.isEmpty()) {
+            System.out.print("\n    Id of employee must not be left blank! Enter again:  ");
+            idEmp = scanner.nextLine();
+            idEmp = idEmp.toUpperCase();
+        }
+        while (!idEmp.startsWith("E")) {
+            System.out.print("\n     Employee code starting from E(Ex:E001). Enter again: ");
+            idEmp = scanner.nextLine();
+            idEmp = idEmp.toUpperCase();
+        }
+        this.idEmp = idEmp;
     }
 
     public String getUsername() {
@@ -42,7 +64,7 @@ public class Account implements InOut {
             System.out.println("==> Password: ");
             password = scanner.nextLine();
             Pattern pCheck1 = Pattern.compile("^[a-zA-Z]+[0-9]+{8,25}$");
-            Pattern pCheck2 = Pattern.compile("^[0-9]+[a-zA-Z]+$");
+            Pattern pCheck2 = Pattern.compile("^'//d'+[a-zA-Z]+$");
             if (pCheck1.matcher(password).find() || pCheck2.matcher(password).find())
                 break;
             else
@@ -53,6 +75,7 @@ public class Account implements InOut {
 
     @Override
     public void input() {
+        setIdEmp(idEmp);
         setUsername(username);
         setPassword(password);
     }
@@ -60,6 +83,11 @@ public class Account implements InOut {
     @Override
     public void output() {
 
+    }
+
+    @Override
+    public String toString() {
+        return idEmp + "-" + username + "-" + password;
     }
 
 }
