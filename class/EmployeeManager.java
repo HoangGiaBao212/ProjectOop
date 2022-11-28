@@ -20,7 +20,11 @@ public class EmployeeManager implements RoleOfManager {
         Handle.listEmployees = new Employee[Handle.n];
         for (int i = 0; i < Handle.n; i++) {
             do {
+<<<<<<< HEAD
                 // MenuContent.option(null);
+=======
+                MenuContent.menuOptionTypeEmployee();
+>>>>>>> ab2769a70d472c413c8b91100afad584311acb10
                 option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
                     case 1:
