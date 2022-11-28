@@ -1,3 +1,4 @@
+import java.io.Console;
 import java.util.Scanner;
 
 public class Handle {
@@ -7,7 +8,7 @@ public class Handle {
     static int m = -1;
     static Employee listEmployees[] = new Employee[100];
     static Account listAccount[] = new Account[100];
-
+    static Contract listContracts[] = new Contract[100];
     static EmployeeManager listEmployee = new EmployeeManager();
     static ContractManager listContract = new ContractManager();
     static ProjectManager listProject = new ProjectManager();
@@ -24,14 +25,13 @@ public class Handle {
 
     public static void menu() {
         int option;
-<<<<<<< HEAD
         clearScreen();
         System.out.println("--------------------------------------------------------------------");
         System.out.println("|                Hello, Welcome to Employee Manager                |");
         System.out.println("--------------------------------------------------------------------");
 
         try {
-            Thread.sleep(1500);
+            Thread.sleep(1000);
         } catch (Exception e) {
             System.out.println("Fail to sleep!");
         }
@@ -49,9 +49,7 @@ public class Handle {
         System.out.println("     -------------------------");
         System.out.println("     | 6. Exit               |");
         System.out.println("     -------------------------");
-=======
         MenuContent.menu();
->>>>>>> ab2769a70d472c413c8b91100afad584311acb10
         do {
             System.out.print("==> Input option : ");
             option = Integer.parseInt(scanner.nextLine());
@@ -91,7 +89,6 @@ public class Handle {
     public static void option(String title) {
         int option;
         MenuContent.option(title);
-<<<<<<< HEAD
         // try {
         // Thread.sleep(1000);
         // } catch (Exception e) {
@@ -107,8 +104,6 @@ public class Handle {
         // System.out.println(" | 7. Back to previous menu |");
         // System.out.println(" | 8. Exit |");
         // System.out.println(" --------------------------------------------");
-=======
->>>>>>> ab2769a70d472c413c8b91100afad584311acb10
         do {
             System.out.print("     ==> Input option: ");
             option = Integer.parseInt(scanner.nextLine());
@@ -217,56 +212,63 @@ public class Handle {
 
     // Login
 
-    public static void login() {
-        String username, password;
-        System.out.println("--------------------------------------------------------------------");
-        System.out.println("|                                Login                             |");
-        System.out.println("--------------------------------------------------------------------");
-        System.out.print("  ==> Enter username: ");
-        username = scanner.nextLine();
-        System.out.print("  ==> Enter password: ");
-        password = scanner.nextLine();
-        System.out.println(m);
-        for (int i = 0; i < m; i++) {
-            System.out.println(1);
-            if (username.equals(listAccount[i].getUsername())) {
-                if (password.equals(listAccount[i].getPassword())) {
-                    if (listAccount[i].getIdEmp().equals("admin"))
-                        iForManager();
-                    System.out.println(listAccount[i].getIdEmp());
-                    permission(listAccount[i]);
-                } else
-                    System.err.println("Wrong password!!!");
-            }
-        }
-    }
+    // public static void login() {
+    //     String username, password;
+    //     System.out.println("------------------------------------------------------------");
+    //     System.out.println("|                          LOGIN                           |");
+    //     System.out.println("------------------------------------------------------------");
+    //     System.out.print("  ==> Enter username: ");
+    //     username = scanner.nextLine();
+    //     System.out.print("  ==> Enter password: ");
+    //     password = scanner.nextLine();
+    //     System.out.println(m);
+    //     for (int i = 0; i < m; i++) {
+    //         System.out.println(1);
+    //         if (username.equals(listAccount[i].getUsername())) {
+    //             if (password.equals(listAccount[i].getPassword())) {
+    //                 if (listAccount[i].getIdEmp().equals("admin"))
+    //                     iForManager();
+    //                 System.out.println(listAccount[i].getIdEmp());
+    //                 permission(listAccount[i]);
+    //             } else
+    //                 System.err.println("Wrong password!!!");
+    //         }
+    //     }
+    // }
 
-    private static void permission(Account account) {
-        for (int i = 0; i < n; i++) {
-            if (account.getIdEmp().equals(listEmployees[i].getIdEmp())) {
-                if (listEmployees[i].getPosition().equals("Chief Of Department")) {
-                    iForChiefDepartment();
-                } else if (listEmployees[i].getPosition().equals("Intern Employee")
-                        || listEmployees[i].getPosition().equals("Official Employee")) {
-                    iForEmployee();
-                }
-            }
-        }
-    }
+    // private static void permission(Account account) {
+    //     for (int i = 0; i < n; i++) {
+    //         if (account.getIdEmp().equals(listEmployees[i].getIdEmp())) {
+    //             if (listEmployees[i].getPosition().equals("Chief Of Department")) {
+    //                 iForChiefDepartment();
+    //             } else if (listEmployees[i].getPosition().equals("Intern Employee")
+    //                     || listEmployees[i].getPosition().equals("Official Employee")) {
+    //                 iForEmployee();
+    //             }
+    //         }
+    //     }
+    // }
 
-    public static void iForEmployee() {
-        // System.out.println("Hello i'm employee");
-        clearScreen();
-        MenuContent.menuIForEmployee();
-    }
+    // public static void iForEmployee() {
+    //     // System.out.println("Hello i'm employee");
+    //     clearScreen();
+    //     MenuContent.menuIForEmployee();
+    // }
 
-    public static void iForChiefDepartment() {
-        System.out.println("Hello i'm chief department");
-    }
+    // public static void iForChiefDepartment() {
+    //     clearScreen();
+    //     System.out.println("--------------------------------------------------------");
+    //     System.out.println("|                  Welcome back,Boss                   |");
+    //     System.out.println("--------------------------------------------------------");
 
-    public static void iForManager() {
-        System.out.println("Hello I'm manager");
-    }
+    // }
+
+    // public static void iForManager() {
+    //     clearScreen();
+    //     System.out.println("--------------------------------------------------------");
+    //     System.out.println("|                 Welcome back,Manager                 |");
+    //     System.out.println("--------------------------------------------------------");
+    // }
 
 }
 

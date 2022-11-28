@@ -7,11 +7,8 @@ public class MenuContent {
         System.out.println(title);
         String capital = title.toUpperCase();
         System.out.println("\n     --------------------------------------------");
-<<<<<<< HEAD
         System.out.printf("     |              %s %s            |", capital, "MANAGER");
-=======
-        System.out.printf("     |       %15s %-15s    |", capital, "MANAGER");
->>>>>>> ab2769a70d472c413c8b91100afad584311acb10
+        // System.out.printf("     |       %15s %-15s    |", capital, "MANAGER");
         System.out.println("\n     --------------------------------------------");
         try {
             Thread.sleep(1000);
