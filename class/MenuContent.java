@@ -7,6 +7,8 @@ public class MenuContent {
         System.out.println("     ----------------------------------");
         System.out.println("     | 2. View personal information   |");
         System.out.println("     ----------------------------------");
+        System.out.println("     | 3. Edit view                   |");
+        System.out.println("     ----------------------------------");
         System.out.println("     | 4. Exit                        |");
         System.out.println("     ----------------------------------");
         System.out.println(" ==> Input choice: ");

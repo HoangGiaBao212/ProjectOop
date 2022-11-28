@@ -9,8 +9,8 @@ public class App {
 
     public static void start() {
         Handle.clearScreen();
-        // Handle.login();
-        Handle.menu();
+        Handle.login();
+        // Handle.menu();
     }
 
     public static void end() {
@@ -20,7 +20,7 @@ public class App {
     public static void main(String[] args) {
         init();
         start();
-        end();
+        // end();
         // Account account = new Account();
         // account.input();
     }

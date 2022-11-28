@@ -192,9 +192,9 @@ public class Handle {
         username = scanner.nextLine();
         System.out.print("  ==> Enter password: ");
         password = scanner.nextLine();
-        System.out.println(m);
+        // System.out.println(m);
         for (int i = 0; i < m; i++) {
-            System.out.println(1);
+            // System.out.println(1);
             if (username.equals(listAccount[i].getUsername())) {
                 if (password.equals(listAccount[i].getPassword())) {
                     if (listAccount[i].getIdEmp().equals("admin"))

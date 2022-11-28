@@ -58,11 +58,8 @@ public class EmployeeManager implements RoleOfManager {
                 "Position", "Name", "Age", "Gender", "Email", "Address", "Phone");
         System.out.println(
                 "\n---------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        for (Employee employee : Handle.listEmployees) {
-            if (employee == null) {
-                break;
-            }
-            employee.output();
+        for (int i = 0; i < Handle.n; i++) {
+            Handle.listEmployees[i].output();
             System.out.println(
                     "---------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         }
@@ -224,8 +221,8 @@ public class EmployeeManager implements RoleOfManager {
         String idFind;
         System.out.print("Enter id of employee to search(Ex:E001): ");
         idFind = scanner.nextLine();
-        for (Employee employee : Handle.listEmployees) {
-            if (idFind.equals(employee.getIdEmp())) {
+        for (int i = 0; i < Handle.n; i++) {
+            if (idFind.equals(Handle.listEmployees[i].getIdEmp())) {
                 System.out.println(
                         "--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                 System.out.printf("|  %-10s  |  %-20s  |  %-20s  |  %-10s  |  %-10s  |  %-30s  |   %-20s  |  %-20s  |",
@@ -234,12 +231,10 @@ public class EmployeeManager implements RoleOfManager {
 
                 System.out.println(
                         "\n--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-                employee.output();
+                Handle.listEmployees[i].output();
                 System.out.println(
                         "--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-                break;
             }
         }
-
     }
 }
