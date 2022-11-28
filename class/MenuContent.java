@@ -1,14 +1,13 @@
 public class MenuContent {
 
     public static void menuIForEmployee() {
-
     }
 
     public static void option(String title) {
         System.out.println(title);
         String capital = title.toUpperCase();
         System.out.println("\n     --------------------------------------------");
-        System.out.printf("     |            %-15s %-15s          |", title, "MANAGER");
+        System.out.printf("     |              %s %s            |", capital, "MANAGER");
         System.out.println("\n     --------------------------------------------");
         try {
             Thread.sleep(1000);

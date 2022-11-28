@@ -26,11 +26,11 @@ public class Handle {
         int option;
         clearScreen();
         System.out.println("--------------------------------------------------------------------");
-        System.out.println("|                  Hello, Welcome to Employee Manager              |");
+        System.out.println("|                Hello, Welcome to Employee Manager                |");
         System.out.println("--------------------------------------------------------------------");
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1500);
         } catch (Exception e) {
             System.out.println("Fail to sleep!");
         }
@@ -61,11 +61,11 @@ public class Handle {
                     break;
                 }
                 case 3 -> {
-                    option("Salary");
+                    option("Salary  ");
                     break;
                 }
                 case 4 -> {
-                    option("Project");
+                    option("Project ");
                     break;
                 }
                 case 5 -> {
@@ -99,12 +99,8 @@ public class Handle {
     }
 
     public static void option(String title) {
-        String capital = title.toUpperCase();
         int option;
         MenuContent.option(title);
-        System.out.println("\n     --------------------------------------------");
-        System.out.printf("   |            %15s %-15s|", capital, "MANAGER");
-        System.out.println("\n     --------------------------------------------");
         // try {
         // Thread.sleep(1000);
         // } catch (Exception e) {

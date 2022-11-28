@@ -9,7 +9,7 @@ public class EmployeeManager implements RoleOfManager {
     @Override
     public void inputList() {
         int option;
-        System.out.println("\n---------------------------------------------------------------");
+        System.out.println("\n     - - - - - - - - - - - - - - - - - - - - - - - - - - -");
         System.out.println("\n     Input List Employee");
         System.out.print("     *Input amount of employee: ");
         Handle.n = Integer.parseInt(scanner.nextLine());
@@ -20,12 +20,12 @@ public class EmployeeManager implements RoleOfManager {
         Handle.listEmployees = new Employee[Handle.n];
         for (int i = 0; i < Handle.n; i++) {
             do {
-                Handle.showMenuEmployee();
+                // MenuContent.option(null);
                 option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
                     case 1:
                         Handle.listEmployees[i] = new Employee();
-                        Handle.listEmployees[i].setPosition("Chief Of Department");
+                        Handle.listEmployees[i].setPosition("Chief of department");
                         Handle.listEmployees[i].input();
                         break;
                     case 2:
@@ -115,18 +115,18 @@ public class EmployeeManager implements RoleOfManager {
                 }
             } while (option < 1 || option > 3);
         }
-        try {
-            FileWriter fw = new FileWriter(FileUtil.listEmployeeTxt, true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            for (Employee o : addListEmployee) {
-                bw.write(o.toString());
-                bw.newLine();
-            }
-            bw.close();
-            fw.close();
-        } catch (Exception e) {
-
-        }
+        // try {
+        //     FileWriter fw = new FileWriter(Handle.listEmployeeTxt, true);
+        //     BufferedWriter bw = new BufferedWriter(fw);
+        //     for (Employee o : addListEmployee) {
+        //         bw.write(o.toString());
+        //         bw.newLine();
+        //     }
+        //     bw.close();
+        //     fw.close();
+        // } catch (Exception e) {
+        // }
+        
 
     }
 
@@ -155,17 +155,20 @@ public class EmployeeManager implements RoleOfManager {
         }
         if (!check) {
             System.out.println("-------------------------------------------------");
-            System.out.println("|               Remove Fail!                    |");
+            System.out.println("|               Remove successful!              |");
             System.out.println("-------------------------------------------------");
         }
     }
 
     @Override
     public void edit() {
+        // TODO Auto-generated method stub
+
     }
 
     @Override
     public void find() {
+        // readFile();
         String idFind;
         System.out.print("Enter id of employee to search(Ex:E001): ");
         idFind = scanner.nextLine();
@@ -188,4 +191,35 @@ public class EmployeeManager implements RoleOfManager {
         }
 
     }
+
+    // private void readFile() {
+    // n = -1;
+    // try {
+    // FileReader fr = new FileReader(listEmployeeTxt);
+    // try (BufferedReader br = new BufferedReader(fr)) {
+    // String line = "";
+    // while (true) {
+    // n++;
+    // line = br.readLine();
+    // if (line == null) {
+    // break;
+    // }
+    // String[] txt = line.split("-");
+    // String idEmp = txt[0];
+    // String position = txt[1];
+    // String name = txt[2];
+    // int age = Integer.parseInt(txt[3]);
+    // String gender = txt[4];
+    // String email = txt[5];
+    // String address = txt[6];
+    // String phone = txt[7];
+    // Employee employee = new Employee(name, age, gender, email, address, phone,
+    // idEmp, position);
+    // Handle.listEmployees[n] = employee;
+    // }
+    // }
+    // } catch (Exception e) {
+    // // TODO: handle exception
+    // }
+    // }
 }
