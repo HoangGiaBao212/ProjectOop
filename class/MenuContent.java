@@ -1,6 +1,7 @@
 public class MenuContent {
 
     public static void menuIForEmployee() {
+
         Handle.clearScreen();
         System.out.println("     ----------------------------------");
         System.out.println("     | 1. View Employee List          |");
@@ -17,7 +18,8 @@ public class MenuContent {
     public static void option(String title) {
         String capital = title.toUpperCase();
         System.out.println("\n     --------------------------------------------");
-        System.out.printf("     |       %15s %-15s    |", capital, "MANAGER");
+        System.out.printf("     |              %s %s            |", capital, "MANAGER");
+        // System.out.printf(" | %15s %-15s |", capital, "MANAGER");
         System.out.println("\n     --------------------------------------------");
         try {
             Thread.sleep(1000);

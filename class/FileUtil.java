@@ -221,4 +221,23 @@ public class FileUtil {
         } catch (Exception e) {
         }
     }
+
+    // static void DeleteFromFile(String id) {
+    //     try {
+    //         FileWriter fw = new FileWriter(listEmployeeTxt);
+    //         BufferedWriter bw = new BufferedWriter(fw);
+    //         for (int i = 0; i < Handle.n; i++) {
+    //             if (Handle.listEmployees[i].getIdEmp().equalsIgnoreCase(id)) {
+    //                 Handle.listEmployees[i] = Handle.listEmployees[i + 1];
+    //             }
+    //             Handle.listEmployees[i] = null; 
+    //             bw.write(Handle.listEmployees[i].toString());
+    //             bw.newLine();
+    //         }
+    //         bw.close();
+    //         fw.close();
+    //     } catch (Exception e) {
+    //     }
+    // }
+
 }

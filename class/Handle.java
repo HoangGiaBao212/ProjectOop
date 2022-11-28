@@ -1,3 +1,4 @@
+import java.io.Console;
 import java.util.Scanner;
 
 public class Handle {
@@ -7,7 +8,7 @@ public class Handle {
     static int m = -1;
     static Employee listEmployees[] = new Employee[100];
     static Account listAccount[] = new Account[100];
-
+    static Contract listContracts[] = new Contract[100];
     static EmployeeManager listEmployee = new EmployeeManager();
     static ContractManager listContract = new ContractManager();
     static ProjectManager listProject = new ProjectManager();
@@ -34,6 +35,30 @@ public class Handle {
 
     public static void menu() {
         int option;
+        clearScreen();
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("|                Hello, Welcome to Employee Manager                |");
+        System.out.println("--------------------------------------------------------------------");
+
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            System.out.println("Fail to sleep!");
+        }
+        clearScreen();
+        System.out.println("     -------------------------");
+        System.out.println("     | 1. Employee Manager   |");
+        System.out.println("     -------------------------");
+        System.out.println("     | 2. Contract Manager   |");
+        System.out.println("     -------------------------");
+        System.out.println("     | 3. Salary Manager     |");
+        System.out.println("     -------------------------");
+        System.out.println("     | 4. Project Manager    |");
+        System.out.println("     -------------------------");
+        System.out.println("     | 5. Department Manager |");
+        System.out.println("     -------------------------");
+        System.out.println("     | 6. Exit               |");
+        System.out.println("     -------------------------");
         MenuContent.menu();
         do {
             System.out.print("==> Input option : ");
@@ -48,11 +73,11 @@ public class Handle {
                     break;
                 }
                 case 3 -> {
-                    option("Salary");
+                    option("Salary  ");
                     break;
                 }
                 case 4 -> {
-                    option("Project");
+                    option("Project ");
                     break;
                 }
                 case 5 -> {
@@ -74,6 +99,21 @@ public class Handle {
     public static void option(String title) {
         int option;
         MenuContent.option(title);
+        // try {
+        // Thread.sleep(1000);
+        // } catch (Exception e) {
+        // System.out.println("Fail to sleep!");
+        // }
+        // System.out.println(" --------------------------------------------");
+        // System.out.println(" | 1. Input List Of Employee |");
+        // System.out.println(" | 2. Output List Of Employee |");
+        // System.out.println(" | 3. Add |");
+        // System.out.println(" | 4. Edit |");
+        // System.out.println(" | 5. Delete |");
+        // System.out.println(" | 6. Search |");
+        // System.out.println(" | 7. Back to previous menu |");
+        // System.out.println(" | 8. Exit |");
+        // System.out.println(" --------------------------------------------");
         do {
             System.out.print("     ==> Input option: ");
             option = Integer.parseInt(scanner.nextLine());
@@ -250,11 +290,18 @@ public class Handle {
     }
 
     public static void iForChiefDepartment() {
-        System.out.println("Hello i'm chief department");
+        clearScreen();
+        System.out.println("--------------------------------------------------------");
+        System.out.println("|                  Welcome back,Boss                   |");
+        System.out.println("--------------------------------------------------------");
+
     }
 
     public static void iForManager() {
-        System.out.println("Hello I'm manager");
+        clearScreen();
+        System.out.println("--------------------------------------------------------");
+        System.out.println("|                 Welcome back,Manager                 |");
+        System.out.println("--------------------------------------------------------");
     }
 
 }
