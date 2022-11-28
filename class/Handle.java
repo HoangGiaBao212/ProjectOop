@@ -17,6 +17,16 @@ public class Handle {
     private Handle() {
     }
 
+    public static boolean checkIdEmployee(String IdEmp) {
+        for (Employee employee : Handle.listEmployees) {
+            if (employee == null)
+                break;
+            if ((employee.getIdEmp().equals(IdEmp)) && employee.getSalary() == null)
+                return true;
+        }
+        return false;
+    }
+
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -173,7 +183,8 @@ public class Handle {
     // Login
 
     public static void login() {
-        String username, password;
+        String username;
+        String password;
         System.out.println("--------------------------------------------------------------------");
         System.out.println("|                                Login                             |");
         System.out.println("--------------------------------------------------------------------");
@@ -210,9 +221,32 @@ public class Handle {
     }
 
     public static void iForEmployee() {
-        // System.out.println("Hello i'm employee");
-        clearScreen();
+        int choice;
         MenuContent.menuIForEmployee();
+        choice = scanner.nextInt();
+        do {
+
+            switch (choice) {
+                case 1 -> {
+                    listEmployee.outputList();
+                }
+                case 2 -> {
+
+                }
+
+                case 3 -> {
+
+                }
+
+                case 4 -> {
+                    MenuContent.noteBye();
+                    break;
+                }
+                default -> {
+                    MenuContent.choiceWrong();
+                }
+            }
+        } while (choice < 1 || choice > 4);
     }
 
     public static void iForChiefDepartment() {

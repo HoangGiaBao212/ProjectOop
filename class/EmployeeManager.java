@@ -84,14 +84,7 @@ public class EmployeeManager implements RoleOfManager {
         addListEmployee = new Employee[amount];
         for (int i = 0; i < amount; i++) {
             do {
-                System.out.println("Select employee type: ");
-                System.out.println("-------------------------------");
-                System.out.println("| ->1.Chief Department        |");
-                System.out.println("| -->2.Official Employee      |");
-                System.out.println("| --->3.Intern Employee       |");
-                System.out.println("-------------------------------");
-
-                System.out.print("Enter choice: ");
+                MenuContent.menuOptionTypeEmployee();
                 option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
                     case 1:
@@ -146,22 +139,84 @@ public class EmployeeManager implements RoleOfManager {
                 }
                 Handle.listEmployees[Handle.n - 1] = null;
                 Handle.n--;
-                System.out.println("-------------------------------------------------");
-                System.out.println("|               Remove successful!              |");
-                System.out.println("-------------------------------------------------");
+                MenuContent.noteRemoveSuccess();
                 check = true;
                 break;
             }
         }
         if (!check) {
-            System.out.println("-------------------------------------------------");
-            System.out.println("|               Remove Fail!                    |");
-            System.out.println("-------------------------------------------------");
+            MenuContent.noteRemoveFailure();
         }
     }
 
     @Override
     public void edit() {
+        String idEmpEdit;
+        int option;
+        Boolean check = false;
+        System.out.print(" ==> Enter id employee to edit: ");
+        idEmpEdit = scanner.nextLine();
+        MenuContent.optionEdit();
+        option = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i < Handle.n; i++) {
+            switch (option) {
+                case 1 -> {
+                    if (Handle.listEmployees[i].getIdEmp().equalsIgnoreCase(idEmpEdit)) {
+                        int optionEdit;
+                        System.out.println("1.Enter id employee");
+                        System.out.println("2.Edit name");
+                        System.out.println("3.Edit age");
+                        System.out.println("4.Edit gender");
+                        System.out.println("5.Edit email");
+                        System.out.println("6.Edit address");
+                        System.out.println("7.Edit phone");
+                        System.out.println("8.Exit");
+                        System.out.print(" ==> Input option: ");
+                        optionEdit = Integer.parseInt(scanner.nextLine());
+                        switch (optionEdit) {
+                            case 1 -> {
+                                Handle.listEmployees[i].setIdEmp(null);
+                            }
+                            case 2 -> {
+                                Handle.listEmployees[i].setName(null);
+                            }
+                            case 3 -> {
+                                Handle.listEmployees[i].setAge(0);
+                            }
+                            case 4 -> {
+                                Handle.listEmployees[i].setGender(null);
+                            }
+                            case 5 -> {
+                                Handle.listEmployees[i].setEmail(null);
+                            }
+                            case 6 -> {
+                                Handle.listEmployees[i].setAddress(null);
+                            }
+                            case 7 -> {
+                                Handle.listEmployees[i].setPhone(null);
+                            }
+                            case 8 -> {
+                                break;
+                            }
+                            default -> {
+
+                            }
+                        }
+                    }
+                }
+                case 2 -> {
+                    if (Handle.listEmployees[i].getIdEmp().equalsIgnoreCase(idEmpEdit)) {
+                        Handle.listEmployees[i].input();
+                        check = true;
+                    }
+                }
+                default -> {
+
+                }
+            }
+        }
+        if (!check)
+            System.err.println("Don't have id for this employee!");
     }
 
     @Override
@@ -169,7 +224,6 @@ public class EmployeeManager implements RoleOfManager {
         String idFind;
         System.out.print("Enter id of employee to search(Ex:E001): ");
         idFind = scanner.nextLine();
-
         for (Employee employee : Handle.listEmployees) {
             if (idFind.equals(employee.getIdEmp())) {
                 System.out.println(

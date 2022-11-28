@@ -7,16 +7,6 @@ public class SalaryManager implements RoleOfManager {
     long[] salaryTotal = new long[100];
     long baseSalary;
 
-    public boolean checkIdEmployee(String IdEmp) {
-        for (Employee employee : Handle.listEmployees) {
-            if (employee == null)
-                break;
-            if ((employee.getIdEmp().equals(IdEmp)) && employee.getSalary() == null)
-                return true;
-        }
-        return false;
-    }
-
     @Override
     public void inputList() {
         System.out.println(Handle.n);
@@ -70,7 +60,7 @@ public class SalaryManager implements RoleOfManager {
         String idEmpAdd;
         System.out.print("==> Enter id of employee to add list salary: ");
         idEmpAdd = scanner.nextLine();
-        if (checkIdEmployee(idEmpAdd)) {
+        if (Handle.checkIdEmployee(idEmpAdd)) {
             for (Employee employee : Handle.listEmployees) {
                 if (employee == null)
                     break;

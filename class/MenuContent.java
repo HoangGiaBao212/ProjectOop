@@ -1,11 +1,18 @@
 public class MenuContent {
 
     public static void menuIForEmployee() {
-
+        Handle.clearScreen();
+        System.out.println("     ----------------------------------");
+        System.out.println("     | 1. View Employee List          |");
+        System.out.println("     ----------------------------------");
+        System.out.println("     | 2. View personal information   |");
+        System.out.println("     ----------------------------------");
+        System.out.println("     | 4. Exit                        |");
+        System.out.println("     ----------------------------------");
+        System.out.println(" ==> Input choice: ");
     }
 
     public static void option(String title) {
-        System.out.println(title);
         String capital = title.toUpperCase();
         System.out.println("\n     --------------------------------------------");
         System.out.printf("     |       %15s %-15s    |", capital, "MANAGER");
@@ -74,6 +81,28 @@ public class MenuContent {
         System.out.println("--------------------------------------------------------------------");
         System.out.println("|                      <Choice does not exist!>                    |");
         System.out.println("--------------------------------------------------------------------");
+    }
+
+    public static void noteRemoveSuccess() {
+        System.out.println("-------------------------------------------------");
+        System.out.println("|               Remove successful!              |");
+        System.out.println("-------------------------------------------------");
+    }
+
+    public static void noteRemoveFailure() {
+        System.out.println("-------------------------------------------------");
+        System.out.println("|               Remove Failure!                 |");
+        System.out.println("-------------------------------------------------");
+    }
+
+    public static void optionEdit() {
+        System.out.println("-------------------------------------------------");
+        System.out.println("|                Select edit                    |");
+        System.out.println("-------------------------------------------------");
+        System.out.println("| 1.Full edit                                   |");
+        System.out.println("| 2.Edit each one                               |");
+        System.out.println("-------------------------------------------------");
+        System.out.print(" ==> Input option: ");
     }
 
 }

@@ -75,7 +75,6 @@ public class Account implements InOut {
 
     @Override
     public void input() {
-        setIdEmp(idEmp);
         setUsername(username);
         setPassword(password);
     }

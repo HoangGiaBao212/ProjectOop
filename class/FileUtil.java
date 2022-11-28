@@ -161,7 +161,7 @@ public class FileUtil {
                 }
             }
         } catch (Exception e) {
-            // System.out.println("Don't have data for contract!");
+
         }
     }
 
