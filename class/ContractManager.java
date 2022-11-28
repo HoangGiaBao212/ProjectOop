@@ -1,7 +1,8 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+
+// import java.io.BufferedReader;
+// import java.io.BufferedWriter;
+// import java.io.FileReader;
+// import java.io.FileWriter;
 import java.util.*;
 
 public class ContractManager implements RoleOfManager {
@@ -41,32 +42,28 @@ public class ContractManager implements RoleOfManager {
 
     @Override
     public void outputList() {
-        System.out.println("Output the List of Contract");
-        if (Handle.n < 0 || Handle.listEmployees[0].getContract() == null) {
-            System.out.println("\t\t--------------------------------------------");
-            System.out.println("\t\t|           No data in the list            |");
-            System.out.println("\t\t--------------------------------------------");
-        } else {
+        Handle.clearScreen();
+        System.out.println("Output the List of Contract\n");
+        System.out.println(Handle.n);
+        System.out.println(
+                "-------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("|    %-15s|   %-20s|   %-10s|   %-10s|   %-15s|    %-25s|   %-10s|    %-10s|",
+                "Contract ID", "Name", "Gender", "Age", "Phone number", "Email", "Time start", "Time end");
+        System.out.println();
+        System.out.println(
+                "-------------------------------------------------------------------------------------------------------------------------------------------------------");
+        for (int i = 0; i < Handle.n; i++) {
+            System.out.printf("|    %-15s|   %-20s|   %-10s|   %-10s|   %-15s|    %-25s|   %-10s|    %-10s|\n",
+                    Handle.listEmployees[i].getContract().getContractID(),
+                    Handle.listEmployees[i].getName(),
+                    Handle.listEmployees[i].getGender(),
+                    Handle.listEmployees[i].getAge(),
+                    Handle.listEmployees[i].getPhone(),
+                    Handle.listEmployees[i].getEmail(),
+                    Handle.listEmployees[i].getContract().getTimeStart(),
+                    Handle.listEmployees[i].getContract().getTimeEnd());
             System.out.println(
-                    "-------------------------------------------------------------------------------------------------------------------------------------");
-            System.out.printf("    %-15s|   %-20s|   %-15s|   %-15s|   %-15s|    %-20s|   %-20s|    %-20s|",
-                    "Contrac ID", "Name", "Gender", "Age", "Phone number", "Email", "Time start", "Time end");
-            System.out.println();
-            System.out.println(
-                    "-------------------------------------------------------------------------------------------------------------------------------------");
-            for (int i = 0; i < Handle.n; i++) {
-                System.out.printf("    %-15s|   %-20s|   %-15s|   %-15s|   %-15s|    %-20s|   %-20s|    %-20s|\n",
-                        Handle.listEmployees[i].getContract().getContractID(),
-                        Handle.listEmployees[i].getName(),
-                        Handle.listEmployees[i].getGender(),
-                        Handle.listEmployees[i].getAge(),
-                        Handle.listEmployees[i].getPhone(),
-                        Handle.listEmployees[i].getEmail(),
-                        Handle.listEmployees[i].getContract().getTimeStart(),
-                        Handle.listEmployees[i].getContract().getTimeEnd());
-                System.out.println(
-                        "---------------------------------------------------------------------------------------------------------------------------------");
-            }
+                    "-------------------------------------------------------------------------------------------------------------------------------------------------------");
         }
     }
 
@@ -74,8 +71,8 @@ public class ContractManager implements RoleOfManager {
     public void add() {
         System.out.println("---------------------------------------");
         System.out.println("|             ADD CONTRACT            |");
-        System.out.println("---------------------------------------");
-
+        System.out.println("---------------------------------------\n");
+        System.out.println("Enter Employee ID to find: ");
         String idEmpAdd;
         idEmpAdd = scanner.nextLine();
         if (checkIdEmployee(idEmpAdd)) {
@@ -100,80 +97,86 @@ public class ContractManager implements RoleOfManager {
     @Override
     public void edit() {
         System.out.println("----------------------------------------------------");
-        System.out.println("| EDIT INFORMATION IN CONTRACT |");
+        System.out.println("|            EDIT INFORMATION IN CONTRACT          |");
         System.out.println("----------------------------------------------------");
         String idTemp;
-        int key;
+        int key,option;
         System.out.print("Enter an contract ID to edit: ");
         idTemp = scanner.nextLine();
         int count = 0;
         for (int i = 0; i < Handle.n; i++) {
-            if (Handle.listContracts[i].getContractID().equalsIgnoreCase(idTemp)) {
+            if (Handle.listEmployees[i].getContract().getContractID().equalsIgnoreCase(idTemp)) {
                 count++;
             }
         }
         if (count == 0) {
             System.out.println("Contract don't exist!");
         } else {
+            MenuContent.optionEdit();
+            option = Integer.parseInt(scanner.nextLine());
             for (int i = 0; i < Handle.n; i++) {
-                if (Handle.listContracts[i].getContractID().equalsIgnoreCase(idTemp)) {
-                    System.out.println("\n---------------------------------------------");
-                    System.out.println(" | 1.Change time start                        |");
-                    System.out.println(" | 2.Change time end                          |");
-                    System.out.println(" ---------------------------------------------");
-                    System.out.print("==> Nhap lua chon:");
-                    key = Integer.parseInt(scanner.nextLine());
-                    System.out.println();
-                    switch (key) {
-                        case 1:
-                            Handle.listContracts[i].setTimeStart(null);
-                            break;
-                        case 2:
-                            Handle.listContracts[i].setTimeEnd(null);
-                            break;
-                        default:
-                            System.out.println("--------------------------------------------");
-                            System.out.println("|            Choice don't exist            |");
-                            System.out.println("--------------------------------------------");
-                            break;
-                    }
+                switch (option) {
+                    case 1:
+                        if (Handle.listEmployees[i].getContract().getContractID().equalsIgnoreCase(idTemp)) {
+                            System.out.println("\n ----------------------------------------------");
+                            System.out.println(" | 1.Change time start                        |");
+                            System.out.println(" | 2.Change time end                          |");
+                            System.out.println(" ----------------------------------------------");
+                            System.out.print("==> Input option:");
+                            key = Integer.parseInt(scanner.nextLine());
+                            System.out.println();
+                            switch (key) {
+                                case 1:
+                                    Handle.listEmployees[i].getContract().setTimeStart(null);
+                                    break;
+                                case 2:
+                                    Handle.listEmployees[i].getContract().setTimeEnd(null);
+                                    break;
+                                default:
+                                    MenuContent.noteBye();
+                                    break;
+                            }
+                        }
+                        break;
+                    case 2:
+                        if(Handle.listEmployees[i].getContract().getContractID().equalsIgnoreCase(idTemp)){
+                            Handle.listEmployees[i].getContract().input();
+                        }
+                        break;
+                    default:
+                        MenuContent.choiceWrong();
+                        break;
                 }
+                // MenuContent.noteChangeSuccess();
             }
-            System.out.println("------------------------------------------------------");
-            System.out.println("| Edit Information Successful! |");
-            System.out.println("------------------------------------------------------");
         }
     }
 
-    // @Override
-    // public void remove() {
-    // System.out.println("-------------------------------------------------");
-    // System.out.println("| REMOVE EMPLOYEE |");
-    // System.out.println("-------------------------------------------------");
-    // System.out.println("Enter id of employee to remove(Ex:E001): ");
-    // String idRemove = scanner.nextLine();
-    // boolean check = false;
-    // System.out.println(Handle.n);
-    // for (int i = 0; i < Handle.n; i++) {
-    // if (Handle.listEmployees[i].getIdEmp().equalsIgnoreCase(idRemove)) {
-    // for (int j = i; j < Handle.n - 1; j++) {
-    // Handle.listEmployees[j] = Handle.listEmployees[j + 1];
-    // }
-    // Handle.listEmployees[Handle.n - 1] = null;
-    // Handle.n--;
-    // System.out.println("-------------------------------------------------");
-    // System.out.println("| Remove successful! |");
-    // System.out.println("-------------------------------------------------");
-    // check = true;
-    // break;
-    // }
-    // }
-    // if (!check) {
-    // System.out.println("-------------------------------------------------");
-    // System.out.println("| Remove successful! |");
-    // System.out.println("-------------------------------------------------");
-    // }
-    // }
+    @Override
+    public void remove() {
+        System.out.println("-----------------------------------------------");
+        System.out.println("|               REMOVE CONTRACT               |");
+        System.out.println("-----------------------------------------------");
+        System.out.println("Enter id of contract to remove(Ex:C001): ");
+        String idRemove = scanner.nextLine();
+        boolean check = false;
+        for (int i = 0; i < Handle.n; i++) {
+            if (Handle.listEmployees[i].getContract().getContractID().equalsIgnoreCase(idRemove)) {
+                for (int j = i; j < Handle.n - 1; j++) {
+                    Handle.listEmployees[j] = Handle.listEmployees[j + 1];
+
+                }
+                Handle.listEmployees[Handle.n - 1] = null;
+                Handle.n--;
+                check = true;
+                break;
+            }
+        }
+        if (!check) {
+            MenuContent.noteRemoveFailure();
+        }
+        MenuContent.noteRemoveSuccess();
+    }
 
     @Override
     public void find() {
@@ -211,13 +214,5 @@ public class ContractManager implements RoleOfManager {
     }
 
     public static void thongKe() {
-        System.out.println("\n-----------------------------------------------");
-        System.out.println("  |             THONG KE KHACH HANG|            |");
-        System.out.println("-----------------------------------------------");
-    }
-
-    @Override
-    public void remove() {
-
     }
 }

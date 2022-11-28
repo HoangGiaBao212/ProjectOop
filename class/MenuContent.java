@@ -18,7 +18,7 @@ public class MenuContent {
     public static void option(String title) {
         String capital = title.toUpperCase();
         System.out.println("\n     --------------------------------------------");
-        System.out.printf("     |              %s %s            |", capital, "MANAGER");
+        System.out.printf("     |            %-10s %s            |", capital, "MANAGER");
         // System.out.printf(" | %15s %-15s |", capital, "MANAGER");
         System.out.println("\n     --------------------------------------------");
         try {
@@ -75,18 +75,16 @@ public class MenuContent {
         System.out.print("==> Enter choice: ");
     }
 
-    public static void noteBye() {
-        System.out.println("----------------------------------------------------------------");
-        System.out.println("|                           Good Bye!                          |");
-        System.out.println("----------------------------------------------------------------");
-    }
-
     public static void choiceWrong() {
         System.out.println("--------------------------------------------------------------------");
         System.out.println("|                      <Choice does not exist!>                    |");
         System.out.println("--------------------------------------------------------------------");
     }
-
+    public static void noteChangeSuccess(){
+        System.out.println("-------------------------------------------------");
+        System.out.println("|         Change Information Successful!        |");
+        System.out.println("-------------------------------------------------");
+    }
     public static void noteRemoveSuccess() {
         System.out.println("-------------------------------------------------");
         System.out.println("|               Remove successful!              |");
@@ -103,10 +101,28 @@ public class MenuContent {
         System.out.println("-------------------------------------------------");
         System.out.println("|                Select edit                    |");
         System.out.println("-------------------------------------------------");
-        System.out.println("| 1.Full edit                                   |");
-        System.out.println("| 2.Edit each one                               |");
+        System.out.println("| 1.Change Each One                             |");
+        System.out.println("| 2.Change All Information                      |");
         System.out.println("-------------------------------------------------");
         System.out.print(" ==> Input option: ");
     }
 
+    public static void printNoData() {
+        System.out.println("\t\t--------------------------------------------");
+        System.out.println("\t\t|           No data in the list            |");
+        System.out.println("\t\t--------------------------------------------");
+    }
+
+    public static void noteBye() {
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("|                           Good Bye!                          |");
+        System.out.println("----------------------------------------------------------------");
+    }
+
+    public static void quantityCount(String any) {
+
+        System.out.println("-------------------------------------------------------");
+        System.out.printf("| %s %s|", any.toUpperCase(), "QUANTITY");
+        System.out.println("-------------------------------------------------------");
+    }
 }

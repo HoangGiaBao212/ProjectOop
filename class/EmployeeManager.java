@@ -1,3 +1,4 @@
+import java.lang.management.MemoryUsage;
 import java.util.Scanner;
 
 public class EmployeeManager implements RoleOfManager {
@@ -128,97 +129,23 @@ public class EmployeeManager implements RoleOfManager {
                 }
                 Handle.listEmployees[Handle.n - 1] = null;
                 Handle.n--;
-                MenuContent.noteRemoveSuccess();
-
-                FileUtil.setData();
-                System.out.println("-------------------------------------------------");
-                System.out.println("|               Remove successful!              |");
-                System.out.println("-------------------------------------------------");
                 check = true;
                 break;
             }
         }
         if (!check) {
             MenuContent.noteRemoveFailure();
-            System.out.println("-------------------------------------------------");
-            System.out.println("|               Remove successful!              |");
-            System.out.println("-------------------------------------------------");
         }
+        MenuContent.noteRemoveSuccess();
     }
 
     @Override
     public void edit() {
-        String idEmpEdit;
-        int option;
-        Boolean check = false;
-        System.out.print(" ==> Enter id employee to edit: ");
-        idEmpEdit = scanner.nextLine();
-        MenuContent.optionEdit();
-        option = Integer.parseInt(scanner.nextLine());
-        for (int i = 0; i < Handle.n; i++) {
-            switch (option) {
-                case 1 -> {
-                    if (Handle.listEmployees[i].getIdEmp().equalsIgnoreCase(idEmpEdit)) {
-                        int optionEdit;
-                        System.out.println("1.Enter id employee");
-                        System.out.println("2.Edit name");
-                        System.out.println("3.Edit age");
-                        System.out.println("4.Edit gender");
-                        System.out.println("5.Edit email");
-                        System.out.println("6.Edit address");
-                        System.out.println("7.Edit phone");
-                        System.out.println("8.Exit");
-                        System.out.print(" ==> Input option: ");
-                        optionEdit = Integer.parseInt(scanner.nextLine());
-                        switch (optionEdit) {
-                            case 1 -> {
-                                Handle.listEmployees[i].setIdEmp(null);
-                            }
-                            case 2 -> {
-                                Handle.listEmployees[i].setName(null);
-                            }
-                            case 3 -> {
-                                Handle.listEmployees[i].setAge(0);
-                            }
-                            case 4 -> {
-                                Handle.listEmployees[i].setGender(null);
-                            }
-                            case 5 -> {
-                                Handle.listEmployees[i].setEmail(null);
-                            }
-                            case 6 -> {
-                                Handle.listEmployees[i].setAddress(null);
-                            }
-                            case 7 -> {
-                                Handle.listEmployees[i].setPhone(null);
-                            }
-                            case 8 -> {
-                                break;
-                            }
-                            default -> {
-
-                            }
-                        }
-                    }
-                }
-                case 2 -> {
-                    if (Handle.listEmployees[i].getIdEmp().equalsIgnoreCase(idEmpEdit)) {
-                        Handle.listEmployees[i].input();
-                        check = true;
-                    }
-                }
-                default -> {
-
-                }
-            }
-        }
-        if (!check)
-            System.err.println("Don't have id for this employee!");
         System.out.println("----------------------------------------------------");
         System.out.println("|           EDIT INFORMATION IN EMPLOYEE           |");
         System.out.println("----------------------------------------------------");
         String idTemp;
-        int key;
+        int key, temp;
         System.out.print("Enter an employee ID to edit: ");
         idTemp = scanner.nextLine();
         int count = 0;
@@ -230,55 +157,69 @@ public class EmployeeManager implements RoleOfManager {
         if (count == 0) {
             System.out.println("Employee don't exist!");
         } else {
+            MenuContent.optionEdit();
+            temp = Integer.parseInt(scanner.nextLine());
             for (int i = 0; i < Handle.n; i++) {
-                if (idTemp.equals(Handle.listEmployees[i].getIdEmp())) {
-                    System.out.println("\n---------------------------------------------");
-                    System.out.println(" | 1.Change Position                          |");
-                    System.out.println(" | 2.Change Name                              |");
-                    System.out.println(" | 3.Change Age                               |");
-                    System.out.println(" | 4.Change Gender                            |");
-                    System.out.println(" | 5.Change Email                             |");
-                    System.out.println(" | 6.Change Address                           |");
-                    System.out.println(" | 7.Change Phone Number                      |");
-                    System.out.println(" ---------------------------------------------");
-                    System.out.print("==> Input option:");
-                    key = Integer.parseInt(scanner.nextLine());
-                    System.out.println();
-                    switch (key) {
-                        case 1:
-                            Handle.listEmployees[i].setPosition(null);
-                            break;
-                        case 2:
-                            Handle.listEmployees[i].setName(null);
-                            break;
-                        case 3:
-                            Handle.listEmployees[i].setAge(0);
-                            break;
-                        case 4:
-                            Handle.listEmployees[i].setGender(null);
-                            break;
-                        case 5:
-                            Handle.listEmployees[i].setEmail(null);
-                            break;
-                        case 6:
-                            Handle.listEmployees[i].setAddress(null);
-                            break;
-                        case 7:
-                            Handle.listEmployees[i].setPhone(null);
-                            break;
-                        default:
-                            System.out.println("--------------------------------------------");
-                            System.out.println("|              Choice don't exist          |");
-                            System.out.println("--------------------------------------------");
-                            break;
-                    }
+                switch(temp) {
+                    case 1:
+                        if (idTemp.equals(Handle.listEmployees[i].getIdEmp())) {
+                            System.out.println();
+                            System.out.println("----------------------------------------------");
+                            System.out.println("| 1.Change Position                          |");
+                            System.out.println("| 2.Change Name                              |");
+                            System.out.println("| 3.Change Age                               |");
+                            System.out.println("| 4.Change Gender                            |");
+                            System.out.println("| 5.Change Email                             |");
+                            System.out.println("| 6.Change Address                           |");
+                            System.out.println("| 7.Change Phone Number                      |");
+                            System.out.println("| 8.Exit to menu                             |");
+                            System.out.println("----------------------------------------------");
+                            System.out.print("==> Input option:");
+                            key = Integer.parseInt(scanner.nextLine());
+                            System.out.println();
+                            switch (key) {
+                                case 1:
+                                    Handle.listEmployees[i].setPosition(null);
+                                    break;
+                                case 2:
+                                    Handle.listEmployees[i].setName(null);
+                                    break;
+                                case 3:
+                                    Handle.listEmployees[i].setAge(0);
+                                    break;
+                                case 4:
+                                    Handle.listEmployees[i].setGender(null);
+                                    break;
+                                case 5:
+                                    Handle.listEmployees[i].setEmail(null);
+                                    break;
+                                case 6:
+                                    Handle.listEmployees[i].setAddress(null);
+                                    break;
+                                case 7:
+                                    Handle.listEmployees[i].setPhone(null);
+                                    break;
+                                case 8:
+                                    MenuContent.option("Employee");
+                                    break;
+                                default:
+                                    MenuContent.choiceWrong();
+                                    break;
+                            }
+                        }
+                        break;
+                    case 2:
+                        if(Handle.listEmployees[i].getIdEmp().equalsIgnoreCase(idTemp))
+                            Handle.listEmployees[i].input();
+                        break;
+                    default:
+                        MenuContent.choiceWrong();
+                        break;
                 }
             }
-            System.out.println("------------------------------------------------------");
-            System.out.println("|             Edit Information Successful!           |");
-            System.out.println("------------------------------------------------------");
-        }
 
+            // MenuContent.noteChangeSuccess();
+        }
     }
 
     @Override
