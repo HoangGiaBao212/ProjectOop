@@ -63,7 +63,6 @@ public class FileUtil {
     private static void writeFileAccount() {
         try {
             FileWriter fw = new FileWriter(listAccountTxt);
-            System.out.println(3);
             BufferedWriter bw = new BufferedWriter(fw);
             for (int i = 0; i < Handle.n; i++) {
                 bw.write(Handle.listAccount[i].toString());

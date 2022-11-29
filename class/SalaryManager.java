@@ -136,7 +136,6 @@ public class SalaryManager implements RoleOfManager {
                                 break;
                             case 2:
                                 Handle.listAccount[i].getEmployee().getSalary().setSomeHolidays(0);
-
                                 break;
                             default:
                                 MenuContent.choiceWrong();

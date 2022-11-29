@@ -110,6 +110,7 @@ public class DepartmentManager implements RoleOfManager {
                                             .setIdEmployee(new String[Handle.listDepartments[i].getMembers()]);
                                 }
                                 default -> {
+                                    break;
                                 }
                             }
                         }

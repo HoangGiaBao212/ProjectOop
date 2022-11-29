@@ -35,17 +35,15 @@ public class Department implements InOut {
 
     public void setDepartmentId(String departmentId) {
         System.out.print("Enter the Department Id: ");
-        // departmentId = scanner.nextLine();
-        // while (departmentId.isEmpty()) {
-        // System.out.print("Don't leave it empty.Please enter: ");
-        // departmentId = scanner.nextLine();
-        // }
-        // while (departmentId.startsWith("D")) {
-        // System.out.print("Department must start with letter D(Ex:D001).Please enter
-        // again: ");
-        // departmentId = scanner.nextLine();
-        // }
         departmentId = scanner.nextLine();
+        while (departmentId.isEmpty()) {
+            System.out.print("Don't leave it empty.Please enter: ");
+            departmentId = scanner.nextLine();
+        }
+        while (!departmentId.startsWith("D")) {
+            System.out.print("Department must start with letter D(Ex:D001).Please enter again: ");
+            departmentId = scanner.nextLine();
+        }
         this.departmentId = departmentId;
     }
 

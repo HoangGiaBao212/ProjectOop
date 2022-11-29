@@ -30,6 +30,7 @@ public class AccountList implements RoleOfManager {
                     default:
                         System.out.println("choice does not exist!");
                         System.out.println("Option from 1 to 3, please re-enter: ");
+                        break;
                 }
             } while (option < 1 || option > 3);
         }
@@ -80,6 +81,7 @@ public class AccountList implements RoleOfManager {
                     default:
                         System.out.println("choice does not exist!");
                         System.out.println("Option from 1 to 3, please re-enter: ");
+                        break;
                 }
             } while (option < 1 || option > 3);
         }

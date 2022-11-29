@@ -41,16 +41,23 @@ public class Handle {
         do {
             System.out.print("==> Input option : ");
             option = Integer.parseInt(scanner.nextLine());
+            System.out.println(option);
             switch (option) {
-                case 1 -> option("Account Employee");
-                case 2 -> option("Contract");
-                case 3 -> option("Salary");
-                case 4 -> option("Department");
-                case 5 -> MenuContent.noteBye();
-                default -> MenuContent.choiceWrong();
+                // case 1 -> option("Account Employee");
+                // case 2 -> option("Contract");
+                // case 3 -> option("Salary");
+                // case 4 -> option("Department");
+                case 5 -> {
+                    MenuContent.noteBye();
+                    break;
+                }
+                default -> {
+                    MenuContent.choiceWrong();
+                    break;
+                }
             }
         } while (option < 1 || option > 5);
-        Handle.clearScreen();
+        // Handle.clearScreen();
     }
 
     public static void option(String title) {
@@ -70,7 +77,6 @@ public class Handle {
                     else
                         listDepartment.inputList();
                     option(title);
-                    break;
                 }
                 case 2 -> {
                     if (title.equals("Account Employee"))
@@ -82,7 +88,6 @@ public class Handle {
                     else
                         listDepartment.outputList();
                     option(title);
-                    break;
                 }
                 case 3 -> {
                     if (title.equals("Account Employee"))
@@ -94,7 +99,6 @@ public class Handle {
                     else
                         listDepartment.add();
                     option(title);
-                    break;
                 }
                 case 4 -> {
                     if (title.equals("Account Employee"))
@@ -106,7 +110,6 @@ public class Handle {
                     else
                         listDepartment.edit(null);
                     option(title);
-                    break;
                 }
                 case 5 -> {
                     if (title.equals("Account Employee"))
@@ -118,7 +121,6 @@ public class Handle {
                     else
                         listDepartment.remove(null);
                     option(title);
-                    break;
                 }
                 case 6 -> {
                     if (title.equals("Account Employee"))
@@ -130,7 +132,6 @@ public class Handle {
                     else
                         listDepartment.find(null);
                     option(title);
-                    break;
                 }
                 case 7 -> {
                     // Thống kê
@@ -145,6 +146,7 @@ public class Handle {
                 }
                 default -> {
                     MenuContent.choiceWrong();
+                    break;
                 }
             }
         } while (option < 1 || option > 9);
@@ -166,11 +168,12 @@ public class Handle {
         for (int i = 0; i < n; i++) {
             if (username.equals(listAccount[i].getUsername())) {
                 if (password.equals(listAccount[i].getPassword())) {
-                    if (listAccount[i].getEmployee().getIdEmp().equals("admin"))
+                    if (listAccount[i].getEmployee().getPosition().equals("admin"))
                         iForManager();
-                    permission(listAccount[i]);
-                } else
-                    System.err.println("Wrong password!!!");
+                    else
+                        permission(listAccount[i]);
+                    // break;
+                }
             }
         }
     }
@@ -191,36 +194,33 @@ public class Handle {
     public static void iForEmployee(String idEmp) {
         int choice;
         MenuContent.menuIForEmployee();
-        choice = scanner.nextInt();
         do {
+            choice = scanner.nextInt();
             switch (choice) {
                 case 1 -> {
-                    listDepartment.outputList();
-                    iForEmployee(idEmp);
-                }
-                case 2 -> {
                     listAccounts.find(idEmp);
                     listSalary.find(idEmp);
                     listContract.find(idEmp);
                     iForEmployee(idEmp);
                 }
-                case 3 -> {
+                case 2 -> {
                     listAccounts.edit(idEmp);
                     iForEmployee(idEmp);
                 }
-                case 4 -> MenuContent.noteBye();
+                case 3 -> MenuContent.noteBye();
                 default -> {
                     MenuContent.choiceWrong();
+                    break;
                 }
             }
-        } while (choice < 1 || choice > 4);
+        } while (choice < 1 || choice > 3);
     }
 
     public static void iForChiefDepartment(String idEmp) {
         int choice;
         MenuContent.menuIForChief();
-        choice = scanner.nextInt();
         do {
+            choice = scanner.nextInt();
             switch (choice) {
                 case 1 -> {
                     listAccounts.find(idEmp);
@@ -242,9 +242,13 @@ public class Handle {
                     }
                     iForChiefDepartment(idEmp);
                 }
-                case 5 -> MenuContent.noteBye();
+                case 4 -> {
+                    MenuContent.noteBye();
+                    break;
+                }
                 default -> {
                     MenuContent.choiceWrong();
+                    break;
                 }
             }
         } while (choice < 1 || choice > 4);
