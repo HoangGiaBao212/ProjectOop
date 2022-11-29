@@ -125,7 +125,9 @@ public class Handle {
                         listSalary.add();
                     else if (title.equals("Project"))
                         listSalary.add();
-                    else
+                    else if(title.equals("Account"))
+                        listAccounts.add();
+                    else 
                         listDepartment.add();
                     option(title);
                     break;

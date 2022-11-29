@@ -13,9 +13,7 @@ public class AccountList implements RoleOfManager {
             Handle.listAccount[i] = new Account();
             Handle.listAccount[i].input();
         }
-       
     }
-
     @Override
     public void outputList() {
         // Output new list account
@@ -31,16 +29,13 @@ public class AccountList implements RoleOfManager {
         int amount;// add new account
         System.out.println(" ==> Enter amount to add account: ");
         amount = scanner.nextInt();
-        Handle.n += amount;
-        for (int i = Handle.n; i < (Handle.n + amount); i++) {
-            Handle.listAccount[i].getEmployee().setIdEmp(null);
-            if (Handle.checkIdEmployee(Handle.listAccount[i].getEmployee().getIdEmp())) {
-                Handle.listAccount[i].input();
-            } else {
-                Handle.listAccount[i] = null;
-                System.err.println("Don't have data with id " + Handle.listAccount[i].getEmployee().getIdEmp());
-            }
+        int temp = Handle.n;
+        for(int i = temp;i < (temp + amount);i++){
+            Handle.listAccount[i] = new Account();
+            // System.out.println(" ");
+            Handle.listAccount[i].input();
         }
+        Handle.n += amount;
     }
 
     @Override

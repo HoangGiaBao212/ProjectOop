@@ -31,7 +31,7 @@ public class FileUtil {
         try {
             FileReader fr = new FileReader("./File/account.txt");
             // Handle.n+=2;
-             try (BufferedReader br = new BufferedReader(fr)) {
+            try (BufferedReader br = new BufferedReader(fr)) {
                 String line = "";
                 while (true) {
                     Handle.n++;

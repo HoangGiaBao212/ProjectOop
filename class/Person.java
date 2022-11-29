@@ -138,7 +138,8 @@ class Person implements InOut {
 
     @Override
     public String toString() {
-        return name + "-" + age + "-" + gender + "-" + email + "-" + address
+        String str = String.valueOf(age);
+        return name + "-" + str + "-" + gender + "-" + email + "-" + address
                 + "-" + phone;
     }
 
