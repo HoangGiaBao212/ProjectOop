@@ -5,7 +5,6 @@ class Employee extends Person implements InOut {
     private String idEmp;
     private String position;
     private Salary salary;
-    private Project project;
     private Department department;
     private Contract contract;
 
@@ -25,12 +24,11 @@ class Employee extends Person implements InOut {
     }
 
     public Employee(String name, int age, String gender, String email, String address, String phone, String idEmp,
-            String position, Salary salary, Project project, Department department, Contract contract) {
+            String position, Salary salary, Department department, Contract contract) {
         super(name, age, gender, email, address, phone);
         this.idEmp = idEmp;
         this.position = position;
         this.salary = salary;
-        this.project = project;
         this.department = department;
         this.contract = contract;
     }
@@ -69,15 +67,6 @@ class Employee extends Person implements InOut {
 
     public void setSalary(Salary salary) {
         this.salary = salary;
-    }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        project.input();
-        this.project = project;
     }
 
     public Department getDepartment() {

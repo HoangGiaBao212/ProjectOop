@@ -8,9 +8,7 @@ public class Handle {
     static Account[] listAccount = new Account[100];
     static Department[] listDepartments = new Department[100];
 
-    static EmployeeManager listEmployee = new EmployeeManager();
     static ContractManager listContract = new ContractManager();
-    static ProjectManager listProject = new ProjectManager();
     static SalaryManager listSalary = new SalaryManager();
     static DepartmentManager listDepartment = new DepartmentManager();
     static AccountList listAccounts = new AccountList();
@@ -44,41 +42,15 @@ public class Handle {
             System.out.print("==> Input option : ");
             option = Integer.parseInt(scanner.nextLine());
             switch (option) {
-                case 1 -> {
-                    System.out.println(Handle.n);
-                    option("Account Employee");
-                    break;
-                }
-                case 2 -> {
-                    option("Contract");
-                    break;
-                }
-                case 3 -> {
-                    option("Salary");
-                    break;
-                }
-                case 4 -> {
-                    option("Project");
-                    break;
-                }
-                case 5 -> {
-                    option("Department");
-                    break;
-                }
-                case 6 -> {
-                    option("Account");
-                    break;
-                }
-                case 7 -> {
-                    MenuContent.noteBye();
-                    break;
-                }
-                default -> {
-                    MenuContent.choiceWrong();
-                }
+                case 1 -> option("Account Employee");
+                case 2 -> option("Contract");
+                case 3 -> option("Salary");
+                case 4 -> option("Department");
+                case 5 -> MenuContent.noteBye();
+                default -> MenuContent.choiceWrong();
             }
-        } while (option < 1 || option > 9);
-        // Handle.clearScreen();
+        } while (option < 1 || option > 5);
+        Handle.clearScreen();
     }
 
     public static void option(String title) {
@@ -90,93 +62,73 @@ public class Handle {
             switch (option) {
                 case 1 -> {
                     if (title.equals("Account Employee"))
-                        listEmployee.inputList();
+                        listAccounts.inputList();
                     else if (title.equals("Contract"))
                         listContract.inputList();
                     else if (title.equals("Salary"))
                         listSalary.inputList();
-                    else if (title.equals("Project"))
-                        listSalary.inputList();
-                    else if (title.equals("Account"))
-                        listAccounts.inputList();
                     else
                         listDepartment.inputList();
                     option(title);
                     break;
                 }
                 case 2 -> {
-                    if (title.equals("Employee"))
-                        listEmployee.outputList();
+                    if (title.equals("Account Employee"))
+                        listAccounts.outputList();
                     else if (title.equals("Contract"))
                         listContract.outputList();
                     else if (title.equals("Salary"))
                         listSalary.outputList();
-                    else if (title.equals("Project"))
-                        listSalary.outputList();
-                    else if (title.equals("Account"))
-                        listAccounts.outputList();
                     else
                         listDepartment.outputList();
                     option(title);
                     break;
                 }
                 case 3 -> {
-                    if (title.equals("Employee"))
-                        listEmployee.add();
+                    if (title.equals("Account Employee"))
+                        listAccounts.add();
                     else if (title.equals("Contract"))
                         listContract.add();
                     else if (title.equals("Salary"))
                         listSalary.add();
-                    else if (title.equals("Project"))
-                        listSalary.add();
-                    else if (title.equals("Account"))
-                        listAccounts.add();
                     else
                         listDepartment.add();
                     option(title);
                     break;
                 }
                 case 4 -> {
-                    if (title.equals("Employee"))
-                        listEmployee.edit();
+                    if (title.equals("Account Employee"))
+                        listAccounts.edit(null);
                     else if (title.equals("Contract"))
-                        listContract.edit();
+                        listContract.edit(null);
                     else if (title.equals("Salary"))
-                        listSalary.edit();
-                    else if (title.equals("Project"))
-                        listSalary.edit();
+                        listSalary.edit(null);
                     else
-                        listDepartment.edit();
+                        listDepartment.edit(null);
                     option(title);
                     break;
                 }
                 case 5 -> {
-                    if (title.equals("Employee"))
-                        listEmployee.remove();
+                    if (title.equals("Account Employee"))
+                        listAccounts.remove(null);
                     else if (title.equals("Contract"))
-                        listContract.remove();
+                        listContract.remove(null);
                     else if (title.equals("Salary"))
-                        listSalary.remove();
-                    else if (title.equals("Project"))
-                        listSalary.remove();
+                        listSalary.remove(null);
                     else
-                        listDepartment.remove();
+                        listDepartment.remove(null);
                     option(title);
                     break;
                 }
                 case 6 -> {
-                    if (title.equals("Employee"))
-                        listEmployee.find();
+                    if (title.equals("Account Employee"))
+                        listAccounts.find(null);
                     else if (title.equals("Contract"))
-                        listContract.find();
+                        listContract.find(null);
                     else if (title.equals("Salary"))
-                        listSalary.find();
-                    else if (title.equals("Project"))
-                        listProject.find();
-                    else if (title.equals("Account"))
-                        listAccounts.find();
+                        listSalary.find(null);
                     else
-                        listDepartment.find();
+                        listDepartment.find(null);
                     option(title);
                     break;
                 }
@@ -204,20 +156,18 @@ public class Handle {
         String username;
         String password;
         System.out.println("--------------------------------------------------------------------");
+        System.out.println("");
         System.out.println("|                                Login                             |");
         System.out.println("--------------------------------------------------------------------");
         System.out.print("  ==> Enter username: ");
         username = scanner.nextLine();
         System.out.print("  ==> Enter password: ");
         password = scanner.nextLine();
-        // System.out.println(m);
         for (int i = 0; i < n; i++) {
-            // System.out.println(1);
             if (username.equals(listAccount[i].getUsername())) {
                 if (password.equals(listAccount[i].getPassword())) {
                     if (listAccount[i].getEmployee().getIdEmp().equals("admin"))
                         iForManager();
-                    System.out.println(listAccount[i].getEmployee().getIdEmp());
                     permission(listAccount[i]);
                 } else
                     System.err.println("Wrong password!!!");
@@ -229,37 +179,36 @@ public class Handle {
         for (int i = 0; i < n; i++) {
             if (account.getEmployee().getIdEmp().equals(listAccount[i].getEmployee().getIdEmp())) {
                 if (listAccount[i].getEmployee().getPosition().equals("Chief Of Department")) {
-                    iForChiefDepartment();
+                    iForChiefDepartment(listAccount[i].getEmployee().getIdEmp());
                 } else if (listAccount[i].getEmployee().getPosition().equals("Intern Employee")
                         || listAccount[i].getEmployee().getPosition().equals("Official Employee")) {
-                    iForEmployee();
+                    iForEmployee(listAccount[i].getEmployee().getIdEmp());
                 }
             }
         }
     }
 
-    public static void iForEmployee() {
+    public static void iForEmployee(String idEmp) {
         int choice;
         MenuContent.menuIForEmployee();
         choice = scanner.nextInt();
         do {
-
             switch (choice) {
                 case 1 -> {
-                    listEmployee.outputList();
+                    listDepartment.outputList();
+                    iForEmployee(idEmp);
                 }
                 case 2 -> {
-
+                    listAccounts.find(idEmp);
+                    listSalary.find(idEmp);
+                    listContract.find(idEmp);
+                    iForEmployee(idEmp);
                 }
-
                 case 3 -> {
-
+                    listAccounts.edit(idEmp);
+                    iForEmployee(idEmp);
                 }
-
-                case 4 -> {
-                    MenuContent.noteBye();
-                    break;
-                }
+                case 4 -> MenuContent.noteBye();
                 default -> {
                     MenuContent.choiceWrong();
                 }
@@ -267,12 +216,38 @@ public class Handle {
         } while (choice < 1 || choice > 4);
     }
 
-    public static void iForChiefDepartment() {
-        clearScreen();
-        System.out.println("--------------------------------------------------------");
-        System.out.println("|                  Welcome back,Boss                   |");
-        System.out.println("--------------------------------------------------------");
-
+    public static void iForChiefDepartment(String idEmp) {
+        int choice;
+        MenuContent.menuIForChief();
+        choice = scanner.nextInt();
+        do {
+            switch (choice) {
+                case 1 -> {
+                    listAccounts.find(idEmp);
+                    listSalary.find(idEmp);
+                    listContract.find(idEmp);
+                    iForChiefDepartment(idEmp);
+                }
+                case 2 -> {
+                    listAccounts.edit(idEmp);
+                    iForChiefDepartment(idEmp);
+                }
+                case 3 -> {
+                    for (int i = 0; i < Handle.m; i++) {
+                        for (int j = 0; j < Handle.listDepartments[i].getMembers(); j++) {
+                            if (Handle.listDepartments[i].getIdEmployee()[j].equalsIgnoreCase(idEmp)) {
+                                listDepartment.edit(Handle.listDepartments[i].getDepartmentId());
+                            }
+                        }
+                    }
+                    iForChiefDepartment(idEmp);
+                }
+                case 5 -> MenuContent.noteBye();
+                default -> {
+                    MenuContent.choiceWrong();
+                }
+            }
+        } while (choice < 1 || choice > 4);
     }
 
     public static void iForManager() {
@@ -280,6 +255,7 @@ public class Handle {
         System.out.println("--------------------------------------------------------");
         System.out.println("|                 Welcome back,Manager                 |");
         System.out.println("--------------------------------------------------------");
+        menu();
     }
 
 }

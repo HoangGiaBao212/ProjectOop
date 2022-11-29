@@ -7,10 +7,10 @@ public interface RoleOfManager {
 
     public abstract void add();
 
-    public abstract void remove();
+    public abstract void remove(String idEmp);
 
-    public abstract void edit();
+    public abstract void edit(String idEmp);
 
-    public abstract void find();
+    public abstract void find(String idEmp);
 
 }

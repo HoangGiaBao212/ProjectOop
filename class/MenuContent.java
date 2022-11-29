@@ -1,20 +1,5 @@
 public class MenuContent {
 
-    public static void menuIForEmployee() {
-
-        Handle.clearScreen();
-        System.out.println("     ----------------------------------");
-        System.out.println("     | 1. View Employee List          |");
-        System.out.println("     ----------------------------------");
-        System.out.println("     | 2. View personal information   |");
-        System.out.println("     ----------------------------------");
-        System.out.println("     | 3. Edit view                   |");
-        System.out.println("     ----------------------------------");
-        System.out.println("     | 4. Exit                        |");
-        System.out.println("     ----------------------------------");
-        System.out.println(" ==> Input choice: ");
-    }
-
     public static void option(String title) {
         String capital = title.toUpperCase();
         System.out.println("\n     --------------------------------------------");
@@ -41,22 +26,17 @@ public class MenuContent {
         System.out.println("--------------------------------------------------------------------");
         System.out.println("|                  Hello, Welcome to Employee Manager              |");
         System.out.println("--------------------------------------------------------------------");
-
-        System.out.println("     -------------------------");
-        System.out.println("     | 1. Employee Manager   |");
-        System.out.println("     -------------------------");
-        System.out.println("     | 2. Contract Manager   |");
-        System.out.println("     -------------------------");
-        System.out.println("     | 3. Salary Manager     |");
-        System.out.println("     -------------------------");
-        System.out.println("     | 4. Project Manager    |");
-        System.out.println("     -------------------------");
-        System.out.println("     | 5. Department Manager |");
-        System.out.println("     -------------------------");
-        System.out.println("     | 6. Account Manager    |");
-        System.out.println("     -------------------------");
-        System.out.println("     | 7. Exit               |");
-        System.out.println("     -------------------------");
+        System.out.println("     ---------------------------------");
+        System.out.println("     | 1. Account Employee Manager   |");
+        System.out.println("     ---------------------------------");
+        System.out.println("     | 2. Contract Manager           |");
+        System.out.println("     ---------------------------------");
+        System.out.println("     | 3. Salary Manager             |");
+        System.out.println("     ---------------------------------");
+        System.out.println("     | 4. Department Manager         |");
+        System.out.println("     ---------------------------------");
+        System.out.println("     | 5. Exit                       |");
+        System.out.println("     ---------------------------------");
     }
 
     public static void menuOptionTypeEmployee() {
@@ -81,15 +61,15 @@ public class MenuContent {
         System.out.println("-------------------------------------------------");
     }
 
-    public static void noteRemoveSuccess() {
+    public static void noteSuccess(String title) {
         System.out.println("-------------------------------------------------");
-        System.out.println("|               Remove successful!              |");
+        System.out.printf("|%-15s %-15s|", title, "successful!              ");
         System.out.println("-------------------------------------------------");
     }
 
-    public static void noteRemoveFailure() {
+    public static void noteFailure(String title) {
         System.out.println("-------------------------------------------------");
-        System.out.println("|               Remove Failure!                 |");
+        System.out.printf("|%-15s %-15s|", title, "failure!              ");
         System.out.println("-------------------------------------------------");
     }
 
@@ -126,5 +106,32 @@ public class MenuContent {
         System.out.println("-------------------------------------------------------");
         System.out.printf("| %s %s|", any.toUpperCase(), "QUANTITY");
         System.out.println("-------------------------------------------------------");
+    }
+
+    public static void menuIForEmployee() {
+        System.out.println("     ----------------------------------");
+        System.out.println("     | 1. View personal information   |");
+        System.out.println("     ----------------------------------");
+        System.out.println("     | 2. Edit information            |");
+        System.out.println("     ----------------------------------");
+        System.out.println("     | 3. Exit                        |");
+        System.out.println("     ----------------------------------");
+        System.out.println(" ==> Input choice: ");
+    }
+
+    public static void menuIForChief() {
+        Handle.clearScreen();
+        System.out.println("     ----------------------------------------------");
+        System.out.println("     | 1. View Employee List Of Department        |");
+        System.out.println("     ----------------------------------------------");
+        System.out.println("     | 2. View personal information               |");
+        System.out.println("     ----------------------------------------------");
+        System.out.println("     | 3. Edit information                        |");
+        System.out.println("     ----------------------------------------------");
+        System.out.println("     | 4. Edit information of department          |");
+        System.out.println("     ----------------------------------------------");
+        System.out.println("     | 5. Exit                                    |");
+        System.out.println("     ----------------------------------------------");
+        System.out.println(" ==> Input choice: ");
     }
 }

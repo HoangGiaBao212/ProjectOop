@@ -8,8 +8,9 @@ public class App {
     }
 
     public static void start() {
-        Handle.clearScreen();   
-        Handle.menu();
+        Handle.clearScreen();
+        // Handle.menu();
+        Handle.login();
     }
 
     public static void end() {

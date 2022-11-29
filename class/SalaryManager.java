@@ -4,16 +4,15 @@ public class SalaryManager implements RoleOfManager {
 
     static Scanner scanner = new Scanner(System.in);
 
-    long[] salaryTotal = new long[100];
     long baseSalary;
 
     @Override
     public void inputList() {
-        // System.out.println(Handle.n);
-        System.out.print("==>Enter base salary this month: ");
+        System.out.print(" ==> Enter base salary this month: ");
         baseSalary = Long.parseLong(scanner.nextLine());
         for (int i = 0; i < Handle.n; i++) {
-            System.out.println("Enter information about employee with id: " + Handle.listAccount[i].getEmployee().getIdEmp());
+            System.out.println(
+                    "Enter information about employee with id: " + Handle.listAccount[i].getEmployee().getIdEmp());
             int indexSalary = 1;
             Salary salary = new Salary();
             salary.input();
@@ -60,7 +59,7 @@ public class SalaryManager implements RoleOfManager {
         System.out.print("==> Enter id of employee to add list salary: ");
         idEmpAdd = scanner.nextLine();
         if (Handle.checkIdEmployee(idEmpAdd)) {
-            for (int i=0 ;i<Handle.n ;i++) {
+            for (int i = 0; i < Handle.n; i++) {
                 if (Handle.listAccount[i].getEmployee().getIdEmp().equals(idEmpAdd)) {
                     System.out.print("Enter base salary of employee: ");
                     baseSalary = scanner.nextLong();
@@ -70,7 +69,8 @@ public class SalaryManager implements RoleOfManager {
                     if (Handle.listAccount[i].getEmployee().getPosition().equalsIgnoreCase("Chief of department")) {
                         indexSalary = ChiefDepartment.getCoefficientsSalary();
                         salary.setIndexSalary(indexSalary);
-                    } else if (Handle.listAccount[i].getEmployee().getPosition().equalsIgnoreCase("Official Employee")) {
+                    } else if (Handle.listAccount[i].getEmployee().getPosition()
+                            .equalsIgnoreCase("Official Employee")) {
                         indexSalary = OfficialEmployee.getCoefficientsSalary();
                         salary.setIndexSalary(indexSalary);
                     } else {
@@ -87,42 +87,41 @@ public class SalaryManager implements RoleOfManager {
     }
 
     @Override
-    public void remove() {
+    public void remove(String idRemove) {
         System.out.println("-------------------------------------------------");
         System.out.println("|           REMOVE EMPLOYEE'S SALARY            |");
         System.out.println("-------------------------------------------------");
-        String idRemove;
-        boolean check = false;
-        do {
+        if (idRemove == null) {
             System.out.print("Enter id of employee to remove: ");
             idRemove = scanner.nextLine();
-            for (int i=0;i<Handle.n;i++) {
-                if (Handle.listAccount[i].getEmployee().getIdEmp().equals(idRemove)) {
-                    Handle.listAccount[i].getEmployee().setSalary(null);
-                    check = true;
-                }
+        }
+        for (int i = 0; i < Handle.n; i++) {
+            if (Handle.listAccount[i].getEmployee().getIdEmp().equals(idRemove)) {
+                Handle.listAccount[i].getEmployee().setSalary(null);
             }
-            if (!check)
-                System.out.println("Not find id is: " + idRemove + ", enter again: ");
-        } while (!check);
-        MenuContent.noteRemoveSuccess();
+        }
+        if (!Handle.checkIdEmployee(idRemove)) {
+            System.out.println("Not find id is: " + idRemove);
+        } else
+            MenuContent.noteSuccess("Remove");
     }
 
     @Override
-    public void edit() {
-        String key;
+    public void edit(String idEdit) {
         int option = 0;
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("|                  EDIT SALARY INFORMATION                 |");
-        System.out.println("--------------------------------------------------------------\n\n");
-        System.out.print("==> Enter employee ID to edit:");
-        key = scanner.nextLine();
+        if (idEdit == null) {
+            System.out.println("--------------------------------------------------------------");
+            System.out.println("|                  EDIT SALARY INFORMATION                   |");
+            System.out.println("--------------------------------------------------------------\n\n");
+            System.out.print("==> Enter employee ID to edit:");
+            idEdit = scanner.nextLine();
+        }
         MenuContent.optionEdit();
         option = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < Handle.n; i++) {
             switch (option) {
                 case 1:
-                    if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(key)) {
+                    if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(idEdit)) {
                         System.out.println();
                         System.out.println("--------------------------------------------------");
                         System.out.println("| 1.Change Base Salary                           |");
@@ -136,7 +135,7 @@ public class SalaryManager implements RoleOfManager {
                                 baseSalary = Long.parseLong(scanner.nextLine());
                                 break;
                             case 2:
-                            Handle.listAccount[i].getEmployee().getSalary().setSomeHolidays(0);
+                                Handle.listAccount[i].getEmployee().getSalary().setSomeHolidays(0);
 
                                 break;
                             default:
@@ -146,7 +145,7 @@ public class SalaryManager implements RoleOfManager {
                     }
                     break;
                 case 2:
-                    if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(key)) {
+                    if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(idEdit)) {
                         Handle.listAccount[i].getEmployee().setSalary(null);
                     }
                     break;
@@ -155,18 +154,23 @@ public class SalaryManager implements RoleOfManager {
                     break;
             }
         }
+        if (!Handle.checkIdEmployee(idEdit)) {
+            System.out.println("Not find id is: " + idEdit);
+        } else
+            MenuContent.noteSuccess("Edit");
     }
 
     @Override
-    public void find() {
-        System.out.println("---------------------------------------");
-        System.out.println("|         FIND EMPLOYEE'S SALARY      |");
-        System.out.println("---------------------------------------");
-        String idSearch;
-        System.out.print("Enter id of employee to search: ");
-        idSearch = scanner.nextLine();
+    public void find(String idSearch) {
+        if (idSearch == null) {
+            System.out.println("---------------------------------------");
+            System.out.println("|         FIND EMPLOYEE'S SALARY      |");
+            System.out.println("---------------------------------------");
+            System.out.print("Enter id of employee to search: ");
+            idSearch = scanner.nextLine();
+        }
 
-        for (int i = 0; i <= Handle.n; i++) {
+        for (int i = 0; i < Handle.n; i++) {
             if (Handle.listAccount[i].getEmployee().getSalary() == null) {
                 continue;
             }
@@ -180,10 +184,15 @@ public class SalaryManager implements RoleOfManager {
                 System.out.printf("|  %-10s|  %-20s|  %-20s", Handle.listAccount[i].getEmployee().getIdEmp(),
                         Handle.listAccount[i].getEmployee().getName(),
                         Handle.listAccount[i].getEmployee().getPosition());
-                        Handle.listAccount[i].getEmployee().getSalary().output();
+                Handle.listAccount[i].getEmployee().getSalary().output();
                 System.out.println(
                         "---------------------------------------------------------------------------------------------------------------------------------");
+
             }
         }
+        if (!Handle.checkIdEmployee(idSearch)) {
+            System.out.println("Not find id is: " + idSearch);
+        }
     }
+
 }

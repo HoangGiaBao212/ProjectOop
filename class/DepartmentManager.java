@@ -47,17 +47,18 @@ public class DepartmentManager implements RoleOfManager {
     }
 
     @Override
-    public void remove() {
+    public void remove(String idRemove) {
         // TODO Auto-generated method stub
-        String idDepRemove;
         Boolean check = false;
         if (Handle.m < 0)
             System.out.println("Don't have data for department");
         else {
-            System.out.print(" ==> Input id department to remove: ");
-            idDepRemove = scanner.nextLine();
+            if (idRemove == null) {
+                System.out.print(" ==> Input id department to remove: ");
+                idRemove = scanner.nextLine();
+            }
             for (int i = 0; i < Handle.m; i++) {
-                if (Handle.listDepartments[i].getDepartmentId().equalsIgnoreCase(idDepRemove)) {
+                if (Handle.listDepartments[i].getDepartmentId().equalsIgnoreCase(idRemove)) {
                     for (int j = i; j < Handle.m - 1; j++) {
                         Handle.listDepartments[j] = Handle.listDepartments[j + 1];
                         check = true;
@@ -68,18 +69,19 @@ public class DepartmentManager implements RoleOfManager {
             Handle.m--;
         }
         if (!check)
-            MenuContent.noteRemoveFailure();
+            MenuContent.noteFailure("Remove");
     }
 
     @Override
-    public void edit() {
+    public void edit(String idDepEdit) {
         // TODO Auto-generated method stub
-        String idDepEdit;
         if (Handle.m < 0)
             System.out.println("Don't have data for department");
         else {
-            System.out.print(" ==> Input id of department to edit: ");
-            idDepEdit = scanner.nextLine();
+            if (idDepEdit == null) {
+                System.out.print(" ==> Input id of department to edit: ");
+                idDepEdit = scanner.nextLine();
+            }
             for (int i = 0; i < Handle.m; i++) {
                 if (Handle.listDepartments[i].getDepartmentId().equalsIgnoreCase(idDepEdit)) {
                     int option;
@@ -121,14 +123,15 @@ public class DepartmentManager implements RoleOfManager {
     }
 
     @Override
-    public void find() {
+    public void find(String idSearch) {
         // TODO Auto-generated method stub
         if (Handle.m < 0)
             System.out.println("Don't have data for department");
         else {
-            String idSearch;
-            System.out.print(" ==> Input id department to search: ");
-            idSearch = scanner.nextLine();
+            if (idSearch == null) {
+                System.out.print(" ==> Input id department to search: ");
+                idSearch = scanner.nextLine();
+            }
             System.out.printf("|%-15s|%-15s|%-15s|%-15s", "Department Id", "Department Name", "Amount Members",
                     "Number of employee codes");
             for (int i = 0; i < Handle.m; i++) {

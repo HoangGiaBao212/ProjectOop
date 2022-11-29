@@ -14,7 +14,8 @@ public class ContractManager implements RoleOfManager {
         System.out.println("-------------------------------------------------");
         for (int i = 0; i < Handle.n; i++) {
             System.out.println(Handle.n);
-            System.out.println("Enter information contract of employee with id: " + Handle.listAccount[i].getEmployee().getIdEmp());
+            System.out.println("Enter information contract of employee with id: "
+                    + Handle.listAccount[i].getEmployee().getIdEmp());
             Contract contract = new Contract();
             contract.input();
             Handle.listAccount[i].getEmployee().setContract(contract);
@@ -39,14 +40,14 @@ public class ContractManager implements RoleOfManager {
                 "-------------------------------------------------------------------------------------------------------------------------------------------------------");
         for (int i = 0; i < Handle.n; i++) {
             System.out.printf("|    %-15s|   %-20s|   %-10s|   %-10s|   %-15s|    %-25s|   %-10s|    %-10s|\n",
-            Handle.listAccount[i].getEmployee().getContract().getContractID(),
-            Handle.listAccount[i].getEmployee().getName(),
-            Handle.listAccount[i].getEmployee().getGender(),
-            Handle.listAccount[i].getEmployee().getAge(),
-            Handle.listAccount[i].getEmployee().getPhone(),
-            Handle.listAccount[i].getEmployee().getEmail(),
-            Handle.listAccount[i].getEmployee().getContract().getTimeStart(),
-            Handle.listAccount[i].getEmployee().getContract().getTimeEnd());
+                    Handle.listAccount[i].getEmployee().getContract().getContractID(),
+                    Handle.listAccount[i].getEmployee().getName(),
+                    Handle.listAccount[i].getEmployee().getGender(),
+                    Handle.listAccount[i].getEmployee().getAge(),
+                    Handle.listAccount[i].getEmployee().getPhone(),
+                    Handle.listAccount[i].getEmployee().getEmail(),
+                    Handle.listAccount[i].getEmployee().getContract().getTimeStart(),
+                    Handle.listAccount[i].getEmployee().getContract().getTimeEnd());
             System.out.println(
                     "-------------------------------------------------------------------------------------------------------------------------------------------------------");
         }
@@ -80,17 +81,18 @@ public class ContractManager implements RoleOfManager {
     }
 
     @Override
-    public void edit() {
-        System.out.println("----------------------------------------------------");
-        System.out.println("|            EDIT INFORMATION IN CONTRACT          |");
-        System.out.println("----------------------------------------------------");
-        String idTemp;
-        int key,option;
-        System.out.print("Enter an contract ID to edit: ");
-        idTemp = scanner.nextLine();
+    public void edit(String idEdit) {
+        if (idEdit == null) {
+            System.out.println("----------------------------------------------------");
+            System.out.println("|            EDIT INFORMATION IN CONTRACT          |");
+            System.out.println("----------------------------------------------------");
+            System.out.print("Enter an contract ID to edit: ");
+            idEdit = scanner.nextLine();
+        }
+        int key, option;
         int count = 0;
         for (int i = 0; i < Handle.n; i++) {
-            if (Handle.listAccount[i].getEmployee().getContract().getContractID().equalsIgnoreCase(idTemp)) {
+            if (Handle.listAccount[i].getEmployee().getContract().getContractID().equalsIgnoreCase(idEdit)) {
                 count++;
             }
         }
@@ -102,7 +104,8 @@ public class ContractManager implements RoleOfManager {
             for (int i = 0; i < Handle.n; i++) {
                 switch (option) {
                     case 1:
-                        if (Handle.listAccount[i].getEmployee().getContract().getContractID().equalsIgnoreCase(idTemp)) {
+                        if (Handle.listAccount[i].getEmployee().getContract().getContractID()
+                                .equalsIgnoreCase(idEdit)) {
                             System.out.println("\n ----------------------------------------------");
                             System.out.println(" | 1.Change time start                        |");
                             System.out.println(" | 2.Change time end                          |");
@@ -112,10 +115,10 @@ public class ContractManager implements RoleOfManager {
                             System.out.println();
                             switch (key) {
                                 case 1:
-                                Handle.listAccount[i].getEmployee().getContract().setTimeStart(null);
+                                    Handle.listAccount[i].getEmployee().getContract().setTimeStart(null);
                                     break;
                                 case 2:
-                                Handle.listAccount[i].getEmployee().getContract().setTimeEnd(null);
+                                    Handle.listAccount[i].getEmployee().getContract().setTimeEnd(null);
                                     break;
                                 default:
                                     MenuContent.noteBye();
@@ -124,7 +127,8 @@ public class ContractManager implements RoleOfManager {
                         }
                         break;
                     case 2:
-                        if(Handle.listAccount[i].getEmployee().getContract().getContractID().equalsIgnoreCase(idTemp)){
+                        if (Handle.listAccount[i].getEmployee().getContract().getContractID()
+                                .equalsIgnoreCase(idEdit)) {
                             Handle.listAccount[i].getEmployee().getContract().input();
                         }
                         break;
@@ -138,12 +142,14 @@ public class ContractManager implements RoleOfManager {
     }
 
     @Override
-    public void remove() {
+    public void remove(String idRemove) {
         System.out.println("-----------------------------------------------");
         System.out.println("|               REMOVE CONTRACT               |");
         System.out.println("-----------------------------------------------");
-        System.out.println("Enter id of contract to remove(Ex:C001): ");
-        String idRemove = scanner.nextLine();
+        if (idRemove == null) {
+            System.out.println("Enter id of contract to remove(Ex:C001): ");
+            idRemove = scanner.nextLine();
+        }
         boolean check = false;
         for (int i = 0; i < Handle.n; i++) {
             if (Handle.listAccount[i].getEmployee().getContract().getContractID().equalsIgnoreCase(idRemove)) {
@@ -158,19 +164,24 @@ public class ContractManager implements RoleOfManager {
             }
         }
         if (!check) {
-            MenuContent.noteRemoveFailure();
+            MenuContent.noteFailure("Remove");
         }
-        MenuContent.noteRemoveSuccess();
+        MenuContent.noteSuccess("Remove");
     }
 
     @Override
-    public void find() {
-        String idFind;
-        System.out.print("Enter id of employee to search(Ex:E001): ");
-        idFind = scanner.nextLine();
+    public void find(String idSearch) {
+        Boolean check = false;
+        if (idSearch == null) {
+            System.out.print("Enter id of employee to search(Ex:E001): ");
+            idSearch = scanner.nextLine();
+        }
 
         for (int i = 0; i < Handle.n; i++) {
-            if (idFind.equals(Handle.listAccount[i].getEmployee().getIdEmp())) {
+            if (Handle.listAccount[i].getEmployee().getContract() == null) {
+                continue;
+            }
+            if (idSearch.equals(Handle.listAccount[i].getEmployee().getIdEmp())) {
                 System.out.println(
                         "     -------------------------------------------------------------------------------------------------------------------------------------");
                 System.out.printf(
@@ -182,20 +193,22 @@ public class ContractManager implements RoleOfManager {
                 System.out.println(
                         "     -------------------------------------------------------------------------------------------------------------------------------------");
                 System.out.printf("    %-15s|   %-15s|   %-15s|   %-15s|   %-15s|    %-15s|   %-15s|    %-15s|",
-                Handle.listAccount[i].getEmployee().getContract().getContractID(),
-                Handle.listAccount[i].getEmployee().getName(),
-                Handle.listAccount[i].getEmployee().getGender(),
-                Handle.listAccount[i].getEmployee().getAge(),
-                Handle.listAccount[i].getEmployee().getPhone(),
-                Handle.listAccount[i].getEmployee().getEmail(),
-                Handle.listAccount[i].getEmployee().getContract().getTimeStart(),
-                Handle.listAccount[i].getEmployee().getContract().getTimeEnd());
+                        Handle.listAccount[i].getEmployee().getContract().getContractID(),
+                        Handle.listAccount[i].getEmployee().getName(),
+                        Handle.listAccount[i].getEmployee().getGender(),
+                        Handle.listAccount[i].getEmployee().getAge(),
+                        Handle.listAccount[i].getEmployee().getPhone(),
+                        Handle.listAccount[i].getEmployee().getEmail(),
+                        Handle.listAccount[i].getEmployee().getContract().getTimeStart(),
+                        Handle.listAccount[i].getEmployee().getContract().getTimeEnd());
                 System.out.println(
                         "---------------------------------------------------------------------------------------------------------------------------------");
-
+                check = true;
                 break;
             }
         }
+        if (!check)
+            System.out.println("<<<<< Don't have data for contract");
     }
 
     public static void thongKe() {

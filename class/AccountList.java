@@ -87,14 +87,15 @@ public class AccountList implements RoleOfManager {
     }
 
     @Override
-    public void remove() {
+    public void remove(String idRemove) {
         // remove account
         System.out.println("-------------------------------------------------");
-        System.out.println("|              REMOVE ACcOUNT                   |");
+        System.out.println("|              REMOVE ACCOUNT                   |");
         System.out.println("-------------------------------------------------");
-        System.out.println("Enter id of employee to remove(Ex:E001): ");
-        String idRemove = scanner.nextLine();
-        boolean check = false;
+        if (idRemove == null) {
+            System.out.println("Enter id of employee to remove(Ex:E001): ");
+            idRemove = scanner.nextLine();
+        }
         for (int i = 0; i < Handle.n; i++) {
             if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(idRemove)) {
                 for (int j = i; j < Handle.n - 1; j++) {
@@ -103,29 +104,29 @@ public class AccountList implements RoleOfManager {
                 }
                 Handle.listAccount[Handle.n - 1] = null;
                 Handle.n--;
-                check = true;
                 break;
             }
         }
-        if (!check) {
-            MenuContent.noteRemoveFailure();
-        }
-        MenuContent.noteRemoveSuccess();
+        if (!Handle.checkIdEmployee(idRemove)) {
+            MenuContent.noteFailure("Remove");
+        } else
+            MenuContent.noteSuccess("Remove");
     }
 
     @Override
-    public void edit() {
+    public void edit(String idEdit) {
         // edit username or password
-        System.out.println("----------------------------------------------------");
-        System.out.println("|           EDIT INFORMATION IN EMPLOYEE           |");
-        System.out.println("----------------------------------------------------");
-        String idTemp;
         int key, temp;
-        System.out.print("Enter an employee ID to edit: ");
-        idTemp = scanner.nextLine();
+        if (idEdit == null) {
+            System.out.println("----------------------------------------------------");
+            System.out.println("|           EDIT INFORMATION IN EMPLOYEE           |");
+            System.out.println("----------------------------------------------------");
+            System.out.print("Enter an employee ID to edit: ");
+            idEdit = scanner.nextLine();
+        }
         int count = 0;
         for (int i = 0; i < Handle.n; i++) {
-            if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(idTemp)) {
+            if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(idEdit)) {
                 count++;
             }
         }
@@ -137,7 +138,7 @@ public class AccountList implements RoleOfManager {
             for (int i = 0; i < Handle.n; i++) {
                 switch (temp) {
                     case 1:
-                        if (idTemp.equals(Handle.listAccount[i].getEmployee().getIdEmp())) {
+                        if (idEdit.equals(Handle.listAccount[i].getEmployee().getIdEmp())) {
                             System.out.println();
                             System.out.println("----------------------------------------------");
                             System.out.println("| 1.Change Position                          |");
@@ -199,7 +200,7 @@ public class AccountList implements RoleOfManager {
                         }
                         break;
                     case 2:
-                        if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(idTemp))
+                        if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(idEdit))
                             Handle.listAccount[i].getEmployee().input();
                         break;
                     default:
@@ -213,11 +214,12 @@ public class AccountList implements RoleOfManager {
     }
 
     @Override
-    public void find() {
+    public void find(String idSearch) {
         // find information of the account
-        String idSearch;
-        System.out.println(" ==> Enter id of employee to search: ");
-        idSearch = scanner.nextLine();
+        if (idSearch == null) {
+            System.out.println(" ==> Enter id of employee to search: ");
+            idSearch = scanner.nextLine();
+        }
         System.out.println(
                 "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("|     %-15s|     %-15s|  %-10s|  %-20s|  %-20s|  %-10s|  %-10s|  %-30s|  %-20s|  %-20s|",

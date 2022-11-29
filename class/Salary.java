@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Salary implements InOut {
@@ -28,7 +29,7 @@ public class Salary implements InOut {
     }
 
     public void setSomeHolidays(int someHolidays) {
-        System.out.print("==> Enter a numeber of day-off: ");
+        System.out.print("==> Enter a number of day-off: ");
         someHolidays = scanner.nextInt();
         this.someHolidays = someHolidays;
     }
@@ -48,7 +49,9 @@ public class Salary implements InOut {
 
     @Override
     public void output() {
-        System.out.printf("|  %-20s|  %-20s|  %-20s|", indexSalary, someHolidays, totalSalary + " VND");
+        DecimalFormat formatter = new DecimalFormat("###,###,###.00");
+        System.out.printf("|  %-20s|  %-20s|  %-20s|", indexSalary, someHolidays,
+                formatter.format(totalSalary) + " VND");
         System.out.println();
     }
 
