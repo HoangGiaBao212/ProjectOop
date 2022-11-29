@@ -20,7 +20,7 @@ public class App {
     public static void main(String[] args) {
         init();
         start();
-        // end();
+        end();
         // Account account = new Account();
         // account.input();
     }
