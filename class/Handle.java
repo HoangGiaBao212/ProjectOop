@@ -4,7 +4,10 @@ public class Handle {
     static Scanner scanner = new Scanner(System.in);
 
     static int n = -1;
+    static int m = -1;
     static Account[] listAccount = new Account[100];
+    static Department[] listDepartments = new Department[100];
+
     static EmployeeManager listEmployee = new EmployeeManager();
     static ContractManager listContract = new ContractManager();
     static ProjectManager listProject = new ProjectManager();
@@ -16,8 +19,9 @@ public class Handle {
     }
 
     public static boolean checkIdEmployee(String IdEmp) {
-        for (int i=0;i<Handle.n;i++) {
-            if ((Handle.listAccount[i].getEmployee().getIdEmp().equals(IdEmp)) && Handle.listAccount[i].getEmployee().getSalary() == null)
+        for (int i = 0; i < Handle.n; i++) {
+            if ((Handle.listAccount[i].getEmployee().getIdEmp().equals(IdEmp))
+                    && Handle.listAccount[i].getEmployee().getSalary() == null)
                 return true;
         }
         return false;
@@ -31,9 +35,9 @@ public class Handle {
     public static void menu() {
         int option;
         // try {
-        //     Thread.sleep(1000);
+        // Thread.sleep(1000);
         // } catch (Exception e) {
-        //     System.out.println("Fail to sleep!");
+        // System.out.println("Fail to sleep!");
         // }
         MenuContent.menu();
         do {
@@ -42,7 +46,7 @@ public class Handle {
             switch (option) {
                 case 1 -> {
                     System.out.println(Handle.n);
-                    option("Employee");
+                    option("Account Employee");
                     break;
                 }
                 case 2 -> {
@@ -65,7 +69,7 @@ public class Handle {
                     option("Account");
                     break;
                 }
-                case 7->{
+                case 7 -> {
                     MenuContent.noteBye();
                     break;
                 }
@@ -85,7 +89,7 @@ public class Handle {
             option = Integer.parseInt(scanner.nextLine());
             switch (option) {
                 case 1 -> {
-                    if (title.equals("Employee"))
+                    if (title.equals("Account Employee"))
                         listEmployee.inputList();
                     else if (title.equals("Contract"))
                         listContract.inputList();
@@ -93,9 +97,9 @@ public class Handle {
                         listSalary.inputList();
                     else if (title.equals("Project"))
                         listSalary.inputList();
-                    else if(title.equals("Account"))
+                    else if (title.equals("Account"))
                         listAccounts.inputList();
-                        else 
+                    else
                         listDepartment.inputList();
                     option(title);
                     break;
@@ -109,9 +113,9 @@ public class Handle {
                         listSalary.outputList();
                     else if (title.equals("Project"))
                         listSalary.outputList();
-                    else if(title.equals("Account"))
+                    else if (title.equals("Account"))
                         listAccounts.outputList();
-                        else
+                    else
                         listDepartment.outputList();
                     option(title);
                     break;
@@ -125,9 +129,9 @@ public class Handle {
                         listSalary.add();
                     else if (title.equals("Project"))
                         listSalary.add();
-                    else if(title.equals("Account"))
+                    else if (title.equals("Account"))
                         listAccounts.add();
-                    else 
+                    else
                         listDepartment.add();
                     option(title);
                     break;
@@ -169,7 +173,7 @@ public class Handle {
                         listSalary.find();
                     else if (title.equals("Project"))
                         listProject.find();
-                    else if(title.equals("Account"))
+                    else if (title.equals("Account"))
                         listAccounts.find();
                     else
                         listDepartment.find();

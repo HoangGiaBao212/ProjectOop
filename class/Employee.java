@@ -13,6 +13,10 @@ class Employee extends Person implements InOut {
         super();
     }
 
+    public Employee(String position) {
+        this.position = position;
+    }
+
     public Employee(String name, int age, String gender, String email, String address, String phone, String idEmp,
             String position) {
         super(name, age, gender, email, address, phone);
@@ -107,7 +111,5 @@ class Employee extends Person implements InOut {
     public void output() {
         System.out.printf("|  %-10s|  %-20s|", idEmp, position);
         super.output();
-        System.out.println();
     }
-
 }

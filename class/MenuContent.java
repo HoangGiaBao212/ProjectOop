@@ -18,8 +18,7 @@ public class MenuContent {
     public static void option(String title) {
         String capital = title.toUpperCase();
         System.out.println("\n     --------------------------------------------");
-        System.out.printf("     |            %-10s %s            |", capital, "MANAGER");
-        // System.out.printf(" | %15s %-15s |", capital, "MANAGER");
+        System.out.printf("     |            %10s %s            |", capital, "MANAGER");
         System.out.println("\n     --------------------------------------------");
         try {
             Thread.sleep(1000);
@@ -75,11 +74,13 @@ public class MenuContent {
         System.out.println("|                      <Choice does not exist!>                    |");
         System.out.println("--------------------------------------------------------------------");
     }
-    public static void noteChangeSuccess(){
+
+    public static void noteChangeSuccess() {
         System.out.println("-------------------------------------------------");
         System.out.println("|         Change Information Successful!        |");
         System.out.println("-------------------------------------------------");
     }
+
     public static void noteRemoveSuccess() {
         System.out.println("-------------------------------------------------");
         System.out.println("|               Remove successful!              |");
@@ -91,7 +92,8 @@ public class MenuContent {
         System.out.println("|               Remove Failure!                 |");
         System.out.println("-------------------------------------------------");
     }
-    public static void noteAddSuccess(){
+
+    public static void noteAddSuccess() {
         System.out.println("----------------------------------------");
         System.out.println("|            Add Successful!!          |");
         System.out.println("----------------------------------------");

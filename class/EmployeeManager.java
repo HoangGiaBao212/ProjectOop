@@ -1,4 +1,3 @@
-import java.lang.management.MemoryUsage;
 import java.util.Scanner;
 
 public class EmployeeManager implements RoleOfManager {
@@ -30,11 +29,11 @@ public class EmployeeManager implements RoleOfManager {
                         Handle.listAccount[i].setEmployee(employeeChief);
                         break;
                     case 2:
-                    Handle.listAccount[i] = new Account();
-                    Employee employeeOfficial = new Employee();
-                    employeeOfficial.setPosition("Official Employee"); 
-                    employeeOfficial.input();
-                    Handle.listAccount[i].setEmployee(employeeOfficial);
+                        Handle.listAccount[i] = new Account();
+                        Employee employeeOfficial = new Employee();
+                        employeeOfficial.setPosition("Official Employee");
+                        employeeOfficial.input();
+                        Handle.listAccount[i].setEmployee(employeeOfficial);
                         break;
                     case 3:
                         // Handle.listAccount[i] = new Account();
@@ -66,8 +65,8 @@ public class EmployeeManager implements RoleOfManager {
         for (int i = 0; i < Handle.n; i++) {
             Handle.listAccount[i].getEmployee().output();
             System.out.println(
-                "---------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-            }
+                    "---------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        }
     }
 
     @Override
@@ -84,7 +83,7 @@ public class EmployeeManager implements RoleOfManager {
             System.out.print("Amount must be greater than 0");
             amount = Integer.parseInt(scanner.nextLine());
         }
-        for (int i = temp; i < Handle.n ; i++) {
+        for (int i = temp; i < Handle.n; i++) {
             do {
                 MenuContent.menuOptionTypeEmployee();
                 option = Integer.parseInt(scanner.nextLine());
@@ -163,7 +162,7 @@ public class EmployeeManager implements RoleOfManager {
             MenuContent.optionEdit();
             temp = Integer.parseInt(scanner.nextLine());
             for (int i = 0; i < Handle.n; i++) {
-                switch(temp) {
+                switch (temp) {
                     case 1:
                         if (idTemp.equals(Handle.listAccount[i].getEmployee().getIdEmp())) {
                             System.out.println();
@@ -184,15 +183,15 @@ public class EmployeeManager implements RoleOfManager {
                                 case 1:
                                     MenuContent.menuOptionTypeEmployee();
                                     key = Integer.parseInt(scanner.nextLine());
-                                    switch(key){
+                                    switch (key) {
                                         case 1:
-                                        Handle.listAccount[i].getEmployee().setPosition("Chief Department");
+                                            Handle.listAccount[i].getEmployee().setPosition("Chief Department");
                                             break;
                                         case 2:
-                                        Handle.listAccount[i].getEmployee().setPosition("Official Employee");
+                                            Handle.listAccount[i].getEmployee().setPosition("Official Employee");
                                             break;
                                         case 3:
-                                        Handle.listAccount[i].getEmployee().setPosition("Intern Employee");
+                                            Handle.listAccount[i].getEmployee().setPosition("Intern Employee");
                                             break;
                                         default:
                                             MenuContent.choiceWrong();
@@ -227,7 +226,7 @@ public class EmployeeManager implements RoleOfManager {
                         }
                         break;
                     case 2:
-                        if(Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(idTemp))
+                        if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(idTemp))
                             Handle.listAccount[i].getEmployee().input();
                         break;
                     default:
@@ -236,7 +235,6 @@ public class EmployeeManager implements RoleOfManager {
                 }
             }
             MenuContent.noteChangeSuccess();
-            // MenuContent.noteChangeSuccess();
         }
     }
 

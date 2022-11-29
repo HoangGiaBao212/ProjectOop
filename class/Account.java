@@ -3,7 +3,7 @@ import java.util.regex.Pattern;
 
 public class Account implements InOut {
     static Scanner scanner = new Scanner(System.in);
-    
+
     private String username;
     private String password;
     private Employee employee;
@@ -16,9 +16,6 @@ public class Account implements InOut {
         this.username = username;
         this.password = password;
     }
-
-    
-
 
     public Account(String username, String password, Employee employee) {
         this.username = username;
@@ -38,7 +35,7 @@ public class Account implements InOut {
             if (pattern.matcher(username).find())
                 break;
             else
-                System.err.println("Invalid username, input again: ");
+                System.err.println("<<<<< Invalid username, input again: ");
         }
         this.username = username;
     }
@@ -56,18 +53,17 @@ public class Account implements InOut {
             if (pCheck1.matcher(password).find() || pCheck2.matcher(password).find())
                 break;
             else
-                System.err.print("Invalid password, input again: ");
+                System.err.print("<<<<< Invalid password, input again: ");
         }
         this.password = password;
     }
-
-
 
     public Employee getEmployee() {
         return employee;
     }
 
     public void setEmployee(Employee employee) {
+        employee.input();
         this.employee = employee;
     }
 
@@ -79,9 +75,10 @@ public class Account implements InOut {
 
     @Override
     public void output() {
-        System.out.println("\n------------------------------");
-        System.out.printf("|%-15s|%-15s|",username,password);
-        System.out.println("------------------------------");
+        System.out.printf("|     %-15s|     %-15s", username, password);
+        employee.output();
+        System.out.println(
+                "\n---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
     }
 
     @Override

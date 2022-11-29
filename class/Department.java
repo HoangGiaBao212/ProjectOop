@@ -1,67 +1,66 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 //Thuộc tính: Mã phòng ban,tên phòng ban,tên trưởng phòng,số lượng nhân viên,
 public class Department implements InOut {
-    private static Scanner sc = new Scanner(System.in);
-    private String DepartmentID;
-    private String DepartmentName;
-    private String Chiefname;
+    private static Scanner scanner = new Scanner(System.in);
+    private String departmentId;
+    private String departmentName;
     private int members;
+    private Boolean status = false;
+    private String[] idEmployee;
 
     public Department() {
 
     }
-    public Department(String DepartmentID,String DepartmentName,String Chiefname,int members){
-        this.DepartmentID = DepartmentID;
-        this.DepartmentName = DepartmentName;
-        this.Chiefname = Chiefname;
+
+    public Department(String departmentId, String departmentName, int members, Boolean status, String[] idEmployee) {
+        this.departmentId = departmentId;
+        this.departmentName = departmentName;
         this.members = members;
+        this.status = status;
+        this.idEmployee = idEmployee;
     }
 
-    public String getDepartmentID() {
-        return this.DepartmentID;
+    public Department(String departmentId, String departmentName, int members, String[] idEmployee) {
+        this.departmentId = departmentId;
+        this.departmentName = departmentName;
+        this.members = members;
+        this.idEmployee = idEmployee;
     }
 
-    public void setDepartmentID(String DepartmentID) {
-        System.out.print("Enter the Department ID: ");
-        DepartmentID = sc.nextLine();
-        while (DepartmentID.isEmpty()) {
-            System.out.print("Don't leave it empty.Please enter: ");
-            DepartmentID = sc.nextLine();
-        }
-        while(DepartmentID.startsWith("D")){
-            System.out.print("Department must start with letter D(Ex:D001).Please enter again: ");
-            DepartmentID = sc.nextLine();
-        }
-        this.DepartmentID = DepartmentID;
+    public String getDepartmentId() {
+        return this.departmentId;
     }
 
-    public String getDepartmentName() {
-        return this.DepartmentName;
+    public void setDepartmentId(String departmentId) {
+        System.out.print("Enter the Department Id: ");
+        // departmentId = scanner.nextLine();
+        // while (departmentId.isEmpty()) {
+        // System.out.print("Don't leave it empty.Please enter: ");
+        // departmentId = scanner.nextLine();
+        // }
+        // while (departmentId.startsWith("D")) {
+        // System.out.print("Department must start with letter D(Ex:D001).Please enter
+        // again: ");
+        // departmentId = scanner.nextLine();
+        // }
+        departmentId = scanner.nextLine();
+        this.departmentId = departmentId;
     }
 
-    public void setDepartmentName(String DepartmentName) {
+    public String departmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
         System.out.print("Enter the Department's name: ");
-        DepartmentName = sc.nextLine();
-        while (DepartmentName.isEmpty()) {
+        departmentName = scanner.nextLine();
+        while (departmentName.isEmpty()) {
             System.out.print("Don't leave it empty.Please enter: ");
-            DepartmentName = sc.nextLine();
+            departmentName = scanner.nextLine();
         }
-        this.DepartmentName = DepartmentName;
-    }
-
-    public String getChiefname() {
-        return this.Chiefname;
-    }
-
-    public void setChiefname(String Chiefname) {
-        System.out.print("Enter the Chief of Department: ");
-        Chiefname = sc.nextLine();
-        while (Chiefname.isEmpty()) {
-            System.out.print("Don't leave it empty.Please enter: ");
-            Chiefname = sc.nextLine();
-        }
-        this.Chiefname = Chiefname;
+        this.departmentName = departmentName;
     }
 
     public int getMembers() {
@@ -70,27 +69,58 @@ public class Department implements InOut {
 
     public void setMembers(int members) {
         System.out.print("Enter the amount of members: ");
-        members = sc.nextInt();
+        members = Integer.parseInt(scanner.nextLine());
         while (members < 0 && members >= 5) {
             System.out.print("Members must greater than 0 and less or equal to 5.Please enter again: ");
-            members = sc.nextInt();
+            members = Integer.parseInt(scanner.nextLine());
         }
         this.members = members;
     }
 
+    public String[] getIdEmployee() {
+        return idEmployee;
+    }
+
+    public void setIdEmployee(String[] idEmployee) {
+        idEmployee = new String[members];
+        System.out.println(" ------ Enter id for employee ----------- ");
+        for (int i = 0; i < members; i++) {
+            System.out.print(" ==> Enter id of employee number: " + i);
+            idEmployee[i] = new String(scanner.nextLine());
+        }
+        this.idEmployee = idEmployee;
+    }
+
     @Override
     public void input() {
-        setDepartmentID(DepartmentID);
-        setDepartmentName(DepartmentName);
-        setChiefname(Chiefname);
+        setDepartmentId(departmentId);
+        setDepartmentName(departmentName);
         setMembers(members);
+        setIdEmployee(idEmployee);
     }
+
     @Override
     public void output() {
-        System.out.printf("     %-15s|     %-15s|     %-15s|",DepartmentID,DepartmentName,Chiefname);
-        System.out.printf("     %-15s|",members);
+        System.out.println("--------------------------------------------------------------------------------");
+        System.out.printf("\n     %-15s|     %-15s|     %-15s", departmentId, departmentName, members);
+        System.out.println("--------------------------------------------------------------------------------");
 
-
+        for (int i = 0; i < members; i++) {
+            System.out.println("\n" + idEmployee[i]);
+        }
+        System.out.println("\n-------------------------------------------------------------------------------");
     }
 
+    @Override
+    public String toString() {
+        return departmentId + "-" + departmentName + "-" + members + toStringArray();
+    }
+
+    public String toStringArray() {
+        String str = "";
+        for (int i = 0; i < members; i++) {
+            str += "-" + idEmployee[i];
+        }
+        return str;
+    }
 }

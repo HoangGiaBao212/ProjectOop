@@ -2,35 +2,38 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class FileUtil {
 
-    static String listEmployeeTxt = "./File/employee.txt";
-    private static String listSalaryTxt = "./File/salary.txt";
-    private static String listContractTxt = "./File/contract.txt";
-    private static String listDepartmentTxt = "./File/department.txt";
-    private static String listProjectTxt = "./File/project.txt";
-    private static String listAccountTxt = "./File/account.txt";
-    
+    private static String listSalaryTxt = "./ProjectOop/File/salary.txt";
+    private static String listContractTxt = "./ProjectOop/File/contract.txt";
+    private static String listDepartmentTxt = "./ProjectOop/File/department.txt";
+    // private static String listProjectTxt = "./ProjectOop/File/project.txt";
+    private static String listAccountTxt = "./ProjectOop/File/account.txt";
+
     private FileUtil() {
     }
-    
+
     public static void getData() {
         readFileAccount();
-        // readFileSalary();
-        // readFileContract();
+        readFileSalary();
+        readFileContract();
+        readFileDepartment();
     }
-    
+
     public static void setData() {
         writeFileAccount();
-        // writeFileSalary();
-        // writeFileContract();
+        writeFileSalary();
+        writeFileContract();
+        writeFileDepartment();
     }
+
     private static void readFileAccount() {
         Handle.n = -1;
         try {
-            FileReader fr = new FileReader("./File/account.txt");
-            // Handle.n+=2;
+            FileReader fr = new FileReader(listAccountTxt);
             try (BufferedReader br = new BufferedReader(fr)) {
                 String line = "";
                 while (true) {
@@ -51,45 +54,59 @@ public class FileUtil {
                     String address = txt[8];
                     String phone = txt[9];
                     Employee employee = new Employee(name, age, gender, email, address, phone,
-                    idEmp, position);
-                    Account account = new Account(username, password,employee);
-                    Handle.listAccount[Handle.n] = new Account();
-                    Handle.listAccount[Handle.n] = account;
+                            idEmp, position);
+                    // Account account = new Account(username, password, employee);
+                    Handle.listAccount[Handle.n] = new Account(username, password, employee);
+                    // Handle.listAccount[Handle.n] = account;
                 }
             }
-                // if(!check) MenuContent.printNoData();
         } catch (Exception e) {
         }
     }
-    
+
+    private static void writeFileAccount() {
+        try {
+            FileWriter fw = new FileWriter(listAccountTxt);
+            System.out.println(3);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (int i = 0; i < Handle.n; i++) {
+                bw.write(Handle.listAccount[i].toString());
+                bw.newLine();
+            }
+            bw.close();
+            fw.close();
+        } catch (Exception e) {
+        }
+    }
+
     // private static void readFileEmployee() {
-        //     Handle.n = -1;
-    //     try {
-    //         FileReader fr = new FileReader(listEmployeeTxt);
-    //         try (BufferedReader br = new BufferedReader(fr)) {
-    //             String line = "";
-    //             while (true) {
-    //                 Handle.n++; // 5
-    //                 line = br.readLine();
-    //                 if (line == null) {
-    //                     break;
-    //                 }
-    //                 String[] txt = line.split("-");
-    //                 String idEmp = txt[0];
-    //                 String position = txt[1];
-    //                 String name = txt[2];
-    //                 int age = Integer.parseInt(txt[3]);
-    //                 String gender = txt[4];
-    //                 String email = txt[5];
-    //                 String address = txt[6];
-    //                 String phone = txt[7];
-    //                 Employee employee = new Employee(name, age, gender, email, address, phone,
-    //                         idEmp, position);
-    //                 Handle.listAccount[Handle.n].setEmployee(employee); 
-    //             }
-    //         }
-    //     } catch (Exception e) {
-    //     }
+    // Handle.n = -1;
+    // try {
+    // FileReader fr = new FileReader(listEmployeeTxt);
+    // try (BufferedReader br = new BufferedReader(fr)) {
+    // String line = "";
+    // while (true) {
+    // Handle.n++; // 5
+    // line = br.readLine();
+    // if (line == null) {
+    // break;
+    // }
+    // String[] txt = line.split("-");
+    // String idEmp = txt[0];
+    // String position = txt[1];
+    // String name = txt[2];
+    // int age = Integer.parseInt(txt[3]);
+    // String gender = txt[4];
+    // String email = txt[5];
+    // String address = txt[6];
+    // String phone = txt[7];
+    // Employee employee = new Employee(name, age, gender, email, address, phone,
+    // idEmp, position);
+    // Handle.listAccount[Handle.n].setEmployee(employee);
+    // }
+    // }
+    // } catch (Exception e) {
+    // }
     // }
 
     static void readFileSalary() {
@@ -125,7 +142,6 @@ public class FileUtil {
             }
 
         } catch (Exception e) {
-            // System.out.println("Don't have data for salary! ");
         }
     }
 
@@ -133,27 +149,29 @@ public class FileUtil {
 
     // private static void writeFileEmployee() {
 
-    //     try {
-    //         FileWriter fw = new FileWriter(listEmployeeTxt);
-    //         BufferedWriter bw = new BufferedWriter(fw);
-    //         for (int i = 0; i < Handle.n; i++) {
-    //             bw.write(Handle.listEmployees[i].toString());
-    //             bw.newLine();
-    //         }
-    //         bw.close();
-    //         fw.close();
-    //     } catch (Exception e) {
-    //     }
+    // try {
+    // FileWriter fw = new FileWriter(listEmployeeTxt);
+    // BufferedWriter bw = new BufferedWriter(fw);
+    // for (int i = 0; i < Handle.n; i++) {
+    // bw.write(Handle.listEmployees[i].toString());
+    // bw.newLine();
+    // }
+    // bw.close();
+    // fw.close();
+    // } catch (Exception e) {
+    // }
     // }
 
     public static void writeFileSalary() {
         try {
             FileWriter fw = new FileWriter(listSalaryTxt);
             BufferedWriter bw = new BufferedWriter(fw);
-            for (int i = 0; i <Handle.n ; i++) {
-              
+            for (int i = 0; i < Handle.n; i++) {
+
                 if (Handle.listAccount[i].getEmployee().getSalary() != null) {
-                    bw.write(Handle.listAccount[i].getEmployee().getIdEmp() + "-" + Handle.listAccount[i].getEmployee().getName() + "-" + Handle.listAccount[i].getEmployee().getPosition() + "-"
+                    bw.write(Handle.listAccount[i].getEmployee().getIdEmp() + "-"
+                            + Handle.listAccount[i].getEmployee().getName() + "-"
+                            + Handle.listAccount[i].getEmployee().getPosition() + "-"
                             + Handle.listAccount[i].getEmployee().getSalary().toString());
                     bw.newLine();
                 }
@@ -177,7 +195,6 @@ public class FileUtil {
                     if (line == null) {
                         break;
                     }
-                    // Handle.n++;
                     String[] txt = line.split("-");
                     String idEmp = txt[0];
                     String contractId = txt[2];
@@ -205,7 +222,8 @@ public class FileUtil {
             BufferedWriter bw = new BufferedWriter(fw);
             for (int i = 0; i < Handle.n; i++) {
                 if (Handle.listAccount[i].getEmployee().getContract() != null) {
-                    bw.write(Handle.listAccount[i].getEmployee().getIdEmp() + "-" + Handle.listAccount[i].getEmployee().getName() + "-"
+                    bw.write(Handle.listAccount[i].getEmployee().getIdEmp() + "-"
+                            + Handle.listAccount[i].getEmployee().getName() + "-"
                             + Handle.listAccount[i].getEmployee().getContract().toString());
                     bw.newLine();
                 }
@@ -215,14 +233,43 @@ public class FileUtil {
         } catch (Exception e) {
         }
     }
-    
-    
-    private static void writeFileAccount() {
+
+    private static void readFileDepartment() {
+        Handle.m = -1;
         try {
-            FileWriter fw = new FileWriter(listAccountTxt);
+            FileReader fr = new FileReader(listDepartmentTxt);
+            try (BufferedReader br = new BufferedReader(fr)) {
+                String line = "";
+                while (true) {
+                    Handle.m++;
+                    line = br.readLine();
+                    if (line == null) {
+                        break;
+                    }
+                    String[] txt = line.split("-");
+                    System.out.println(Arrays.toString(txt));
+                    String departmentId = txt[0];
+                    String departmentName = txt[1];
+                    int members = Integer.parseInt(txt[2]);
+                    String[] idEmployee = new String[members];
+                    for (int i = 0; i < members; i++) {
+                        idEmployee[i] = txt[i + 3];
+                    }
+                    Handle.listDepartments[Handle.m] = new Department(departmentId, departmentName, members, false,
+                            idEmployee);
+                }
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    private static void writeFileDepartment() {
+        try {
+            FileWriter fw = new FileWriter(listDepartmentTxt);
+            System.out.println(3);
             BufferedWriter bw = new BufferedWriter(fw);
-            for (int i = 0; i < Handle.n; i++) {
-                bw.write(Handle.listAccount[i].toString());
+            for (int i = 0; i < Handle.m; i++) {
+                bw.write(Handle.listDepartments[i].toString());
                 bw.newLine();
             }
             bw.close();
@@ -230,4 +277,5 @@ public class FileUtil {
         } catch (Exception e) {
         }
     }
+
 }
