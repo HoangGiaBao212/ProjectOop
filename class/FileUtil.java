@@ -143,7 +143,7 @@ public class FileUtil {
                     if (line == null) {
                         break;
                     }
-                    Handle.n++;
+                    // Handle.n++;
                     String[] txt = line.split("-");
                     String idEmp = txt[0];
                     String contractId = txt[2];

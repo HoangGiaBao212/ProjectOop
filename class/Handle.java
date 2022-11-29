@@ -1,4 +1,3 @@
-import java.io.Console;
 import java.util.Scanner;
 
 public class Handle {
@@ -73,11 +72,11 @@ public class Handle {
                     break;
                 }
                 case 3 -> {
-                    option("Salary  ");
+                    option("Salary");
                     break;
                 }
                 case 4 -> {
-                    option("Project ");
+                    option("Project");
                     break;
                 }
                 case 5 -> {
@@ -99,21 +98,6 @@ public class Handle {
     public static void option(String title) {
         int option;
         MenuContent.option(title);
-        // try {
-        // Thread.sleep(1000);
-        // } catch (Exception e) {
-        // System.out.println("Fail to sleep!");
-        // }
-        // System.out.println(" --------------------------------------------");
-        // System.out.println(" | 1. Input List Of Employee |");
-        // System.out.println(" | 2. Output List Of Employee |");
-        // System.out.println(" | 3. Add |");
-        // System.out.println(" | 4. Edit |");
-        // System.out.println(" | 5. Delete |");
-        // System.out.println(" | 6. Search |");
-        // System.out.println(" | 7. Back to previous menu |");
-        // System.out.println(" | 8. Exit |");
-        // System.out.println(" --------------------------------------------");
         do {
             System.out.print("     ==> Input option: ");
             option = Integer.parseInt(scanner.nextLine());

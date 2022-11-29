@@ -106,11 +106,8 @@ public class EmployeeManager implements RoleOfManager {
                 }
             } while (option < 1 || option > 3);
         }
-        System.out.println("----------------------------------------");
-        System.out.println("|            Add Successful!!          |");
-        System.out.println("----------------------------------------");
+        MenuContent.noteAddSuccess();
         Handle.n += amount;
-        FileUtil.setData();
     }
 
     @Override
@@ -179,7 +176,22 @@ public class EmployeeManager implements RoleOfManager {
                             System.out.println();
                             switch (key) {
                                 case 1:
-                                    Handle.listEmployees[i].setPosition(null);
+                                    MenuContent.menuOptionTypeEmployee();
+                                    key = Integer.parseInt(scanner.nextLine());
+                                    switch(key){
+                                        case 1:
+                                        Handle.listEmployees[i].setPosition("Chief Department");
+                                            break;
+                                        case 2:
+                                        Handle.listEmployees[i].setPosition("Official Employee");
+                                            break;
+                                        case 3:
+                                        Handle.listEmployees[i].setPosition("Intern Employee");
+                                            break;
+                                        default:
+                                            MenuContent.choiceWrong();
+                                            break;
+                                    }
                                     break;
                                 case 2:
                                     Handle.listEmployees[i].setName(null);
@@ -217,7 +229,7 @@ public class EmployeeManager implements RoleOfManager {
                         break;
                 }
             }
-
+            MenuContent.noteChangeSuccess();
             // MenuContent.noteChangeSuccess();
         }
     }
@@ -230,14 +242,14 @@ public class EmployeeManager implements RoleOfManager {
         for (int i = 0; i < Handle.n; i++) {
             if (idFind.equals(Handle.listEmployees[i].getIdEmp())) {
                 System.out.println(
-                        "--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+                        "---------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                 System.out.printf("|  %-10s|  %-20s|  %-20s|  %-10s|  %-10s|  %-30s|  %-20s|  %-20s|", "ID",
                         "Position", "Name", "Age", "Gender", "Email", "Address", "Phone");
                 System.out.println(
-                        "\n--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+                        "\n---------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                 Handle.listEmployees[i].output();
                 System.out.println(
-                        "--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+                        "---------------------------------------------------------------------------------------------------------------------------------------------------------------------");
             }
         }
     }
