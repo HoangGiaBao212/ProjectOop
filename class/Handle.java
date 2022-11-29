@@ -4,24 +4,20 @@ public class Handle {
     static Scanner scanner = new Scanner(System.in);
 
     static int n = -1;
-    static int m = -1;
-    static Employee listEmployees[] = new Employee[100];
-    static Account listAccount[] = new Account[100];
-    static Contract listContracts[] = new Contract[100];
+    static Account[] listAccount = new Account[100];
     static EmployeeManager listEmployee = new EmployeeManager();
     static ContractManager listContract = new ContractManager();
     static ProjectManager listProject = new ProjectManager();
     static SalaryManager listSalary = new SalaryManager();
     static DepartmentManager listDepartment = new DepartmentManager();
+    static AccountList listAccounts = new AccountList();
 
     private Handle() {
     }
 
     public static boolean checkIdEmployee(String IdEmp) {
-        for (Employee employee : Handle.listEmployees) {
-            if (employee == null)
-                break;
-            if ((employee.getIdEmp().equals(IdEmp)) && employee.getSalary() == null)
+        for (int i=0;i<Handle.n;i++) {
+            if ((Handle.listAccount[i].getEmployee().getIdEmp().equals(IdEmp)) && Handle.listAccount[i].getEmployee().getSalary() == null)
                 return true;
         }
         return false;
@@ -34,36 +30,18 @@ public class Handle {
 
     public static void menu() {
         int option;
-        clearScreen();
-        System.out.println("--------------------------------------------------------------------");
-        System.out.println("|                Hello, Welcome to Employee Manager                |");
-        System.out.println("--------------------------------------------------------------------");
-
-        try {
-            Thread.sleep(1000);
-        } catch (Exception e) {
-            System.out.println("Fail to sleep!");
-        }
-        clearScreen();
-        System.out.println("     -------------------------");
-        System.out.println("     | 1. Employee Manager   |");
-        System.out.println("     -------------------------");
-        System.out.println("     | 2. Contract Manager   |");
-        System.out.println("     -------------------------");
-        System.out.println("     | 3. Salary Manager     |");
-        System.out.println("     -------------------------");
-        System.out.println("     | 4. Project Manager    |");
-        System.out.println("     -------------------------");
-        System.out.println("     | 5. Department Manager |");
-        System.out.println("     -------------------------");
-        System.out.println("     | 6. Exit               |");
-        System.out.println("     -------------------------");
+        // try {
+        //     Thread.sleep(1000);
+        // } catch (Exception e) {
+        //     System.out.println("Fail to sleep!");
+        // }
         MenuContent.menu();
         do {
             System.out.print("==> Input option : ");
             option = Integer.parseInt(scanner.nextLine());
             switch (option) {
                 case 1 -> {
+                    System.out.println(Handle.n);
                     option("Employee");
                     break;
                 }
@@ -84,6 +62,10 @@ public class Handle {
                     break;
                 }
                 case 6 -> {
+                    option("Account");
+                    break;
+                }
+                case 7->{
                     MenuContent.noteBye();
                     break;
                 }
@@ -91,8 +73,8 @@ public class Handle {
                     MenuContent.choiceWrong();
                 }
             }
-        } while (option < 1 || option > 6);
-        Handle.clearScreen();
+        } while (option < 1 || option > 9);
+        // Handle.clearScreen();
     }
 
     public static void option(String title) {
@@ -111,7 +93,9 @@ public class Handle {
                         listSalary.inputList();
                     else if (title.equals("Project"))
                         listSalary.inputList();
-                    else
+                    else if(title.equals("Account"))
+                        listAccounts.inputList();
+                        else 
                         listDepartment.inputList();
                     option(title);
                     break;
@@ -125,7 +109,9 @@ public class Handle {
                         listSalary.outputList();
                     else if (title.equals("Project"))
                         listSalary.outputList();
-                    else
+                    else if(title.equals("Account"))
+                        listAccounts.outputList();
+                        else
                         listDepartment.outputList();
                     option(title);
                     break;
@@ -180,7 +166,9 @@ public class Handle {
                     else if (title.equals("Salary"))
                         listSalary.find();
                     else if (title.equals("Project"))
-                        listSalary.find();
+                        listProject.find();
+                    else if(title.equals("Account"))
+                        listAccounts.find();
                     else
                         listDepartment.find();
                     option(title);
@@ -217,13 +205,13 @@ public class Handle {
         System.out.print("  ==> Enter password: ");
         password = scanner.nextLine();
         // System.out.println(m);
-        for (int i = 0; i < m; i++) {
+        for (int i = 0; i < n; i++) {
             // System.out.println(1);
             if (username.equals(listAccount[i].getUsername())) {
                 if (password.equals(listAccount[i].getPassword())) {
-                    if (listAccount[i].getIdEmp().equals("admin"))
+                    if (listAccount[i].getEmployee().getIdEmp().equals("admin"))
                         iForManager();
-                    System.out.println(listAccount[i].getIdEmp());
+                    System.out.println(listAccount[i].getEmployee().getIdEmp());
                     permission(listAccount[i]);
                 } else
                     System.err.println("Wrong password!!!");
@@ -233,11 +221,11 @@ public class Handle {
 
     private static void permission(Account account) {
         for (int i = 0; i < n; i++) {
-            if (account.getIdEmp().equals(listEmployees[i].getIdEmp())) {
-                if (listEmployees[i].getPosition().equals("Chief Of Department")) {
+            if (account.getEmployee().getIdEmp().equals(listAccount[i].getEmployee().getIdEmp())) {
+                if (listAccount[i].getEmployee().getPosition().equals("Chief Of Department")) {
                     iForChiefDepartment();
-                } else if (listEmployees[i].getPosition().equals("Intern Employee")
-                        || listEmployees[i].getPosition().equals("Official Employee")) {
+                } else if (listAccount[i].getEmployee().getPosition().equals("Intern Employee")
+                        || listAccount[i].getEmployee().getPosition().equals("Official Employee")) {
                     iForEmployee();
                 }
             }

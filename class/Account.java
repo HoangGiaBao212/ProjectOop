@@ -2,40 +2,28 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Account implements InOut {
-    private String idEmp;
+    static Scanner scanner = new Scanner(System.in);
+    
     private String username;
     private String password;
-
-    static Scanner scanner = new Scanner(System.in);
+    private Employee employee;
 
     public Account() {
 
     }
 
-    public Account(String idEmp, String username, String password) {
-        this.idEmp = idEmp;
+    public Account(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public String getIdEmp() {
-        return idEmp;
-    }
+    
 
-    public void setIdEmp(String idEmp) {
-        System.out.print("     - Enter id of employee: ");
-        idEmp = scanner.nextLine();
-        while (idEmp.isEmpty()) {
-            System.out.print("\n    Id of employee must not be left blank! Enter again:  ");
-            idEmp = scanner.nextLine();
-            idEmp = idEmp.toUpperCase();
-        }
-        while (!idEmp.startsWith("E")) {
-            System.out.print("\n     Employee code starting from E(Ex:E001). Enter again: ");
-            idEmp = scanner.nextLine();
-            idEmp = idEmp.toUpperCase();
-        }
-        this.idEmp = idEmp;
+
+    public Account(String username, String password, Employee employee) {
+        this.username = username;
+        this.password = password;
+        this.employee = employee;
     }
 
     public String getUsername() {
@@ -73,6 +61,16 @@ public class Account implements InOut {
         this.password = password;
     }
 
+
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
     @Override
     public void input() {
         setUsername(username);
@@ -81,12 +79,14 @@ public class Account implements InOut {
 
     @Override
     public void output() {
-
+        System.out.println("\n------------------------------");
+        System.out.printf("|%-15s|%-15s|",username,password);
+        System.out.println("------------------------------");
     }
 
     @Override
     public String toString() {
-        return idEmp + "-" + username + "-" + password;
+        return username + "-" + password + "-" + employee.toString();
     }
 
 }

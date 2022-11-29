@@ -13,14 +13,14 @@ public class SalaryManager implements RoleOfManager {
         System.out.print("==>Enter base salary this month: ");
         baseSalary = Long.parseLong(scanner.nextLine());
         for (int i = 0; i < Handle.n; i++) {
-            System.out.println("Enter information about employee with id: " + Handle.listEmployees[i].getIdEmp());
+            System.out.println("Enter information about employee with id: " + Handle.listAccount[i].getEmployee().getIdEmp());
             int indexSalary = 1;
             Salary salary = new Salary();
             salary.input();
-            if (Handle.listEmployees[i].getPosition().equalsIgnoreCase("Chief of department")) {
+            if (Handle.listAccount[i].getEmployee().getPosition().equalsIgnoreCase("Chief of department")) {
                 indexSalary = ChiefDepartment.getCoefficientsSalary();
                 salary.setIndexSalary(indexSalary);
-            } else if (Handle.listEmployees[i].getPosition().equalsIgnoreCase("Official Employee")) {
+            } else if (Handle.listAccount[i].getEmployee().getPosition().equalsIgnoreCase("Official Employee")) {
                 indexSalary = OfficialEmployee.getCoefficientsSalary();
                 salary.setIndexSalary(indexSalary);
             } else {
@@ -28,7 +28,7 @@ public class SalaryManager implements RoleOfManager {
                 salary.setIndexSalary(indexSalary);
             }
             salary.payRoll(baseSalary, indexSalary);
-            Handle.listEmployees[i].setSalary(salary);
+            Handle.listAccount[i].getEmployee().setSalary(salary);
         }
     }
 
@@ -42,13 +42,13 @@ public class SalaryManager implements RoleOfManager {
         System.out.println(
                 "\n---------------------------------------------------------------------------------------------------------------------------------");
         for (int i = 0; i < Handle.n; i++) {
-            if (Handle.listEmployees[i].getSalary() == null) {
+            if (Handle.listAccount[i].getEmployee().getSalary() == null) {
                 continue;
             }
-            System.out.printf("|  %-10s|  %-20s|  %-20s", Handle.listEmployees[i].getIdEmp(),
-                    Handle.listEmployees[i].getName(),
-                    Handle.listEmployees[i].getPosition());
-            Handle.listEmployees[i].getSalary().output();
+            System.out.printf("|  %-10s|  %-20s|  %-20s", Handle.listAccount[i].getEmployee().getIdEmp(),
+                    Handle.listAccount[i].getEmployee().getName(),
+                    Handle.listAccount[i].getEmployee().getPosition());
+            Handle.listAccount[i].getEmployee().getSalary().output();
             System.out.println(
                     "---------------------------------------------------------------------------------------------------------------------------------");
         }
@@ -60,19 +60,17 @@ public class SalaryManager implements RoleOfManager {
         System.out.print("==> Enter id of employee to add list salary: ");
         idEmpAdd = scanner.nextLine();
         if (Handle.checkIdEmployee(idEmpAdd)) {
-            for (Employee employee : Handle.listEmployees) {
-                if (employee == null)
-                    break;
-                if (employee.getIdEmp().equals(idEmpAdd)) {
+            for (int i=0 ;i<Handle.n ;i++) {
+                if (Handle.listAccount[i].getEmployee().getIdEmp().equals(idEmpAdd)) {
                     System.out.print("Enter base salary of employee: ");
                     baseSalary = scanner.nextLong();
                     int indexSalary = 1;
                     Salary salary = new Salary();
                     salary.input();
-                    if (employee.getPosition().equalsIgnoreCase("Chief of department")) {
+                    if (Handle.listAccount[i].getEmployee().getPosition().equalsIgnoreCase("Chief of department")) {
                         indexSalary = ChiefDepartment.getCoefficientsSalary();
                         salary.setIndexSalary(indexSalary);
-                    } else if (employee.getPosition().equalsIgnoreCase("Official Employee")) {
+                    } else if (Handle.listAccount[i].getEmployee().getPosition().equalsIgnoreCase("Official Employee")) {
                         indexSalary = OfficialEmployee.getCoefficientsSalary();
                         salary.setIndexSalary(indexSalary);
                     } else {
@@ -80,7 +78,7 @@ public class SalaryManager implements RoleOfManager {
                         salary.setIndexSalary(indexSalary);
                     }
                     salary.payRoll(baseSalary, indexSalary);
-                    employee.setSalary(salary);
+                    Handle.listAccount[i].getEmployee().setSalary(salary);
                 }
             }
         } else {
@@ -98,12 +96,9 @@ public class SalaryManager implements RoleOfManager {
         do {
             System.out.print("Enter id of employee to remove: ");
             idRemove = scanner.nextLine();
-            for (Employee employee : Handle.listEmployees) {
-                if (employee == null) {
-                    break;
-                }
-                if (employee.getIdEmp().equals(idRemove)) {
-                    employee.setSalary(null);
+            for (int i=0;i<Handle.n;i++) {
+                if (Handle.listAccount[i].getEmployee().getIdEmp().equals(idRemove)) {
+                    Handle.listAccount[i].getEmployee().setSalary(null);
                     check = true;
                 }
             }
@@ -127,7 +122,7 @@ public class SalaryManager implements RoleOfManager {
         for (int i = 0; i < Handle.n; i++) {
             switch (option) {
                 case 1:
-                    if (Handle.listEmployees[i].getIdEmp().equalsIgnoreCase(key)) {
+                    if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(key)) {
                         System.out.println();
                         System.out.println("--------------------------------------------------");
                         System.out.println("| 1.Change Base Salary                           |");
@@ -141,7 +136,7 @@ public class SalaryManager implements RoleOfManager {
                                 baseSalary = Long.parseLong(scanner.nextLine());
                                 break;
                             case 2:
-                                Handle.listEmployees[i].getSalary().setSomeHolidays(0);
+                            Handle.listAccount[i].getEmployee().getSalary().setSomeHolidays(0);
 
                                 break;
                             default:
@@ -151,8 +146,8 @@ public class SalaryManager implements RoleOfManager {
                     }
                     break;
                 case 2:
-                    if (Handle.listEmployees[i].getIdEmp().equalsIgnoreCase(key)) {
-                        Handle.listEmployees[i].setSalary(null);
+                    if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(key)) {
+                        Handle.listAccount[i].getEmployee().setSalary(null);
                     }
                     break;
                 default:
@@ -172,20 +167,20 @@ public class SalaryManager implements RoleOfManager {
         idSearch = scanner.nextLine();
 
         for (int i = 0; i <= Handle.n; i++) {
-            if (Handle.listEmployees[i].getSalary() == null) {
+            if (Handle.listAccount[i].getEmployee().getSalary() == null) {
                 continue;
             }
-            if (Handle.listEmployees[i].getIdEmp().equalsIgnoreCase(idSearch)) {
+            if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(idSearch)) {
                 System.out.println(
                         "---------------------------------------------------------------------------------------------------------------------------------");
                 System.out.printf("|  %-10s|  %-20s|  %-20s|  %-20s|  %-20s|  %-20s|", "ID",
                         "Name", "Position", "Coefficients Salary", "Some Holidays", "Salary");
                 System.out.println(
                         "\n---------------------------------------------------------------------------------------------------------------------------------");
-                System.out.printf("|  %-10s|  %-20s|  %-20s", Handle.listEmployees[i].getIdEmp(),
-                        Handle.listEmployees[i].getName(),
-                        Handle.listEmployees[i].getPosition());
-                Handle.listEmployees[i].getSalary().output();
+                System.out.printf("|  %-10s|  %-20s|  %-20s", Handle.listAccount[i].getEmployee().getIdEmp(),
+                        Handle.listAccount[i].getEmployee().getName(),
+                        Handle.listAccount[i].getEmployee().getPosition());
+                        Handle.listAccount[i].getEmployee().getSalary().output();
                 System.out.println(
                         "---------------------------------------------------------------------------------------------------------------------------------");
             }

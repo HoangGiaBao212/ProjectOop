@@ -16,27 +16,32 @@ public class EmployeeManager implements RoleOfManager {
             System.out.println("Amount must be greater than 0");
             Handle.n = Integer.parseInt(scanner.nextLine());
         }
-        Handle.listEmployees = new Employee[Handle.n];
+        Handle.listAccount = new Account[Handle.n];
         for (int i = 0; i < Handle.n; i++) {
             do {
                 MenuContent.menuOptionTypeEmployee();
                 option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
                     case 1:
-                        Handle.listEmployees[i] = new Employee();
-                        Handle.listEmployees[i].setPosition("Chief of department");
-                        Handle.listEmployees[i].input();
+                        Handle.listAccount[i] = new Account();
+                        Employee employeeChief = new Employee();
+                        employeeChief.setPosition("Chief Of Department");
+                        employeeChief.input();
+                        Handle.listAccount[i].setEmployee(employeeChief);
                         break;
                     case 2:
-                        Handle.listEmployees[i] = new Employee();
-                        Handle.listEmployees[i].setPosition("Official Employee");
-                        Handle.listEmployees[i].input();
+                    Handle.listAccount[i] = new Account();
+                    Employee employeeOfficial = new Employee();
+                    employeeOfficial.setPosition("Official Employee"); 
+                    employeeOfficial.input();
+                    Handle.listAccount[i].setEmployee(employeeOfficial);
                         break;
                     case 3:
-                        Handle.listEmployees[i] = new Employee();
-                        Handle.listEmployees[i].setPosition("Intern Employee");
-                        Handle.listEmployees[i].input();
-                        break;
+                        // Handle.listAccount[i] = new Account();
+                        Employee employeeIntern = new Employee();
+                        employeeIntern.setPosition("Intern Employee");
+                        employeeIntern.input();
+                        Handle.listAccount[i].setEmployee(employeeIntern);
                     default:
                         System.out.println("choice does not exist!");
                         System.out.println("Option from 1 to 3, please re-enter: ");
@@ -59,10 +64,10 @@ public class EmployeeManager implements RoleOfManager {
         System.out.println(
                 "\n---------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         for (int i = 0; i < Handle.n; i++) {
-            Handle.listEmployees[i].output();
+            Handle.listAccount[i].getEmployee().output();
             System.out.println(
-                    "---------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        }
+                "---------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+            }
     }
 
     @Override
@@ -73,29 +78,31 @@ public class EmployeeManager implements RoleOfManager {
         System.out.println("---------------------------------------");
         System.out.print("\n *Input amount of employee to add: ");
         amount = Integer.parseInt(scanner.nextLine());
+        int temp = Handle.n;
+        Handle.n += amount;
         while (amount <= 0) {
             System.out.print("Amount must be greater than 0");
             amount = Integer.parseInt(scanner.nextLine());
         }
-        for (int i = Handle.n; i < (Handle.n + amount); i++) {
+        for (int i = temp; i < Handle.n ; i++) {
             do {
                 MenuContent.menuOptionTypeEmployee();
                 option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
                     case 1:
-                        Handle.listEmployees[i] = new Employee();
-                        Handle.listEmployees[i].setPosition("Chief of department");
-                        Handle.listEmployees[i].input();
+                        Handle.listAccount[i] = new Account();
+                        Handle.listAccount[i].getEmployee().setPosition("Chief of department");
+                        Handle.listAccount[i].getEmployee().input();
                         break;
                     case 2:
-                        Handle.listEmployees[i] = new Employee();
-                        Handle.listEmployees[i].setPosition("Official Employee");
-                        Handle.listEmployees[i].input();
+                        Handle.listAccount[i] = new Account();
+                        Handle.listAccount[i].getEmployee().setPosition("Official Employee");
+                        Handle.listAccount[i].getEmployee().input();
                         break;
                     case 3:
-                        Handle.listEmployees[i] = new Employee();
-                        Handle.listEmployees[i].setPosition("Intern Employee");
-                        Handle.listEmployees[i].input();
+                        Handle.listAccount[i] = new Account();
+                        Handle.listAccount[i].getEmployee().setPosition("Intern Employee");
+                        Handle.listAccount[i].getEmployee().input();
                         break;
                     default:
                         System.out.println("------------------------------------------------");
@@ -107,7 +114,6 @@ public class EmployeeManager implements RoleOfManager {
             } while (option < 1 || option > 3);
         }
         MenuContent.noteAddSuccess();
-        Handle.n += amount;
     }
 
     @Override
@@ -119,12 +125,12 @@ public class EmployeeManager implements RoleOfManager {
         String idRemove = scanner.nextLine();
         boolean check = false;
         for (int i = 0; i < Handle.n; i++) {
-            if (Handle.listEmployees[i].getIdEmp().equalsIgnoreCase(idRemove)) {
+            if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(idRemove)) {
                 for (int j = i; j < Handle.n - 1; j++) {
-                    Handle.listEmployees[j] = Handle.listEmployees[j + 1];
+                    Handle.listAccount[j] = Handle.listAccount[j + 1];
 
                 }
-                Handle.listEmployees[Handle.n - 1] = null;
+                Handle.listAccount[Handle.n - 1] = null;
                 Handle.n--;
                 check = true;
                 break;
@@ -147,7 +153,7 @@ public class EmployeeManager implements RoleOfManager {
         idTemp = scanner.nextLine();
         int count = 0;
         for (int i = 0; i < Handle.n; i++) {
-            if (Handle.listEmployees[i].getIdEmp().equalsIgnoreCase(idTemp)) {
+            if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(idTemp)) {
                 count++;
             }
         }
@@ -159,7 +165,7 @@ public class EmployeeManager implements RoleOfManager {
             for (int i = 0; i < Handle.n; i++) {
                 switch(temp) {
                     case 1:
-                        if (idTemp.equals(Handle.listEmployees[i].getIdEmp())) {
+                        if (idTemp.equals(Handle.listAccount[i].getEmployee().getIdEmp())) {
                             System.out.println();
                             System.out.println("----------------------------------------------");
                             System.out.println("| 1.Change Position                          |");
@@ -180,13 +186,13 @@ public class EmployeeManager implements RoleOfManager {
                                     key = Integer.parseInt(scanner.nextLine());
                                     switch(key){
                                         case 1:
-                                        Handle.listEmployees[i].setPosition("Chief Department");
+                                        Handle.listAccount[i].getEmployee().setPosition("Chief Department");
                                             break;
                                         case 2:
-                                        Handle.listEmployees[i].setPosition("Official Employee");
+                                        Handle.listAccount[i].getEmployee().setPosition("Official Employee");
                                             break;
                                         case 3:
-                                        Handle.listEmployees[i].setPosition("Intern Employee");
+                                        Handle.listAccount[i].getEmployee().setPosition("Intern Employee");
                                             break;
                                         default:
                                             MenuContent.choiceWrong();
@@ -194,22 +200,22 @@ public class EmployeeManager implements RoleOfManager {
                                     }
                                     break;
                                 case 2:
-                                    Handle.listEmployees[i].setName(null);
+                                    Handle.listAccount[i].getEmployee().setName(null);
                                     break;
                                 case 3:
-                                    Handle.listEmployees[i].setAge(0);
+                                    Handle.listAccount[i].getEmployee().setAge(0);
                                     break;
                                 case 4:
-                                    Handle.listEmployees[i].setGender(null);
+                                    Handle.listAccount[i].getEmployee().setGender(null);
                                     break;
                                 case 5:
-                                    Handle.listEmployees[i].setEmail(null);
+                                    Handle.listAccount[i].getEmployee().setEmail(null);
                                     break;
                                 case 6:
-                                    Handle.listEmployees[i].setAddress(null);
+                                    Handle.listAccount[i].getEmployee().setAddress(null);
                                     break;
                                 case 7:
-                                    Handle.listEmployees[i].setPhone(null);
+                                    Handle.listAccount[i].getEmployee().setPhone(null);
                                     break;
                                 case 8:
                                     MenuContent.option("Employee");
@@ -221,8 +227,8 @@ public class EmployeeManager implements RoleOfManager {
                         }
                         break;
                     case 2:
-                        if(Handle.listEmployees[i].getIdEmp().equalsIgnoreCase(idTemp))
-                            Handle.listEmployees[i].input();
+                        if(Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(idTemp))
+                            Handle.listAccount[i].getEmployee().input();
                         break;
                     default:
                         MenuContent.choiceWrong();
@@ -240,14 +246,14 @@ public class EmployeeManager implements RoleOfManager {
         System.out.print("Enter id of employee to search(Ex:E001): ");
         idFind = scanner.nextLine();
         for (int i = 0; i < Handle.n; i++) {
-            if (idFind.equals(Handle.listEmployees[i].getIdEmp())) {
+            if (idFind.equals(Handle.listAccount[i].getEmployee().getIdEmp())) {
                 System.out.println(
                         "---------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                 System.out.printf("|  %-10s|  %-20s|  %-20s|  %-10s|  %-10s|  %-30s|  %-20s|  %-20s|", "ID",
                         "Position", "Name", "Age", "Gender", "Email", "Address", "Phone");
                 System.out.println(
                         "\n---------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-                Handle.listEmployees[i].output();
+                Handle.listAccount[i].getEmployee().output();
                 System.out.println(
                         "---------------------------------------------------------------------------------------------------------------------------------------------------------------------");
             }

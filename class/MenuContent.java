@@ -33,23 +33,16 @@ public class MenuContent {
         System.out.printf("\n     | %19s %-20s|", " 4. Edit Information", title);
         System.out.printf("\n     | %9s %-30s|", " 5. Delete", title);
         System.out.printf("\n     | %21s %-18s|", " 6. Search Information", title);
-        System.out.println("\n     |  7. Back to previous menu                |");
-        System.out.println("     |  8. Exit                                 |");
+        System.out.println("\n     |  8. Back to previous menu                |");
+        System.out.println("     |  9. Exit                                 |");
         System.out.println("     --------------------------------------------");
     }
 
     public static void menu() {
-        Handle.clearScreen();
         System.out.println("--------------------------------------------------------------------");
         System.out.println("|                  Hello, Welcome to Employee Manager              |");
         System.out.println("--------------------------------------------------------------------");
 
-        try {
-            Thread.sleep(2000);
-        } catch (Exception e) {
-            System.out.println("Fail to sleep!");
-        }
-        Handle.clearScreen();
         System.out.println("     -------------------------");
         System.out.println("     | 1. Employee Manager   |");
         System.out.println("     -------------------------");
@@ -61,7 +54,9 @@ public class MenuContent {
         System.out.println("     -------------------------");
         System.out.println("     | 5. Department Manager |");
         System.out.println("     -------------------------");
-        System.out.println("     | 6. Exit               |");
+        System.out.println("     | 6. Account Manager    |");
+        System.out.println("     -------------------------");
+        System.out.println("     | 7. Exit               |");
         System.out.println("     -------------------------");
     }
 

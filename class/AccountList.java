@@ -6,25 +6,21 @@ public class AccountList implements RoleOfManager {
     @Override
     public void inputList() {
         // Input new list account
-        Handle.m = 0;
-        int i = 0;
+        Handle.n = 0;
         System.out.print(" ==> Enter amount: ");
-        Handle.m = scanner.nextInt();
-        while (i < Handle.m) {
-            Handle.listAccount[i].setIdEmp(null);
-            if (Handle.checkIdEmployee(Handle.listAccount[i].getIdEmp())) {
-                Handle.listAccount[i].input();
-            } else {
-                Handle.listAccount[i] = null;
-                System.err.println("Don't have data with id " + Handle.listAccount[i].getIdEmp());
-            }
+        Handle.n = scanner.nextInt();
+        for(int i=0;i<Handle.n;i++){
+            Handle.listAccount[i] = new Account();
+            Handle.listAccount[i].input();
         }
+       
     }
 
     @Override
     public void outputList() {
         // Output new list account
-        for (int i = 0; i < Handle.listAccount.length; i++) {
+        System.out.printf("|%-15s|%15s|","Username","Password");
+        for (int i = 0; i < Handle.n; i++) {
             Handle.listAccount[i].output();
         }
 
@@ -35,14 +31,14 @@ public class AccountList implements RoleOfManager {
         int amount;// add new account
         System.out.println(" ==> Enter amount to add account: ");
         amount = scanner.nextInt();
-        Handle.m += amount;
-        for (int i = Handle.m; i < (Handle.m + amount); i++) {
-            Handle.listAccount[i].setIdEmp(null);
-            if (Handle.checkIdEmployee(Handle.listAccount[i].getIdEmp())) {
+        Handle.n += amount;
+        for (int i = Handle.n; i < (Handle.n + amount); i++) {
+            Handle.listAccount[i].getEmployee().setIdEmp(null);
+            if (Handle.checkIdEmployee(Handle.listAccount[i].getEmployee().getIdEmp())) {
                 Handle.listAccount[i].input();
             } else {
                 Handle.listAccount[i] = null;
-                System.err.println("Don't have data with id " + Handle.listAccount[i].getIdEmp());
+                System.err.println("Don't have data with id " + Handle.listAccount[i].getEmployee().getIdEmp());
             }
         }
     }
@@ -66,8 +62,8 @@ public class AccountList implements RoleOfManager {
         System.out.println(" ==> Enter id of employee to search: ");
         idSearch = scanner.nextLine();
 
-        for (int i = 0; i < Handle.m; i++) {
-            if (idSearch.equalsIgnoreCase(Handle.listAccount[i].getIdEmp())) {
+        for (int i = 0; i < Handle.n; i++) {
+            if (idSearch.equalsIgnoreCase(Handle.listAccount[i].getEmployee().getIdEmp())) {
                 Handle.listAccount[i].output();
             }
         }

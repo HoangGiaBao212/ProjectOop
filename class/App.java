@@ -8,8 +8,7 @@ public class App {
     }
 
     public static void start() {
-        Handle.clearScreen();
-        // Handle.login();
+        Handle.clearScreen();   
         Handle.menu();
     }
 
@@ -21,7 +20,5 @@ public class App {
         init();
         start();
         end();
-        // Account account = new Account();
-        // account.input();
     }
 }
