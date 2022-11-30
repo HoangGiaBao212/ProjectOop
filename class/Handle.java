@@ -43,10 +43,10 @@ public class Handle {
             option = Integer.parseInt(scanner.nextLine());
             System.out.println(option);
             switch (option) {
-                // case 1 -> option("Account Employee");
-                // case 2 -> option("Contract");
-                // case 3 -> option("Salary");
-                // case 4 -> option("Department");
+                case 1 -> option("Account Employee");
+                case 2 -> option("Contract");
+                case 3 -> option("Salary");
+                case 4 -> option("Department");
                 case 5 -> {
                     MenuContent.noteBye();
                     break;
@@ -158,7 +158,6 @@ public class Handle {
         String username;
         String password;
         System.out.println("--------------------------------------------------------------------");
-        System.out.println("");
         System.out.println("|                                Login                             |");
         System.out.println("--------------------------------------------------------------------");
         System.out.print("  ==> Enter username: ");
@@ -172,7 +171,6 @@ public class Handle {
                         iForManager();
                     else
                         permission(listAccount[i]);
-                    // break;
                 }
             }
         }
