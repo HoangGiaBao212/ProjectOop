@@ -101,11 +101,12 @@ public class MenuContent {
         System.out.println("----------------------------------------------------------------");
     }
 
-    public static void quantityCount(String any) {
+    public static void quantityCount(String any,int quantity) {
 
         System.out.println("-------------------------------------------------------");
         System.out.printf("| %s %s|", any.toUpperCase(), "QUANTITY");
         System.out.println("-------------------------------------------------------");
+        System.out.printf("At the moment we all have %2d %2s",quantity,any);
     }
 
     public static void menuIForEmployee() {

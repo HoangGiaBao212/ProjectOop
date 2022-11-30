@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import javax.management.modelmbean.ModelMBean;
+
 public class SalaryManager implements RoleOfManager {
 
     static Scanner scanner = new Scanner(System.in);
@@ -193,5 +195,8 @@ public class SalaryManager implements RoleOfManager {
             System.out.println("Not find id is: " + idSearch);
         }
     }
-
+    @Override 
+    public void statistics(){
+        MenuContent.quantityCount("Salary", Handle.n);
+    }
 }

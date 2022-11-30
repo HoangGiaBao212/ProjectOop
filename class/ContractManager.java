@@ -30,26 +30,30 @@ public class ContractManager implements RoleOfManager {
     public void outputList() {
         Handle.clearScreen();
         System.out.println("Output the List of Contract\n");
-        System.out.println(Handle.n);
-        System.out.println(
-                "-------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("|    %-15s|   %-20s|   %-10s|   %-10s|   %-15s|    %-25s|   %-10s|    %-10s|",
-                "Contract ID", "Name", "Gender", "Age", "Phone number", "Email", "Time start", "Time end");
-        System.out.println();
-        System.out.println(
-                "-------------------------------------------------------------------------------------------------------------------------------------------------------");
-        for (int i = 0; i < Handle.n; i++) {
-            System.out.printf("|    %-15s|   %-20s|   %-10s|   %-10s|   %-15s|    %-25s|   %-10s|    %-10s|\n",
-                    Handle.listAccount[i].getEmployee().getContract().getContractID(),
-                    Handle.listAccount[i].getEmployee().getName(),
-                    Handle.listAccount[i].getEmployee().getGender(),
-                    Handle.listAccount[i].getEmployee().getAge(),
-                    Handle.listAccount[i].getEmployee().getPhone(),
-                    Handle.listAccount[i].getEmployee().getEmail(),
-                    Handle.listAccount[i].getEmployee().getContract().getTimeStart(),
-                    Handle.listAccount[i].getEmployee().getContract().getTimeEnd());
+        // System.out.println(Handle.n);
+        if (Handle.n == 0) {
+            MenuContent.printNoData();
+        } else {
             System.out.println(
                     "-------------------------------------------------------------------------------------------------------------------------------------------------------");
+            System.out.printf("|    %-15s|   %-20s|   %-10s|   %-10s|   %-15s|    %-25s|   %-10s|    %-10s|",
+                    "Contract ID", "Name", "Gender", "Age", "Phone number", "Email", "Time start", "Time end");
+            System.out.println();
+            System.out.println(
+                    "-------------------------------------------------------------------------------------------------------------------------------------------------------");
+            for (int i = 0; i < Handle.n; i++) {
+                System.out.printf("|    %-15s|   %-20s|   %-10s|   %-10s|   %-15s|    %-25s|   %-10s|    %-10s|\n",
+                        Handle.listAccount[i].getEmployee().getContract().getContractID(),
+                        Handle.listAccount[i].getEmployee().getName(),
+                        Handle.listAccount[i].getEmployee().getGender(),
+                        Handle.listAccount[i].getEmployee().getAge(),
+                        Handle.listAccount[i].getEmployee().getPhone(),
+                        Handle.listAccount[i].getEmployee().getEmail(),
+                        Handle.listAccount[i].getEmployee().getContract().getTimeStart(),
+                        Handle.listAccount[i].getEmployee().getContract().getTimeEnd());
+                System.out.println(
+                        "-------------------------------------------------------------------------------------------------------------------------------------------------------");
+            }
         }
     }
 
@@ -58,7 +62,7 @@ public class ContractManager implements RoleOfManager {
         System.out.println("---------------------------------------");
         System.out.println("|             ADD CONTRACT            |");
         System.out.println("---------------------------------------\n");
-        System.out.println("Enter Employee ID to find: ");
+        System.out.print("Enter Employee ID to add: ");
         String idEmpAdd;
         idEmpAdd = scanner.nextLine();
         if (Handle.checkIdEmployee(idEmpAdd)) {
@@ -147,7 +151,7 @@ public class ContractManager implements RoleOfManager {
         System.out.println("|               REMOVE CONTRACT               |");
         System.out.println("-----------------------------------------------");
         if (idRemove == null) {
-            System.out.println("Enter id of contract to remove(Ex:C001): ");
+            System.out.print("Enter id of contract to remove(Ex:C001): ");
             idRemove = scanner.nextLine();
         }
         boolean check = false;
@@ -208,9 +212,10 @@ public class ContractManager implements RoleOfManager {
             }
         }
         if (!check)
-            System.out.println("<<<<< Don't have data for contract");
+            System.out.println("------------ Don't have data for contract ---------------");
     }
-
-    public static void thongKe() {
+    @Override
+    public void statistics() {
+        MenuContent.quantityCount("Contract",Handle.n);
     }
 }

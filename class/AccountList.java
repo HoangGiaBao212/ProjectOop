@@ -236,5 +236,8 @@ public class AccountList implements RoleOfManager {
             }
         }
     }
-
+    @Override
+    public void statistics(){
+        MenuContent.quantityCount("Account", Handle.n);
+    }
 }
