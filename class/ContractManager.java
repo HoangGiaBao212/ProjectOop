@@ -211,6 +211,6 @@ public class ContractManager implements RoleOfManager {
             System.out.println("<<<<< Don't have data for contract");
     }
 
-    public static void thongKe() {
+    public static void statistical() {
     }
 }
