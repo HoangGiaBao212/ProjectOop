@@ -16,6 +16,22 @@ public class Handle {
     private Handle() {
     }
 
+    public static int getInputNumber() {
+        int choice;
+        while (true) {
+            try {
+                choice = Integer.parseInt(getInput());
+                return choice;
+            } catch (Exception e) {
+                MenuContent.choiceWrong();
+            }
+        }
+    }
+
+    private static String getInput() {
+        return scanner.nextLine();
+    }
+
     public static boolean checkIdEmployee(String IdEmp) {
         for (int i = 0; i < Handle.n; i++) {
             if ((Handle.listAccount[i].getEmployee().getIdEmp().equals(IdEmp))
@@ -40,8 +56,7 @@ public class Handle {
         MenuContent.menu();
         do {
             System.out.print("==> Input option : ");
-            option = Integer.parseInt(scanner.nextLine());
-            System.out.println(option);
+            option = getInputNumber();
             switch (option) {
                 case 1 -> option("Account Employee");
                 case 2 -> option("Contract");
@@ -57,7 +72,6 @@ public class Handle {
                 }
             }
         } while (option < 1 || option > 5);
-        // Handle.clearScreen();
     }
 
     public static void option(String title) {
@@ -65,7 +79,7 @@ public class Handle {
         MenuContent.option(title);
         do {
             System.out.print("     ==> Input option: ");
-            option = Integer.parseInt(scanner.nextLine());
+            option = getInputNumber();
             switch (option) {
                 case 1 -> {
                     if (title.equals("Account Employee"))
@@ -153,7 +167,6 @@ public class Handle {
     }
 
     // Login
-
     public static void login() {
         String username;
         String password;
@@ -165,15 +178,25 @@ public class Handle {
         System.out.print("  ==> Enter password: ");
         password = scanner.nextLine();
         for (int i = 0; i < n; i++) {
-            if (username.equals(listAccount[i].getUsername())) {
-                if (password.equals(listAccount[i].getPassword())) {
-                    if (listAccount[i].getEmployee().getPosition().equals("admin"))
-                        iForManager();
-                    else
-                        permission(listAccount[i]);
+            if (username.equals(listAccount[i].getUsername()) && password.equals(listAccount[i].getPassword())) {
+                if (listAccount[i].getEmployee().getPosition().equals("admin")) {
+                    iForManager();
+                    break;
+                } else {
+                    permission(listAccount[i]);
+                    break;
                 }
+            } else {
+                MenuContent.choiceWrong();
+                login();
+                break;
             }
+            // System.out.print(" ==> Enter username: ");
+            // username = scanner.nextLine();
+            // System.out.print(" ==> Enter password: ");
+            // password = scanner.nextLine();
         }
+
     }
 
     private static void permission(Account account) {
@@ -193,7 +216,7 @@ public class Handle {
         int choice;
         MenuContent.menuIForEmployee();
         do {
-            choice = scanner.nextInt();
+            choice = getInputNumber();
             switch (choice) {
                 case 1 -> {
                     listAccounts.find(idEmp);
@@ -218,7 +241,7 @@ public class Handle {
         int choice;
         MenuContent.menuIForChief();
         do {
-            choice = scanner.nextInt();
+            choice = getInputNumber();
             switch (choice) {
                 case 1 -> {
                     listAccounts.find(idEmp);
@@ -260,6 +283,9 @@ public class Handle {
         menu();
     }
 
+    public static void noteNoHaveId(String id) {
+        System.out.printf("%s-20s %-10s", " <<<<< Don't have id for ", id);
+    }
 }
 
 // Đăng nhập với tư cách nhân viên xem thông tin cá nhân,xem ds nhân viên,xem ds

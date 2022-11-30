@@ -18,7 +18,7 @@ public class DepartmentManager implements RoleOfManager {
     public void outputList() {
         // TODO Auto-generated method stub
         if (Handle.m < 0)
-            System.out.println("Don't have data for department");
+            Handle.noteNoHaveId("department");
         else {
             System.out.printf("|%-15s|%-15s|%-15s|%-15s", "Department Id", "Department Name", "Amount Members",
                     "Number of employee codes");
@@ -33,7 +33,7 @@ public class DepartmentManager implements RoleOfManager {
     public void add() {
         // TODO Auto-generated method stub
         if (Handle.m < 0)
-            System.out.println("Don't have data for department");
+            Handle.noteNoHaveId("department");
         else {
             int amountAdd;
             System.out.print(" ==> Enter amount for department to add: ");
@@ -110,12 +110,14 @@ public class DepartmentManager implements RoleOfManager {
                                             .setIdEmployee(new String[Handle.listDepartments[i].getMembers()]);
                                 }
                                 default -> {
+                                    MenuContent.choiceWrong();
                                     break;
                                 }
                             }
                         }
                         default -> {
-
+                            MenuContent.choiceWrong();
+                            break;
                         }
                     }
                 }
@@ -141,5 +143,9 @@ public class DepartmentManager implements RoleOfManager {
                 }
             }
         }
+    }
+    @Override
+    public void statistics(){
+        MenuContent.quantityCount("Department", Handle.n);
     }
 }

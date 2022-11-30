@@ -214,8 +214,13 @@ public class ContractManager implements RoleOfManager {
         if (!check)
             System.out.println("------------ Don't have data for contract ---------------");
     }
+<<<<<<< HEAD
     @Override
     public void statistics() {
         MenuContent.quantityCount("Contract",Handle.n);
+=======
+
+    public static void statistical() {
+>>>>>>> b6d81f1700463ef315bf52fada6e8f5b0ba80cbc
     }
 }

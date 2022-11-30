@@ -3,7 +3,7 @@ public class MenuContent {
     public static void option(String title) {
         String capital = title.toUpperCase();
         System.out.println("\n     --------------------------------------------");
-        System.out.printf("     |            %10s %s            |", capital, "MANAGER");
+        System.out.printf("     |   %20s %s           |", capital, "MANAGER");
         System.out.println("\n     --------------------------------------------");
         try {
             Thread.sleep(1000);
@@ -51,7 +51,7 @@ public class MenuContent {
 
     public static void choiceWrong() {
         System.out.println("--------------------------------------------------------------------");
-        System.out.println("|                      <Choice does not exist!>                    |");
+        System.out.println("|                      <<<<ERROR !!!!!                             |");
         System.out.println("--------------------------------------------------------------------");
     }
 
@@ -63,8 +63,8 @@ public class MenuContent {
 
     public static void noteSuccess(String title) {
         System.out.println("-------------------------------------------------");
-        System.out.printf("|%-15s %-15s|", title, "successful!              ");
-        System.out.println("-------------------------------------------------");
+        System.out.printf("|%15s %-15s|", title, "successful!              |");
+        System.out.println("\n-------------------------------------------------");
     }
 
     public static void noteFailure(String title) {

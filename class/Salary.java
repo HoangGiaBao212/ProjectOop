@@ -49,7 +49,7 @@ public class Salary implements InOut {
 
     @Override
     public void output() {
-        DecimalFormat formatter = new DecimalFormat("###,###,###.00");
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
         System.out.printf("|  %-20s|  %-20s|  %-20s|", indexSalary, someHolidays,
                 formatter.format(totalSalary) + " VND");
         System.out.println();
