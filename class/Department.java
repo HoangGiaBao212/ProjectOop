@@ -85,6 +85,10 @@ public class Department implements InOut {
         for (int i = 0; i < members; i++) {
             System.out.print(" ==> Enter id of employee number: " + i);
             idEmployee[i] = new String(scanner.nextLine());
+            while (!Handle.checkIdEmployee(idEmployee[i])) {
+                Handle.noteNoHaveId(idEmployee[i]);
+                idEmployee[i] = scanner.nextLine();
+            }
         }
         this.idEmployee = idEmployee;
     }

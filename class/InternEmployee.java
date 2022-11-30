@@ -18,7 +18,7 @@ public class InternEmployee extends Employee implements InOut {
 
     public void setCoefficientsSalary(int coefficientsSalary) {
         System.out.println("Enter coefficientsSalary: ");
-        coefficientsSalary = scanner.nextInt();
+        coefficientsSalary = Handle.getInputNumber();
         InternEmployee.coefficientsSalary = coefficientsSalary;
     }
 
