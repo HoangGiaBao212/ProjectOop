@@ -3,32 +3,22 @@ import java.util.Scanner;
 import javax.management.modelmbean.ModelMBean;
 
 public class SalaryManager implements RoleOfManager {
-
+    double indexSalary;
     static Scanner scanner = new Scanner(System.in);
 
-    long baseSalary;
+    
 
     @Override
     public void inputList() {
-        System.out.print(" ==> Enter base salary this month: ");
-        baseSalary = Long.parseLong(scanner.nextLine());
+        
+        
         for (int i = 0; i < Handle.n; i++) {
-            System.out.println(
-                    "Enter information about employee with id: " + Handle.listAccount[i].getEmployee().getIdEmp());
-            int indexSalary = 1;
+            System.out.println("Enter information about employee with id: " + Handle.listAccount[i].getEmployee().getIdEmp());
+            
             Salary salary = new Salary();
             salary.input();
-            if (Handle.listAccount[i].getEmployee().getPosition().equalsIgnoreCase("Chief of department")) {
-                indexSalary = ChiefDepartment.getCoefficientsSalary();
-                salary.setIndexSalary(indexSalary);
-            } else if (Handle.listAccount[i].getEmployee().getPosition().equalsIgnoreCase("Official Employee")) {
-                indexSalary = OfficialEmployee.getCoefficientsSalary();
-                salary.setIndexSalary(indexSalary);
-            } else {
-                indexSalary = InternEmployee.getCoefficientsSalary();
-                salary.setIndexSalary(indexSalary);
-            }
-            salary.payRoll(baseSalary, indexSalary);
+            
+            salary.payRoll();
             Handle.listAccount[i].getEmployee().setSalary(salary);
         }
     }
@@ -63,23 +53,10 @@ public class SalaryManager implements RoleOfManager {
         if (Handle.checkIdEmployee(idEmpAdd)) {
             for (int i = 0; i < Handle.n; i++) {
                 if (Handle.listAccount[i].getEmployee().getIdEmp().equals(idEmpAdd)) {
-                    System.out.print("Enter base salary of employee: ");
-                    baseSalary = scanner.nextLong();
-                    int indexSalary = 1;
+                   
                     Salary salary = new Salary();
-                    salary.input();
-                    if (Handle.listAccount[i].getEmployee().getPosition().equalsIgnoreCase("Chief of department")) {
-                        indexSalary = ChiefDepartment.getCoefficientsSalary();
-                        salary.setIndexSalary(indexSalary);
-                    } else if (Handle.listAccount[i].getEmployee().getPosition()
-                            .equalsIgnoreCase("Official Employee")) {
-                        indexSalary = OfficialEmployee.getCoefficientsSalary();
-                        salary.setIndexSalary(indexSalary);
-                    } else {
-                        indexSalary = InternEmployee.getCoefficientsSalary();
-                        salary.setIndexSalary(indexSalary);
-                    }
-                    salary.payRoll(baseSalary, indexSalary);
+                    
+                    salary.payRoll();
                     Handle.listAccount[i].getEmployee().setSalary(salary);
                 }
             }
@@ -126,22 +103,32 @@ public class SalaryManager implements RoleOfManager {
                     if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(idEdit)) {
                         System.out.println();
                         System.out.println("--------------------------------------------------");
-                        System.out.println("| 1.Change Base Salary                           |");
+                        System.out.println("| 1.Change index salary                          |");
                         System.out.println("| 2.Change Day-Off                               |");
+                        System.out.println("| 3.Overtime                               |");
                         System.out.println("--------------------------------------------------");
                         System.out.print("==> Input Option: ");
                         option = Integer.parseInt(scanner.nextLine());
                         switch (option) {
-                            case 1:
-                                System.out.print("==>Enter base salary this month: ");
-                                baseSalary = Long.parseLong(scanner.nextLine());
+                            case 1:{
+                                System.out.print("==>Enter index salary this month: ");
+                                Handle.listAccount[i].getEmployee().getSalary().setIndexSalary();
                                 break;
-                            case 2:
+                            }
+                            case 2:{
+                                System.out.print("==>Enter holidays this month: ");
                                 Handle.listAccount[i].getEmployee().getSalary().setSomeHolidays(0);
                                 break;
-                            default:
+                            }
+                            case 3:{
+                                System.out.print("==>Enter overtime this month: ");
+                                Handle.listAccount[i].getEmployee().getSalary().setOvertime(i);
+                                break;
+                            }
+                            default:{
                                 MenuContent.choiceWrong();
                                 break;
+                            }
                         }
                     }
                     break;
