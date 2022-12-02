@@ -6,16 +6,16 @@ import java.util.Arrays;
 
 public class FileUtil {
 
-    /*
+    
     private static String listSalaryTxt = "C:\\Users\\khang\\OneDrive\\Tài liệu\\GitHub\\ProjectOop\\File\\salary.txt";
     private static String listContractTxt = "C:\\Users\\khang\\OneDrive\\Tài liệu\\GitHub\\ProjectOop\\File\\contract.txt";
     private static String listDepartmentTxt = "C:\\Users\\khang\\OneDrive\\Tài liệu\\GitHub\\ProjectOop\\File\\department.txt";
     private static String listAccountTxt = "C:\\Users\\khang\\OneDrive\\Tài liệu\\GitHub\\ProjectOop\\File\\account.txt";
-     */
-    private static String listSalaryTxt = "./ProjectOop/File/salary.txt";
-    private static String listContractTxt = "./ProjectOop/File/contract.txt";
-    private static String listDepartmentTxt = "./ProjectOop/File/department.txt";
-    private static String listAccountTxt = "./ProjectOop/File/account.txt";
+    //C:\Users\khang\OneDrive\Tài liệu\GitHub\DOANOOP\\File\\account.txt 
+    // private static String listSalaryTxt = "./ProjectOop/File/salary.txt";
+    // private static String listContractTxt = "./ProjectOop/File/contract.txt";
+    // private static String listDepartmentTxt = "./ProjectOop/File/department.txt";
+    // private static String listAccountTxt = "./ProjectOop/File/account.txt";
 
     private FileUtil() {
     }
@@ -95,10 +95,11 @@ public class FileUtil {
                     String[] txt = line.split("-");
                     String idEmp = txt[0];
                     int indexSalary = Integer.parseInt(txt[3]);
-                    int someHolidays = Integer.parseInt(txt[4]);
-                    Long totalSalary = Long.parseLong(txt[5]);
+                    double overtime = Integer.parseInt(txt[4]);
+                    int someHolidays = Integer.parseInt(txt[5]);
+                    Long totalSalary = Long.parseLong(txt[6]);
 
-                    Salary salary = new Salary(indexSalary, someHolidays, totalSalary);
+                    Salary salary = new Salary(indexSalary, overtime, someHolidays, totalSalary);
 
                     while (true) {
                         if (Handle.listAccount[i].getEmployee().getIdEmp().equalsIgnoreCase(idEmp)) {
