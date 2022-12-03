@@ -12,7 +12,6 @@ public interface RoleOfManager {
     public abstract void edit(String idEmp);
 
     public abstract void find(String idEmp);
-    
-    public abstract void statistics();
 
+    public abstract void statistics();
 }

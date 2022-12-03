@@ -85,5 +85,4 @@ public class Account implements InOut {
     public String toString() {
         return username + "-" + password + "-" + employee.toString();
     }
-
 }
