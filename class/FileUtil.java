@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.Arrays;
 
 public class FileUtil {
 
@@ -51,9 +50,9 @@ public class FileUtil {
                     String email = txt[7];
                     String address = txt[8];
                     String phone = txt[9];
-                    Employee employee = new Employee(name, age, gender, email, address, phone,
+                    Person employee = new Employee(name, age, gender, email, address, phone,
                             idEmp, position);
-                    Handle.listAccount[Handle.n] = new Account(username, password, employee);
+                    Handle.listAccount[Handle.n] = new Account(username, password, (Employee)employee);
                 }
             }
         } catch (Exception e) {

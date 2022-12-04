@@ -148,13 +148,10 @@ public class Handle {
                     option(title);
                 }
                 case 7 -> {
-                    // Thống kê
-                }
-                case 8 -> {
                     menu();
                     break;
                 }
-                case 9 -> {
+                case 8 -> {
                     MenuContent.noteBye();
                     break;
                 }

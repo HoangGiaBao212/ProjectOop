@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class OfficialEmployee extends Employee implements InOut {
 
     static Scanner scanner = new Scanner(System.in);
-    
 
     public OfficialEmployee() {
     }
@@ -12,8 +11,6 @@ public class OfficialEmployee extends Employee implements InOut {
             String idEmp, String position, Salary salary, Department department, Contract contract) {
         super(name, age, gender, email, address, phone, idEmp, position, salary, department, contract);
     }
-
-    
 
     @Override
     public void input() {
