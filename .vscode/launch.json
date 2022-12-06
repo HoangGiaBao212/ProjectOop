@@ -1,0 +1,119 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "OOP_147960a0"
+        },
+        {
+            "type": "java",
+            "name": "Launch test",
+            "request": "launch",
+            "mainClass": "test",
+            "projectName": "OOP_d34ba5e3"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "OOP-1_dba3be44"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "OOP_d34ba5e3"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "7OOP-T_6fdfca30"
+        },
+        {
+            "type": "java",
+            "name": "Launch Splender",
+            "request": "launch",
+            "mainClass": "Splender",
+            "projectName": "ProjectOop_5f9323fa"
+        },
+        {
+            "type": "java",
+            "name": "Launch hi",
+            "request": "launch",
+            "mainClass": "hi",
+            "projectName": "ProjectOop_5f9323fa"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "ProjectOop_5f9323fa"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "ProjectOop_3ab9f943"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "ProjectOop_2c61c523"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "ProjectOop_982b9a04"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "OOP-PROJECT_3acf7acc"
+        },
+        {
+            "type": "java",
+            "name": "Launch Entry",
+            "request": "launch",
+            "mainClass": "Entry",
+            "projectName": "OOP-PROJECT_3acf7acc"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch Entry",
+            "request": "launch",
+            "mainClass": "Entry",
+            "projectName": "Project-Oop_6b34986f"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "Project-Oop_6b34986f"
+        }
+    ]
+}

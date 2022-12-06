@@ -1,0 +1,14 @@
+1. Mã Phòng ban: D001,D002,D003,.........
+
+2 Tên Phòng ban:
+2.1 Phòng kế toán.
+2.2. Phòng kiểm toán.
+2.3. Phòng nhân sự
+2.4. Phòng hành chính.
+2.5. Phòng chăm sóc khách hàng.
+2.6. Phòng Công nghệ thông tin.
+2.7. Phòng Marketing.
+2.8. Phòng kinh doanh.
+........................
+D001-Phong Dieu Hanh-CD002-2-E001-E002
+D002-Phong CNTT-CD003-4-E003-E004-E005-E006
