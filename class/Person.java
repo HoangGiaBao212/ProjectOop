@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class Person implements InOut {
+abstract class Person implements InOut {
 
     static Scanner sc = new Scanner(System.in);
 
@@ -13,10 +13,10 @@ class Person implements InOut {
     private String address;
     private String phone;
 
-    public Person() {
+    protected Person() {
     }
 
-    public Person(String name, int age, String gender, String email, String address, String phone) {
+    protected Person(String name, int age, String gender, String email, String address, String phone) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -165,7 +165,6 @@ class Person implements InOut {
 
     @Override
     public void output() {
-        // TODO Auto-generated method stub
         System.out.printf("  %-20s|  %-10d|  %-10s|  %-30s|  %-20s|  %-20s|", name, age, gender, email,
                 address, phone);
     }
