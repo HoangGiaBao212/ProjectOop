@@ -12,7 +12,7 @@ public class Salary implements InOut {
     public Salary() {
     }
 
-    public Salary(double indexSalary,double overtime, int someHolidays, long totalSalary) {
+    public Salary(double indexSalary, double overtime, int someHolidays, long totalSalary) {
         this.indexSalary = indexSalary;
         this.overtime = overtime;
         this.someHolidays = someHolidays;
@@ -23,9 +23,8 @@ public class Salary implements InOut {
         return indexSalary;
     }
 
-   
     public void setIndexSalary(double indexSalary) {
-        
+
         this.indexSalary = indexSalary;
     }
 
@@ -34,12 +33,13 @@ public class Salary implements InOut {
         indexSalary = scanner.nextDouble();
         this.indexSalary = indexSalary;
     }
+
     public double getOvertime() {
         return overtime;
     }
 
     public void setOvertime(double overtime) {
-       
+
         this.overtime = overtime;
     }
 
@@ -49,7 +49,6 @@ public class Salary implements InOut {
         this.overtime = overtime;
     }
 
-    
     public int getSomeHolidays() {
         return someHolidays;
     }
@@ -57,7 +56,7 @@ public class Salary implements InOut {
     public void setSomeHolidays(int someHolidays) {
         this.someHolidays = someHolidays;
     }
-    
+
     public void setSomeHolidays() {
         System.out.print("==> Enter a number of day-off: ");
         someHolidays = scanner.nextInt();
@@ -77,19 +76,19 @@ public class Salary implements InOut {
         setIndexSalary();
         setOvertime();
         setSomeHolidays();
-        
+
     }
 
     @Override
     public void output() {
         DecimalFormat formatter = new DecimalFormat("###,###,###,###,###");
-        System.out.printf("|  %-20s|  %-20s|  %-20s| %-20s| %-20s|",baseSalary, indexSalary, overtime, someHolidays,
+        System.out.printf("|  %-20s|  %-20s|  %-20s| %-20s| %-20s|", baseSalary, indexSalary, overtime, someHolidays,
                 formatter.format(totalSalary) + " VND");
         System.out.println();
     }
 
     public Long payRoll() {
-        totalSalary = (long) (baseSalary * indexSalary * 26 - someHolidays * baseSalary + (long) (overtime*25000));
+        totalSalary = (long) (baseSalary * indexSalary * 26 - someHolidays * baseSalary + (long) (overtime * 25000));
         return totalSalary;
     }
 
